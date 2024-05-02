@@ -3,7 +3,7 @@ return { -- Autoformat
 	lazy = false,
 	keys = {
 		{
-			"<leader>f",
+			"<leader>fr",
 			function()
 				require("conform").format({ async = true, lsp_fallback = true })
 			end,
@@ -25,7 +25,7 @@ return { -- Autoformat
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "ruff" },
+			python = { "black" },
 			-- Use a sub-list to run only the first available formatter
 			javascript = { { "prettierd", "prettier" } },
 

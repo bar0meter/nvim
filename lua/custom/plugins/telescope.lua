@@ -78,6 +78,20 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 		vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
+		vim.keymap.set("n", "<leader>gg", function()
+			builtin.git_files({
+				prompt_title = "[Git Files]",
+				file_ignore_patterns = { ".github", "codegen" },
+			})
+		end, { desc = "[Git Files]" })
+
+		vim.keymap.set("n", "<leader>gt", function()
+			builtin.git_files({
+				prompt_title = "Ignore tests folder",
+				file_ignore_patterns = { "tests", "functional_tests", "snapshots", ".github", "codegen" },
+			})
+		end, { desc = "[Ignore tests]" })
+
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>ss", function()
 			-- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -86,6 +100,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				previewer = false,
 			}))
 		end, { desc = "[/] Fuzzily search in current buffer" })
+		vim.keymap.set("n", "<leader>ps", function()
+			builtin.grep_string({ search = vim.fn.input("Grep > ") })
+		end)
 
 		-- It's also possible to pass additional configuration options.
 		--  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -95,6 +112,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				prompt_title = "Live Grep in Open Files",
 			})
 		end, { desc = "[S]earch [/] in Open Files" })
+		vim.keymap.set("n", "<leader>pws", function()
+			local word = vim.fn.expand("<cword>")
+			builtin.grep_string({ search = word })
+		end)
+		vim.keymap.set("n", "<leader>pWs", function()
+			local word = vim.fn.expand("<cWORD>")
+			builtin.grep_string({ search = word })
+		end)
 
 		-- Shortcut for searching your Neovim configuration files
 		vim.keymap.set("n", "<leader>sn", function()
