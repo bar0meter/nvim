@@ -70,7 +70,7 @@ require("lazy").setup({
 })
 
 vim.cmd([[
-	colorscheme evening
+	colorscheme barometer
 ]])
 
 vim.opt.fillchars:append("eob: ")
