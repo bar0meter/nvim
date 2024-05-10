@@ -176,6 +176,9 @@ return { -- LSP Configuration & Plugins
 							enable = false,
 						},
 					},
+					handlers = {
+						["textDocument/publishDiagnostics"] = function() end,
+					},
 				},
 			},
 			-- Ensure the servers and tools above are installed

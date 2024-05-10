@@ -31,6 +31,10 @@ vim.opt.cursorline = false
 
 vim.opt.termguicolors = false
 
+vim.opt.syntax = "off"
+
+vim.o.signcolumn = "no"
+
 -- https://www.reddit.com/r/neovim/comments/vaimyr/how_to_set_folding_method_permanently/
 vim.opt.foldenable = false
 vim.opt.foldmethod = "expr"
@@ -68,9 +72,5 @@ require("lazy").setup({
 	"tpope/vim-sleuth",
 	{ import = "custom.plugins" },
 })
-
-vim.cmd([[
-	colorscheme barometer
-]])
 
 vim.opt.fillchars:append("eob: ")

@@ -148,11 +148,13 @@ local tokyonight = {
 	opts = {},
 	config = function()
 		require("tokyonight").setup({
-			style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+			style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
 			transparent = true, -- Enable this to disable setting the background color
+			on_colors = function(_) end,
+			on_highlights = function(_) end,
 		})
 		vim.cmd("colorscheme tokyonight-night")
 	end,
 }
 
-return {}
+return tokyonight
