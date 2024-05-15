@@ -3,8 +3,8 @@ vim.g.maplocalleader = ","
 
 vim.g.have_nerd_font = false
 
-vim.opt.number = false
-vim.opt.relativenumber = false
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.opt.mouse = "a"
 
@@ -29,7 +29,7 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorline = false
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 vim.opt.syntax = "off"
 
@@ -52,6 +52,9 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.bs = "2"
+
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲", extends = "❯", precedes = "❮" }
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
