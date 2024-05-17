@@ -125,6 +125,8 @@ return { -- LSP Configuration & Plugins
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+		local lspconfig = require("lspconfig")
+
 		-- Enable the following language servers
 		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 		--
@@ -176,8 +178,21 @@ return { -- LSP Configuration & Plugins
 							enable = false,
 						},
 					},
+					-- handlers = {
+					-- 	["textDocument/publishDiagnostics"] = function() end,
+					-- },
+				},
+
+				jdtls = {
+					cmd = { "jdtls" },
+					filetypes = { "java" },
+					root_dir = lspconfig.util.root_pattern("pom.xml", "build.gradle", ".git") or vim.fn.getcwd(),
 					handlers = {
-						["textDocument/publishDiagnostics"] = function() end,
+						["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+							underline = true,
+							signs = true,
+							update_in_insert = true,
+						}),
 					},
 				},
 			},
