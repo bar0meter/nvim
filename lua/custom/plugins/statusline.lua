@@ -169,4 +169,4 @@ local lualine = {
 	end,
 }
 
-return lualine
+return {}

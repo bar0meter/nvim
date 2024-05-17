@@ -3,8 +3,8 @@ vim.g.maplocalleader = ","
 
 vim.g.have_nerd_font = false
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.number = false
+vim.opt.relativenumber = false
 
 vim.opt.mouse = "a"
 
@@ -29,11 +29,13 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorline = false
 
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 
 vim.opt.syntax = "off"
 
 vim.o.signcolumn = "no"
+
+vim.opt.swapfile = false
 
 -- https://www.reddit.com/r/neovim/comments/vaimyr/how_to_set_folding_method_permanently/
 vim.opt.foldenable = false
