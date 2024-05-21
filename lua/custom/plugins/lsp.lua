@@ -7,14 +7,14 @@ return { -- LSP Configuration & Plugins
 		},
 		config = function(_, opts)
 			local resolve_opts = function()
-				local root_dir =
-					require("jdtls.setup").find_root(opts.root_markers or { ".git", "pom.xml", "build.gradle" })
+				local root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1])
 				local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 				local workspace_dir = vim.fn.stdpath("data") .. "/site/java/workspace-root/" .. project_name
 				if vim.loop.fs_stat(workspace_dir) == nil then
 					os.execute("mkdir " .. workspace_dir)
 				end
-				local install_path = "/Users/barometer/.config/nvim/resources/jdtls"
+				local nvim_root = vim.fn.expand("$HOME/.config/nvim")
+				local install_path = nvim_root .. "/resources/jdtls"
 				local os
 				if vim.fn.has("macunix") then
 					os = "mac_arm"
@@ -113,7 +113,7 @@ return { -- LSP Configuration & Plugins
 					-- Jump to the definition of the word under your cursor.
 					--  This is where a variable was first declared, or where a function is defined, etc.
 					--  To jump back, press <C-t>.
-					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("gd", vim.lsp.buf.definition, "")
 
 					-- Find references for the word under your cursor.
 					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
@@ -244,6 +244,8 @@ return { -- LSP Configuration & Plugins
 						-- 	["textDocument/publishDiagnostics"] = function() end,
 						-- },
 					},
+
+					terraformls = {},
 				},
 				-- Ensure the servers and tools above are installed
 				--  To check the current status of installed tools and/or manually install
@@ -272,6 +274,16 @@ return { -- LSP Configuration & Plugins
 						require("lspconfig")[server_name].setup(server)
 					end,
 				},
+			})
+
+			-- Disable semantic highlighting for all LSPs
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client ~= nil then
+						client.server_capabilities.semanticTokensProvider = nil
+					end
+				end,
 			})
 		end,
 	},
