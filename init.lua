@@ -76,6 +76,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	"tpope/vim-sleuth",
 	{ import = "custom.plugins" },
+	"gurpreetatwal/vim-avro",
 })
 
 vim.opt.fillchars:append("eob: ")
