@@ -30,6 +30,7 @@ vim.opt.scrolloff = 10
 vim.opt.cursorline = false
 
 vim.opt.termguicolors = false
+vim.opt.background = "dark"
 
 vim.opt.syntax = "off"
 

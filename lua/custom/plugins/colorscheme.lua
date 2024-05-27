@@ -10,6 +10,7 @@ local nightfox = {
 	priority = 1000,
 	config = function()
 		require("nightfox").setup()
+		vim.cmd("colorscheme duskfox")
 	end,
 }
 
@@ -22,8 +23,4 @@ local catppuccin = {
 	end,
 }
 
-return {
-	gruvbox,
-	nightfox,
-	catppuccin,
-}
+return gruvbox

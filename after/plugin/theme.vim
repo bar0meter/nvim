@@ -1,20 +1,19 @@
+colorscheme gruvbox
+
 " make gutter less annoying
 hi SignColumn ctermbg=NONE
 
 " base default color changes (gruvbox dark friendly)
-hi clear StatusLine
-hi clear StatusLineNC
-hi clear LineNr
-hi StatusLine ctermfg=darkgrey ctermbg=NONE
-hi StatusLineNC ctermfg=darkgrey ctermbg=NONE
+hi StatusLine ctermfg=black ctermbg=NONE
+hi StatusLineNC ctermfg=black ctermbg=NONE
 hi Normal ctermbg=234
-hi Special ctermfg=cyan
-hi LineNr ctermfg=darkgrey ctermbg=NONE
-hi SpecialKey ctermfg=darkgrey ctermbg=NONE
-hi ModeMsg ctermfg=darkgrey cterm=NONE ctermbg=NONE
-hi MoreMsg ctermfg=darkgrey ctermbg=NONE
-hi NonText ctermfg=darkgrey ctermbg=NONE
-hi vimGlobal ctermfg=darkgrey ctermbg=NONE
+hi Special ctermfg=NONE
+hi LineNr ctermfg=black ctermbg=NONE
+hi SpecialKey ctermfg=black ctermbg=NONE
+hi ModeMsg ctermfg=black cterm=NONE ctermbg=NONE
+hi MoreMsg ctermfg=black ctermbg=NONE
+hi NonText ctermfg=black ctermbg=NONE
+hi vimGlobal ctermfg=black ctermbg=NONE
 hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
 hi Error ctermbg=234 ctermfg=darkred cterm=NONE
 hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
@@ -26,14 +25,17 @@ hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
 hi MatchParen ctermbg=236 ctermfg=darkred
 
 " color overrides
+au FileType * hi StatusLine ctermfg=black ctermbg=NONE
+au FileType * hi StatusLineNC ctermfg=black ctermbg=NONE
 au FileType * hi Normal ctermbg=234
-au FileType * hi Special ctermfg=cyan
-au FileType * hi SpecialKey ctermfg=darkgrey ctermbg=NONE
-au FileType * hi ModeMsg ctermfg=darkgrey cterm=NONE ctermbg=NONE
-au FileType * hi MoreMsg ctermfg=darkgrey ctermbg=NONE
-au FileType * hi NonText ctermfg=darkgrey ctermbg=NONE
-au FileType * hi vimGlobal ctermfg=darkgrey ctermbg=NONE
-au FileType * hi goComment ctermfg=darkgrey ctermbg=NONE
+au FileType * hi Special ctermfg=NONE
+au FileType * hi LineNr ctermfg=black ctermbg=NONE
+au FileType * hi SpecialKey ctermfg=black ctermbg=NONE
+au FileType * hi ModeMsg ctermfg=black cterm=NONE ctermbg=NONE
+au FileType * hi MoreMsg ctermfg=black ctermbg=NONE
+au FileType * hi NonText ctermfg=black ctermbg=NONE
+au FileType * hi vimGlobal ctermfg=black ctermbg=NONE
+au FileType * hi goComment ctermfg=black ctermbg=NONE
 au FileType * hi ErrorMsg ctermbg=234 ctermfg=darkred cterm=NONE
 au FileType * hi Error ctermbg=234 ctermfg=darkred cterm=NONE
 au FileType * hi SpellBad ctermbg=234 ctermfg=darkred cterm=NONE
@@ -54,4 +56,3 @@ au FileType c set sw=8
 au FileType markdown,pandoc noremap j gj
 au FileType markdown,pandoc noremap k gk
 au FileType sh set noet
-
