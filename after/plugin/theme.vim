@@ -1,11 +1,12 @@
-colorscheme gruvbox
+colorscheme tokyonight
 
 " make gutter less annoying
 hi SignColumn ctermbg=NONE
 
 " base default color changes (gruvbox dark friendly)
-hi StatusLine ctermfg=black ctermbg=NONE
-hi StatusLineNC ctermfg=black ctermbg=NONE
+hi clear StatusLine
+hi StatusLine ctermfg=8 ctermbg=NONE
+hi StatusLineNC ctermfg=8 ctermbg=NONE
 hi Normal ctermbg=234
 hi Special ctermfg=NONE
 hi LineNr ctermfg=black ctermbg=NONE
@@ -25,8 +26,9 @@ hi IncSearch ctermbg=236 cterm=NONE ctermfg=darkred
 hi MatchParen ctermbg=236 ctermfg=darkred
 
 " color overrides
-au FileType * hi StatusLine ctermfg=black ctermbg=NONE
-au FileType * hi StatusLineNC ctermfg=black ctermbg=NONE
+au FileType * hi clear StatusLine 
+au FileType * hi StatusLine ctermfg=8 ctermbg=NONE
+au FileType * hi StatusLineNC ctermfg=8 ctermbg=NONE
 au FileType * hi Normal ctermbg=234
 au FileType * hi Special ctermfg=NONE
 au FileType * hi LineNr ctermfg=black ctermbg=NONE

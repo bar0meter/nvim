@@ -10,7 +10,6 @@ local nightfox = {
 	priority = 1000,
 	config = function()
 		require("nightfox").setup()
-		vim.cmd("colorscheme duskfox")
 	end,
 }
 
@@ -23,4 +22,36 @@ local catppuccin = {
 	end,
 }
 
-return gruvbox
+local tokyonight = {
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
+	opts = {},
+	config = function()
+		require("tokyonight").setup({
+			-- use the night style
+			style = "night",
+			transparent = true,
+			-- disable italic for functions
+			styles = {
+				-- Style to be applied to different syntax groups
+				-- Value is any valid attr-list value for `:help nvim_set_hl`
+				comments = { italic = false },
+				keywords = { italic = false },
+				functions = {},
+				variables = {},
+				-- Background styles. Can be "dark", "transparent" or "normal"
+				sidebars = "dark", -- style for sidebars, see below
+				floats = "dark", -- style for floating windows
+			},
+			-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+		})
+	end,
+}
+
+return {
+	gruvbox,
+	nightfox,
+	catppuccin,
+	tokyonight,
+}
