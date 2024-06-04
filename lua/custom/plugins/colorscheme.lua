@@ -22,6 +22,10 @@ local catppuccin = {
 	end,
 }
 
+local gruvbuddy = {
+	"tjdevries/colorbuddy.nvim",
+}
+
 local tokyonight = {
 	"folke/tokyonight.nvim",
 	lazy = false,
@@ -54,4 +58,5 @@ return {
 	nightfox,
 	catppuccin,
 	tokyonight,
+	gruvbuddy,
 }
