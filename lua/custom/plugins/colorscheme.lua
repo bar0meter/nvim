@@ -53,10 +53,15 @@ local tokyonight = {
 	end,
 }
 
+local solarized = {
+	"altercation/vim-colors-solarized",
+}
+
 return {
 	gruvbox,
 	nightfox,
 	catppuccin,
 	tokyonight,
 	gruvbuddy,
+	solarized,
 }

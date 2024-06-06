@@ -29,7 +29,7 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorline = false
 
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 vim.opt.background = "dark"
 
 vim.opt.syntax = "off"
@@ -56,8 +56,8 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.bs = "2"
 
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲", extends = "❯", precedes = "❮" }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲", extends = "❯", precedes = "❮" }
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",

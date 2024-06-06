@@ -185,6 +185,4 @@ local expressline = {
 	end,
 }
 
-return {
-	expressline,
-}
+return {}
