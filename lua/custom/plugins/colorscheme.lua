@@ -57,6 +57,32 @@ local solarized = {
 	"altercation/vim-colors-solarized",
 }
 
+local everforest = {
+	"neanias/everforest-nvim",
+	version = false,
+	lazy = false,
+	priority = 1000, -- make sure to load this before all the other start plugins
+	-- Optional; default configuration will be used if setup isn't called.
+	config = function()
+		require("everforest").setup({
+			-- Your config here
+			transparent_background_level = 2,
+			disable_italic_comments = true,
+			background = "hard",
+			show_eob = false,
+		})
+	end,
+}
+
+local horizon = {
+	"akinsho/horizon.nvim",
+	config = function()
+		require("horizon").setup({
+			transparent = true,
+		})
+	end,
+}
+
 return {
 	gruvbox,
 	nightfox,
@@ -64,4 +90,6 @@ return {
 	tokyonight,
 	gruvbuddy,
 	solarized,
+	everforest,
+	horizon,
 }
