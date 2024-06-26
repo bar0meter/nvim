@@ -117,33 +117,57 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
+		local themes = require("telescope.themes")
 		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-		vim.keymap.set("n", "<leader>l", builtin.find_files, { desc = "[S]earch [F]iles" })
+
+		vim.keymap.set("n", "<leader>l", function()
+			builtin.find_files(themes.get_ivy({
+				prompt_title = "[S]earch [F]iles",
+			}))
+		end, { desc = "[S]earch [F]iles" })
+
 		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
+
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-		vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-		vim.keymap.set("n", "<leader>dd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+
+		vim.keymap.set("n", "<leader>ff", function()
+			builtin.live_grep(themes.get_ivy({
+				prompt_title = "[S]earch by [G]rep",
+			}))
+		end, { desc = "[S]earch by [G]rep" })
+
+		vim.keymap.set("n", "<leader>dd", function()
+			builtin.diagnostics(themes.get_ivy({
+				prompt_title = "[S]earch [D]iagnostics",
+			}))
+		end, { desc = "[S]earch [D]iagnostics" })
+
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-		vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "[ ] Find existing buffers" })
+
+		vim.keymap.set("n", "<leader>b", function()
+			builtin.buffers(themes.get_ivy({
+				prompt_title = "[ ] Find existing buffers",
+			}))
+		end, { desc = "[ ] Find existing buffers" })
 
 		vim.keymap.set("n", "<leader>aa", function()
 			anime_selector()
 		end, { desc = "[A]nime [A]rt" })
 
 		vim.keymap.set("n", "<leader>gg", function()
-			builtin.git_files({
+			builtin.git_files(themes.get_ivy({
 				prompt_title = "[Git Files]",
 				file_ignore_patterns = { ".github", "codegen" },
-			})
+			}))
 		end, { desc = "[Git Files]" })
 
 		vim.keymap.set("n", "<leader>gt", function()
-			builtin.git_files({
+			builtin.git_files(themes.get_ivy({
 				prompt_title = "Ignore tests folder",
 				file_ignore_patterns = { "tests", "functional_tests", "snapshots", ".github", "codegen" },
-			})
+			}))
 		end, { desc = "[Ignore tests]" })
 
 		-- Slightly advanced example of overriding default behavior and theme

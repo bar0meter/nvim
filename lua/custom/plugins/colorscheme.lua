@@ -70,6 +70,14 @@ local solarized = {
 	"altercation/vim-colors-solarized",
 }
 
+local sitruuna = {
+	"eemed/sitruuna.vim",
+}
+
+local alabaster = {
+	"p00f/alabaster.nvim",
+}
+
 return {
 	gruvbox,
 	nightfox,
@@ -79,4 +87,6 @@ return {
 	solarized,
 	dichromatic,
 	everforest,
+	sitruuna,
+	alabaster,
 }

@@ -6,6 +6,8 @@ vim.g.have_nerd_font = false
 vim.opt.number = false
 vim.opt.relativenumber = false
 
+vim.opt.laststatus = 3
+
 vim.opt.mouse = "a"
 
 vim.opt.clipboard = "unnamedplus"
@@ -30,7 +32,6 @@ vim.opt.scrolloff = 10
 vim.opt.cursorline = false
 
 vim.opt.termguicolors = false
-vim.opt.background = "dark"
 
 vim.opt.syntax = "off"
 
