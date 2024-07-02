@@ -228,21 +228,17 @@ local lspconfig = {
 					},
 				},
 
-				pyright = {
-					setings = {
-						python = {
-							analysis = {
-								autoSearchPaths = true,
-								useLibraryCodeForTypes = true,
+				pylsp = {
+					settings = {
+						pylsp = {
+							plugins = {
+								pycodestyle = {
+									ignore = { "W391" },
+									maxLineLength = 100,
+								},
 							},
 						},
-						diagnostics = {
-							enable = false,
-						},
 					},
-					-- handlers = {
-					-- 	["textDocument/publishDiagnostics"] = function() end,
-					-- },
 				},
 
 				terraformls = {},

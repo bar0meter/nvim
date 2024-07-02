@@ -3,8 +3,8 @@ vim.g.maplocalleader = ","
 
 vim.g.have_nerd_font = false
 
-vim.opt.number = false
-vim.opt.relativenumber = false
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.opt.laststatus = 3
 
@@ -29,9 +29,9 @@ vim.opt.splitbelow = true
 
 vim.opt.scrolloff = 10
 
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 vim.opt.syntax = "off"
 
