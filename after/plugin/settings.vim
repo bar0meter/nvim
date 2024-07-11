@@ -3,12 +3,7 @@ set foldmethod=marker
 set nostartofline
 
 " Line number gutter
-set norelativenumber
 set numberwidth=3
-
-set statusline=\ \ \ %<%f\ %h%m%r
-" Line, col
-set statusline+=%=%(%l,%c%V%)
 
 set title
 set titlestring=%t
