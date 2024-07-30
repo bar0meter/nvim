@@ -10,5 +10,5 @@ local supermaven = {
 }
 
 return {
-	supermaven,
+	copilot,
 }

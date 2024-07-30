@@ -1,10 +1,11 @@
-colorscheme onedark
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
-hi clear StatusLine
-" set nocursorline
+" hi clear StatusLine
+set nocursorline
 
 " autocmd BufEnter * hi clear StatusLine
-" " autocmd BufEnter * set nocursorline
+autocmd BufEnter * set nocursorline
 
 " hi Normal guibg=NONE ctermbg=NONE
 " hi NonText guibg=NONE ctermbg=NONE
