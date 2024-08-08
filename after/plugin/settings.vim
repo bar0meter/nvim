@@ -27,13 +27,3 @@ autocmd WinLeave * silent !printf '\033[6 q'
 
 
 set encoding=utf-8
-let g:airline_powerline_fonts = 1
-let g:airline_skip_empty_sections = 1
-
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
