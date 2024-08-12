@@ -1,3 +1,7 @@
-augroup transparent_background
-    autocmd VimEnter * hi Normal guibg=NONE
-augroup END
+colorscheme gruvbuddy
+
+" Set the background color to be the same as the terminal
+autocmd VimEnter * highlight Normal ctermbg=NONE guibg=NONE
+
+autocmd VimEnter * highlight clear StatusLine
+

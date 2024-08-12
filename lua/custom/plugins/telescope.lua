@@ -122,9 +122,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 
 		vim.keymap.set("n", "<leader>l", function()
-			builtin.find_files(themes.get_ivy({
+			builtin.find_files({
 				prompt_title = "[S]earch [F]iles",
-			}))
+			})
 		end, { desc = "[S]earch [F]iles" })
 
 		vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
@@ -132,9 +132,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 
 		vim.keymap.set("n", "<leader>ff", function()
-			builtin.live_grep(themes.get_ivy({
+			builtin.live_grep({
 				prompt_title = "[S]earch by [G]rep",
-			}))
+			})
 		end, { desc = "[S]earch by [G]rep" })
 
 		vim.keymap.set("n", "<leader>dd", function()
@@ -173,10 +173,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		-- Slightly advanced example of overriding default behavior and theme
 		vim.keymap.set("n", "<leader>ss", function()
 			-- You can pass additional configuration to Telescope to change the theme, layout, etc.
-			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-				winblend = 10,
-				previewer = false,
-			}))
+			builtin.current_buffer_fuzzy_find({})
 		end, { desc = "[/] Fuzzily search in current buffer" })
 		vim.keymap.set("n", "<leader>ps", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
