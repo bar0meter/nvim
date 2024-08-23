@@ -1,5 +1,5 @@
 local gruvbox = {
-	"morhetz/gruvbox",
+	"gruvbox-community/gruvbox",
 }
 
 -- Lua
@@ -9,5 +9,4 @@ local gruvbuddy = {
 
 return {
 	gruvbox,
-	gruvbuddy,
 }
