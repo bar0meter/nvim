@@ -10,7 +10,7 @@ vim.opt.number = false
 vim.opt.relativenumber = false
 vim.opt.cursorline = false
 
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 
 vim.opt.mouse = "a"
 
@@ -35,7 +35,7 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorcolumn = false
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 vim.opt.syntax = "off"
 
@@ -60,6 +60,11 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.bs = "2"
+
+vim.opt.cmdheight = 0
+
+-- vim.opt.winbar = "%=%{expand('%:p:h:t')}/%t%="
+vim.opt.winbar = "%=%f%="
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",

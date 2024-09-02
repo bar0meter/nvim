@@ -28,5 +28,6 @@
   "vim-commentary": { "branch": "master", "commit": "c4b8f52cbb7142ec239494e5a2c4a512f92c4d07" },
   "vim-flog": { "branch": "master", "commit": "59885967bc7e2d311a87c58cef38effa02f0faa2" },
   "vim-fugitive": { "branch": "master", "commit": "0444df68cd1cdabc7453d6bd84099458327e5513" },
-  "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" }
+  "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
+  "vscode.nvim": { "branch": "main", "commit": "7de58b7a6d55fe48475d0ba2fddbcec871717761" }
 }
