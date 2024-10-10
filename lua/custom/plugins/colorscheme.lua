@@ -1,25 +1,18 @@
 local gruvbox = {
 	"gruvbox-community/gruvbox",
+	config = function() end,
 }
 
--- Lua
-local gruvbuddy = {
-	"tjdevries/colorbuddy.nvim",
+local solarized = {
+	"altercation/vim-colors-solarized",
 }
 
-local vscode = {
-	"Mofiqul/vscode.nvim",
-	config = function()
-		require("vscode").setup({
-			transparent = false,
-			italic_comments = false,
-			underline_links = false,
-			disable_nvimtree_bg = true,
-		})
-	end,
+local onedark = {
+	"olimorris/onedarkpro.nvim"
 }
 
 return {
 	gruvbox,
-	vscode,
+	solarized,
+	onedark
 }

@@ -35,7 +35,7 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorcolumn = false
 
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 
 vim.opt.syntax = "off"
 
@@ -60,8 +60,6 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.bs = "2"
-
-vim.opt.cmdheight = 0
 
 -- vim.opt.winbar = "%=%{expand('%:p:h:t')}/%t%="
 vim.opt.winbar = "%=%f%="

@@ -254,18 +254,30 @@ local lspconfig = {
 					},
 				},
 
-				pylsp = {
-					settings = {
-						pylsp = {
-							plugins = {
-								pycodestyle = {
-									ignore = { "W391" },
-									maxLineLength = 100,
-								},
-							},
-						},
-					},
-				},
+				jinja_lsp = {},
+
+				-- pylsp = {
+				-- 	settings = {
+				-- 		pylsp = {
+				-- 			plugins = {
+				-- 				pycodestyle = {
+				-- 					enabled = false,
+				-- 					ignore = { "W391" },
+				-- 					maxLineLength = 100,
+				-- 				},
+				-- 				pyflakes = {
+				-- 					enabled = false,
+				-- 				},
+				-- 				pylint = {
+				-- 					enabled = false,
+				-- 				},
+				-- 			},
+				-- 		},
+				-- 		diagnostics = { enable = false },
+				-- 	},
+				-- },
+
+				pyright = {},
 
 				terraformls = {},
 			},
@@ -293,6 +305,26 @@ local lspconfig = {
 					-- by the server configuration above. Useful when disabling
 					-- certain features of an LSP (for example, turning off formatting for tsserver)
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+					server.handlers = {
+						["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
+							if result.diagnostics == nil then
+								return
+							end
+
+							-- Filter out non-error diagnostics (show only errors)
+							local filtered_diagnostics = {}
+							for i, diagnostic in ipairs(result.diagnostics) do
+								if diagnostic.severity == vim.diagnostic.severity.ERROR then
+									table.insert(filtered_diagnostics, diagnostic)
+								end
+							end
+
+							result.diagnostics = filtered_diagnostics
+							result.virtual_text = false
+
+							vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+						end,
+					}
 					require("lspconfig")[server_name].setup(server)
 				end,
 			},
