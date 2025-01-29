@@ -6,11 +6,11 @@ vim.g.maplocalleader = ","
 
 vim.g.have_nerd_font = false
 
-vim.opt.number = false
-vim.opt.relativenumber = false
-vim.opt.cursorline = false
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
-vim.opt.laststatus = 0
+-- vim.opt.laststatus = 0
 
 vim.opt.mouse = "a"
 
@@ -35,7 +35,7 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorcolumn = false
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 vim.opt.syntax = "off"
 
@@ -44,9 +44,15 @@ vim.o.signcolumn = "no"
 vim.opt.swapfile = false
 
 -- https://www.reddit.com/r/neovim/comments/vaimyr/how_to_set_folding_method_permanently/
+-- https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim/
 vim.opt.foldenable = false
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldcolumn = "0"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 1
 
 vim.keymap.set("i", "jk", "<Esc>")
 
@@ -61,28 +67,29 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.bs = "2"
 
--- vim.opt.winbar = "%=%{expand('%:p:h:t')}/%t%="
-vim.opt.winbar = "%=%f%="
+-- List chars
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲", extends = "❯", precedes = "❮" }
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	"tpope/vim-sleuth",
-	{ import = "custom.plugins" },
-	"gurpreetatwal/vim-avro",
-})
+require("lazy").setup {
+  "tpope/vim-sleuth",
+  { import = "custom.plugins" },
+  "gurpreetatwal/vim-avro",
+}
 
-vim.opt.fillchars:append("eob: ")
+vim.opt.fillchars:append "eob: "
