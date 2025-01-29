@@ -1,7 +1,3 @@
-set nofoldenable
-set foldmethod=marker
-set nostartofline
-
 " Line number gutter
 set numberwidth=3
 

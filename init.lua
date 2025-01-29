@@ -6,9 +6,9 @@ vim.g.maplocalleader = ","
 
 vim.g.have_nerd_font = false
 
-vim.opt.number = false
-vim.opt.relativenumber = false
-vim.opt.cursorline = false
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 vim.opt.laststatus = 0
 
@@ -35,7 +35,7 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorcolumn = false
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 vim.opt.syntax = "off"
 
@@ -44,9 +44,15 @@ vim.o.signcolumn = "no"
 vim.opt.swapfile = false
 
 -- https://www.reddit.com/r/neovim/comments/vaimyr/how_to_set_folding_method_permanently/
+-- https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim/
 vim.opt.foldenable = false
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldcolumn = "0"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 1
 
 vim.keymap.set("i", "jk", "<Esc>")
 

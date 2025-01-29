@@ -1,0 +1,3 @@
+return {
+	"sourcegraph/sg.nvim",
+}
