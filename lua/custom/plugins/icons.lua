@@ -8,6 +8,6 @@ local nonicons = {
 }
 
 return {
-  devicons,
-  nonicons,
+  -- devicons,
+  -- nonicons,
 }

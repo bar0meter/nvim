@@ -55,11 +55,11 @@ M.setup = function()
   }
 end
 
-return {
-  {
-    "tjdevries/express_line.nvim",
-    config = function()
-      M.setup()
-    end,
-  },
+local expressline = {
+  "tjdevries/express_line.nvim",
+  config = function()
+    M.setup()
+  end,
 }
+
+return {}
