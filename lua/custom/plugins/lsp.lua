@@ -348,6 +348,10 @@ local typescript_tools = {
   opts = {},
 }
 
+local vim_go = {
+  "fatih/vim-go",
+}
+
 return {
   jdtls,
   typescript_tools,
