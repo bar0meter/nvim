@@ -1,5 +1,5 @@
 let g:gruvbox_contrast_dark = "hard"
-colorscheme gruvbox
+colorscheme kanagawa-wave
 
 " https://superuser.com/questions/921920/display-trailing-spaces-in-vim
 augroup HighlightTrailingWhitespace
@@ -20,3 +20,5 @@ hi! link LspReferenceRead DiffChange
 hi! link LspReferenceText DiffChange
 hi! link LspReferenceWrite DiffChange
 hi! link LspSignatureActiveParameter GruvboxOrange
+
+hi clear StatusLine
