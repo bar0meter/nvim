@@ -7,7 +7,7 @@ vim.g.maplocalleader = ","
 vim.g.have_nerd_font = false
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.cursorline = false
 
 -- vim.opt.laststatus = 0
@@ -39,7 +39,7 @@ vim.opt.termguicolors = true
 
 vim.opt.syntax = "off"
 
-vim.o.signcolumn = "no"
+vim.o.signcolumn = "yes"
 
 vim.opt.swapfile = false
 

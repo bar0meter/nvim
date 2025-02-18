@@ -1,6 +1,5 @@
-let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_contrast_dark = "hard"
 colorscheme gruvbox
-" colorscheme rose-pine
 
 " https://superuser.com/questions/921920/display-trailing-spaces-in-vim
 augroup HighlightTrailingWhitespace
@@ -13,15 +12,11 @@ augroup HighlightTrailingWhitespace
     autocmd BufWinLeave * call clearmatches()
 augroup END
 
-" gruvbox dark hard
-let g:gruvbox_contrast_dark="hard"
-let g:gruvbox_contrast="hard"
-
-" Transparent background
-hi Normal guibg=NONE ctermbg=NONE
-hi NonText guibg=NONE ctermbg=NONE
-hi clear StatusLine
-" hi LineNr guifg=#fabd2f
-" hi LineNrAbove guifg=#7c6f64
-" hi LineNrBelow guifg=#7c6f64
-
+highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl
+highlight DiagnosticUnderlineWarn cterm=undercurl gui=undercurl
+highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl
+highlight DiagnosticUnderlineHint cterm=undercurl gui=undercurl
+hi! link LspReferenceRead DiffChange
+hi! link LspReferenceText DiffChange
+hi! link LspReferenceWrite DiffChange
+hi! link LspSignatureActiveParameter GruvboxOrange

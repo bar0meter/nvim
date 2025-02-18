@@ -10,3 +10,5 @@ function! ToggleQuickFix()
 endfunction
 
 nnoremap <leader>qq :call ToggleQuickFix()<CR>
+
+nnoremap <leader>xx :Trouble diagnostics<CR>
