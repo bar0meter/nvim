@@ -293,6 +293,8 @@ local lspconfig = {
         pyright = {},
 
         terraformls = {},
+
+        eslint = {},
       },
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
@@ -362,16 +364,7 @@ local typescript_tools = {
   config = function()
     require("typescript-tools").setup {
       settings = {
-        tsserver_file_preferences = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
+        tsserver_file_preferences = {},
       },
     }
   end,

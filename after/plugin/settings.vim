@@ -20,3 +20,8 @@ set nrformats-=octal
 set encoding=utf-8
 
 set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
+
+augroup zmodel_ft
+  au!
+  autocmd BufNewFile,BufRead *.zmodel set filetype=prisma
+augroup END
