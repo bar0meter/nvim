@@ -12,3 +12,5 @@ endfunction
 nnoremap <leader>qq :call ToggleQuickFix()<CR>
 
 nnoremap <leader>xx :Trouble diagnostics<CR>
+
+nnoremap <leader>zz :lua vim.diagnostic.open_float()<CR>

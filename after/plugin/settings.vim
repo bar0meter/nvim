@@ -21,7 +21,17 @@ set encoding=utf-8
 
 set ruf=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
-augroup zmodel_ft
-  au!
-  autocmd BufNewFile,BufRead *.zmodel set filetype=prisma
+
+" autocmd VimLeave * silent !echo -ne "\e[6 q"
+
+" augroup fix_cursor_shape
+"   au!
+"   autocmd VimLeave * call system('printf "\e[5 q" > $TTY')
+"   autocmd VimLeave * silent !echo -ne "\e[5 q"
+" augroup END
+
+augroup FixCursorShape
+  autocmd!
+  " autocmd VimLeave * call system('tput cnorm') " Restore normal cursor
+  autocmd VimLeave * silent !printf "\e[5 q"  " Alternative method
 augroup END
