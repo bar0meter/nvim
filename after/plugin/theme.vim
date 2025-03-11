@@ -1,5 +1,5 @@
 let g:gruvbox_contrast_dark = "hard"
-colorscheme nord
+colorscheme tokyonight
 
 " https://superuser.com/questions/921920/display-trailing-spaces-in-vim
 augroup HighlightTrailingWhitespace
@@ -13,9 +13,9 @@ augroup HighlightTrailingWhitespace
 augroup END
 
 " Transparent background
-" hi Normal guibg=NONE ctermbg=NONE
-" hi NonText guibg=NONE ctermbg=NONE
-" hi clear StatusLine
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE
+hi clear StatusLine
 " hi LineNr guifg=#fabd2f
 " hi LineNrAbove guifg=#7c6f64
 " hi LineNrBelow guifg=#7c6f64
