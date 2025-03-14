@@ -3,6 +3,34 @@ local gruvbox = {
   config = function() end,
 }
 
+local vscode = {
+  "Mofiqul/vscode.nvim",
+  config = function()
+    vim.o.background = "dark"
+
+    local c = require("vscode.colors").get_colors()
+    require("vscode").setup {
+      -- Alternatively set style in setup
+      -- style = 'light'
+
+      -- Enable transparent background
+      transparent = true,
+
+      -- Enable italic comment
+      italic_comments = false,
+
+      -- Underline `@markup.link.*` variants
+      underline_links = true,
+
+      -- Disable nvim-tree background color
+      disable_nvimtree_bg = true,
+
+      -- Apply theme colors to terminal
+      terminal_colors = true,
+    }
+  end,
+}
+
 local tokyonight = {
   "folke/tokyonight.nvim",
   lazy = false,
@@ -62,4 +90,5 @@ local tokyonight = {
 return {
   gruvbox,
   tokyonight,
+  vscode,
 }
