@@ -131,6 +131,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
     vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
     vim.keymap.set("n", "<leader>ff", function()
       builtin.live_grep {
         prompt_title = "[S]earch by [G]rep",

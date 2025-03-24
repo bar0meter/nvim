@@ -35,13 +35,16 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorcolumn = false
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 vim.opt.syntax = "off"
 
 vim.o.signcolumn = "no"
 
 vim.opt.swapfile = false
+
+vim.opt.title = true
+vim.opt.titlestring = '%t%( %M%)%( (%{expand("%:~:h")})%)%a (nvim)'
 
 -- https://www.reddit.com/r/neovim/comments/vaimyr/how_to_set_folding_method_permanently/
 -- https://www.jackfranklin.co.uk/blog/code-folding-in-vim-neovim/

@@ -21,6 +21,34 @@ for newgroup, oldgroup in pairs(links) do
   vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
 end
 
+local schemastore = {
+  "b0o/schemastore.nvim",
+  config = function()
+    require("lspconfig").jsonls.setup {
+      settings = {
+        json = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    }
+
+    require("lspconfig").yamlls.setup {
+      settings = {
+        yaml = {
+          schemaStore = {
+            -- You must disable built-in schemaStore support if you want to use
+            -- this plugin and its advanced options like `ignore`.
+            enable = false,
+            -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+            url = "",
+          },
+          schemas = require("schemastore").yaml.schemas(),
+        },
+      },
+    }
+  end,
+}
 local scala_metals = {
   "scalameta/nvim-metals",
   dependencies = {
@@ -295,6 +323,8 @@ local lspconfig = {
         terraformls = {},
 
         eslint = {},
+
+        bashls = {},
       },
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
@@ -370,48 +400,10 @@ local typescript_tools = {
   end,
 }
 
-local vim_go = {
-  "fatih/vim-go",
-}
-
-function _G.workspace_diagnostics_status()
-  if #vim.lsp.buf_get_clients() == 0 then
-    return ""
-  end
-
-  local status = {}
-  local errors =
-    #vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.ERROR, max = vim.diagnostic.severity.ERROR } })
-  if errors > 0 then
-    table.insert(status, "E: " .. errors)
-  end
-
-  local warnings = #vim.diagnostic.get(
-    0,
-    { severity = { min = vim.diagnostic.severity.WARNING, max = vim.diagnostic.severity.WARNING } }
-  )
-  if warnings > 0 then
-    table.insert(status, "W: " .. warnings)
-  end
-
-  local hints =
-    #vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.HINT, max = vim.diagnostic.severity.HINT } })
-  if hints > 0 then
-    table.insert(status, "H: " .. hints)
-  end
-
-  local infos =
-    #vim.diagnostic.get(0, { severity = { min = vim.diagnostic.severity.INFO, max = vim.diagnostic.severity.INFO } })
-  if infos > 0 then
-    table.insert(status, "I: " .. infos)
-  end
-
-  return table.concat(status, " | ")
-end
-
 return {
   jdtls,
   typescript_tools,
   lspconfig,
   scala_metals,
+  schemastore,
 }
