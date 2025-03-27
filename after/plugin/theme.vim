@@ -1,5 +1,5 @@
 let g:gruvbox_contrast_dark = "medium"
-colorscheme dracula
+colorscheme gruvbox-material
 
 " https://superuser.com/questions/921920/display-trailing-spaces-in-vim
 augroup HighlightTrailingWhitespace
@@ -13,14 +13,14 @@ augroup HighlightTrailingWhitespace
 augroup END
 
 " Transparent background
-hi Normal guibg=NONE ctermbg=NONE
-hi NonText guibg=NONE ctermbg=NONE
-hi TelescopeBorder guibg=NONE ctermbg=NONE
-hi TelescopePromptBorder guibg=NONE ctermbg=NONE
-hi TelescopeResultsBorder guibg=NONE ctermbg=NONE
-hi TelescopePreviewBorder guibg=NONE ctermbg=NONE
-hi TelescopeSelectionCaret guibg=NONE ctermbg=NONE
-hi TelescopeNormal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
+" hi NonText guibg=NONE ctermbg=NONE
+" hi TelescopeBorder guibg=NONE ctermbg=NONE
+" hi TelescopePromptBorder guibg=NONE ctermbg=NONE
+" hi TelescopeResultsBorder guibg=NONE ctermbg=NONE
+" hi TelescopePreviewBorder guibg=NONE ctermbg=NONE
+" hi TelescopeSelectionCaret guibg=NONE ctermbg=NONE
+" hi TelescopeNormal guibg=NONE ctermbg=NONE
 " hi clear StatusLine
 " hi LineNr guifg=#fabd2f
 " hi LineNrAbove guifg=#7c6f64
