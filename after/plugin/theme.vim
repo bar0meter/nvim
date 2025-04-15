@@ -12,20 +12,6 @@ augroup HighlightTrailingWhitespace
    autocmd BufWinLeave * call clearmatches()
 augroup END
 
-" Transparent background
-" hi Normal guibg=NONE ctermbg=NONE
-" hi NonText guibg=NONE ctermbg=NONE
-" hi TelescopeBorder guibg=NONE ctermbg=NONE
-" hi TelescopePromptBorder guibg=NONE ctermbg=NONE
-" hi TelescopeResultsBorder guibg=NONE ctermbg=NONE
-" hi TelescopePreviewBorder guibg=NONE ctermbg=NONE
-" hi TelescopeSelectionCaret guibg=NONE ctermbg=NONE
-" hi TelescopeNormal guibg=NONE ctermbg=NONE
-" hi clear StatusLine
-" hi LineNr guifg=#fabd2f
-" hi LineNrAbove guifg=#7c6f64
-" hi LineNrBelow guifg=#7c6f64
-
 augroup NoCursorLine
     autocmd!
     autocmd VimEnter,WinEnter,BufWinEnter * set nocursorline

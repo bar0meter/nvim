@@ -1,4 +1,4 @@
-return {
+local M = {
   "MysticalDevil/inlay-hints.nvim",
   event = "LspAttach",
   dependencies = { "neovim/nvim-lspconfig" },
@@ -6,3 +6,5 @@ return {
     require("inlay-hints").setup()
   end,
 }
+
+return {}
