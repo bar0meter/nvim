@@ -21,3 +21,7 @@ nnoremap <leader>gg <cmd>Fzm<CR>
 vmap <silent> <leader>gg <cmd>Fzm<CR>
 
 nnoremap <leader>, :Telescope<CR>
+
+nnoremap <leader>ga :AdvancedGitSearch<CR>
+vmap <silent> <leader>ga :AdvancedGitSearch<CR>
+

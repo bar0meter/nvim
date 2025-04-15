@@ -55,6 +55,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
+    "aaronhallaert/advanced-git-search.nvim",
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
       "nvim-telescope/telescope-fzf-native.nvim",
 
@@ -69,6 +70,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       end,
     },
     { "nvim-telescope/telescope-ui-select.nvim" },
+    "nvim-telescope/telescope-file-browser.nvim",
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -117,8 +119,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     }
 
     -- Enable Telescope extensions if they are installed
-    pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
+    pcall(require("telescope").load_extension, "advanced_git_search")
+    pcall(require("telescope").load_extension, "octo")
+    pcall(require("telescope").load_extension, "file_browser")
 
     -- See `:help telescope.builtin`
     local builtin = require "telescope.builtin"
@@ -201,7 +205,5 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set("n", "<leader>sn", function()
       builtin.find_files { cwd = vim.fn.stdpath "config" }
     end, { desc = "[S]earch [N]eovim files" })
-
-    require("telescope").load_extension "fzf"
   end,
 }
