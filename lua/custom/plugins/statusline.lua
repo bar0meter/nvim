@@ -1,60 +1,17 @@
-return {
-  "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+local airline = {
+  "vim-airline/vim-airline",
+  dependencies = { "vim-airline/vim-airline-themes" },
   config = function()
-    require("lualine").setup {
-      options = {
-        section_separators = { left = "", right = "" },
-        component_separators = { left = "", right = "" },
-        icons_enabled = true,
-        theme = "auto",
-        disabled_filetypes = {
-          statusline = {},
-          winbar = {},
-        },
-        ignore_focus = {},
-        always_divide_middle = true,
-        always_show_tabline = true,
-        globalstatus = false,
-        refresh = {
-          statusline = 100,
-          tabline = 100,
-          winbar = 100,
-        },
-      },
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = {
-          {
-            "filename",
-            path = 1,
-            shorting_target = 40,
-            symbols = {
-              modified = " ●",
-              readonly = " ",
-              unnamed = "[No Name]",
-            },
-          },
-        },
-        lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
-      },
-
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
-      },
-
-      tabline = {},
-      winbar = {},
-      inactive_winbar = {},
-      extensions = {},
-    }
+    vim.g.airline_powerline_fonts = 1
+    vim.cmd [[
+      let g:airline_powerline_fonts = 1
+      let g:airline#extensions#whitespace#enabled = 0
+      let g:airline#extensions#hunks#enabled = 1
+      let g:airline#extensions#hunks#non_zero_only = 1
+    ]]
   end,
+}
+
+return {
+  airline,
 }
