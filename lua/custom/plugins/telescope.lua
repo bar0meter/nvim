@@ -106,6 +106,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
         },
+        fzf = {
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
+        },
       },
     }
 
@@ -157,13 +164,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
       anime_selector()
     end, { desc = "[A]nime [A]rt" })
 
-    vim.keymap.set("n", "<leader>gg", function()
-      builtin.git_files {
-        prompt_title = "[Git Files]",
-        file_ignore_patterns = { "^./.git/", "^node_modules/" },
-      }
-    end, { desc = "[Git Files]" })
-
     vim.keymap.set("n", "<leader>gt", function()
       builtin.git_files {
         prompt_title = "Ignore tests folder",
@@ -201,5 +201,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set("n", "<leader>sn", function()
       builtin.find_files { cwd = vim.fn.stdpath "config" }
     end, { desc = "[S]earch [N]eovim files" })
+
+    require("telescope").load_extension "fzf"
   end,
 }

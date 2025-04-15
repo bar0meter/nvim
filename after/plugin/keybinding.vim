@@ -16,3 +16,8 @@ nnoremap <leader>xx :Trouble diagnostics<CR>
 nnoremap <leader>zz :lua vim.diagnostic.open_float()<CR>
 
 nnoremap <leader>ac :ClaudeCode<CR>
+
+nnoremap <leader>gg <cmd>Fzm<CR>
+vmap <silent> <leader>gg <cmd>Fzm<CR>
+
+nnoremap <leader>, :Telescope<CR>
