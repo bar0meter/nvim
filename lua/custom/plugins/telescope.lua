@@ -71,6 +71,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     },
     { "nvim-telescope/telescope-ui-select.nvim" },
     "nvim-telescope/telescope-file-browser.nvim",
+    "nvim-telescope/telescope-node-modules.nvim",
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -103,7 +104,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
       --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
       --   },
       -- },
-      -- pickers = {}
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
@@ -123,6 +123,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require("telescope").load_extension, "advanced_git_search")
     pcall(require("telescope").load_extension, "octo")
     pcall(require("telescope").load_extension, "file_browser")
+    pcall(require("telescope").load_extension, "node_modules")
 
     -- See `:help telescope.builtin`
     local builtin = require "telescope.builtin"

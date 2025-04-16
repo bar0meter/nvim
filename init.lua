@@ -61,6 +61,7 @@ vim.keymap.set("i", "jk", "<Esc>")
 
 vim.keymap.set("n", "<Leader>e", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<Leader>w", "<Cmd>bw<CR>")
+vim.keymap.set("n", "<Leader>qw", "<Cmd>bufdo bd<CR>")
 
 vim.keymap.set("n", "<Leader>tr", "<Cmd>tabnew<CR>")
 vim.keymap.set("n", "<Leader>te", "<Cmd>tabclose<CR>")
