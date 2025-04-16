@@ -25,3 +25,5 @@ nnoremap <leader>, :Telescope<CR>
 nnoremap <leader>ga :AdvancedGitSearch<CR>
 vmap <silent> <leader>ga :AdvancedGitSearch<CR>
 
+nnoremap <leader>go :Octo<CR>
+
