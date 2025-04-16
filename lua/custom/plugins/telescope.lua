@@ -1,53 +1,3 @@
-local function set_background(content)
-  local cmd = 'osascript -e \'tell application "Finder" to set desktop picture to POSIX file "' .. content .. "\"'"
-  vim.fn.system(cmd)
-end
-
-local function select_background(prompt_bufnr, map)
-  local function set_the_background(close)
-    local content = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
-    set_background(content.cwd .. "/" .. content.value)
-    if close then
-      require("telescope.actions").close(prompt_bufnr)
-    end
-  end
-
-  map("i", "<C-a>", function()
-    set_the_background()
-  end)
-
-  map("n", "<C-a>", function()
-    set_the_background()
-  end)
-
-  map("i", "<CR>", function()
-    set_the_background(true)
-  end)
-
-  map("n", "<CR>", function()
-    set_the_background(true)
-  end)
-end
-
-local function image_selector(prompt, cwd)
-  return function()
-    require("telescope.builtin").find_files {
-      prompt_title = prompt,
-      cwd = cwd,
-
-      attach_mappings = function(prompt_bufnr, map)
-        select_background(prompt_bufnr, map)
-
-        -- Please continue mapping (attaching additional key maps):
-        -- Ctrl+n/p to move up and down the list.
-        return true
-      end,
-    }
-  end
-end
-
-local anime_selector = image_selector("< Anime Bobs > ", "~/code/wallpapers/ThePrimeagen")
-
 return { -- Fuzzy Finder (files, lsp, etc)
   "nvim-telescope/telescope.nvim",
   event = "VimEnter",
@@ -56,72 +6,30 @@ return { -- Fuzzy Finder (files, lsp, etc)
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
     "aaronhallaert/advanced-git-search.nvim",
-    { -- If encountering errors, see telescope-fzf-native README for installation instructions
+    {
       "nvim-telescope/telescope-fzf-native.nvim",
-
-      -- `build` is used to run some command when the plugin is installed/updated.
-      -- This is only run then, not every time Neovim starts up.
       build = "make",
-
-      -- `cond` is a condition used to determine whether this plugin should be
-      -- installed and loaded.
       cond = function()
         return vim.fn.executable "make" == 1
       end,
     },
-    { "nvim-telescope/telescope-ui-select.nvim" },
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-node-modules.nvim",
   },
   config = function()
-    -- Telescope is a fuzzy finder that comes with a lot of different things that
-    -- it can fuzzy find! It's more than just a "file finder", it can search
-    -- many different aspects of Neovim, your workspace, LSP, and more!
-    --
-    -- The easiest way to use Telescope, is to start by doing something like:
-    --  :Telescope help_tags
-    --
-    -- After running this command, a window will open up and you're able to
-    -- type in the prompt window. You'll see a list of `help_tags` options and
-    -- a corresponding preview of the help.
-    --
-    -- Two important keymaps to use while in Telescope are:
-    --  - Insert mode: <c-/>
-    --  - Normal mode: ?
-    --
-    -- This opens a window that shows you all of the keymaps for the current
-    -- Telescope picker. This is really useful to discover what Telescope can
-    -- do as well as how to actually do it!
-
-    -- [[ Configure Telescope ]]
-    -- See `:help telescope` and `:help telescope.setup()`
     require("telescope").setup {
-      -- You can put your default mappings / updates / etc. in here
-      --  All the info you're looking for is in `:help telescope.setup()`
-      --
-      -- defaults = {
-      --   mappings = {
-      --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      --   },
-      -- },
       extensions = {
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown(),
-        },
         fzf = {
           fuzzy = true, -- false will only do exact matching
           override_generic_sorter = true, -- override the generic sorter
           override_file_sorter = true, -- override the file sorter
           case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-          -- the default case_mode is "smart_case"
         },
       },
     }
 
     -- Enable Telescope extensions if they are installed
-    pcall(require("telescope").load_extension, "ui-select")
     pcall(require("telescope").load_extension, "advanced_git_search")
-    pcall(require("telescope").load_extension, "octo")
     pcall(require("telescope").load_extension, "file_browser")
     pcall(require("telescope").load_extension, "node_modules")
 
