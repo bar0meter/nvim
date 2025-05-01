@@ -17,6 +17,9 @@ Plug 'tamago324/lir.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'ibhagwan/fzf-lua'
 Plug 'harjotgill/fuzzy-menu.vim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim'
+Plug 'nvim-telescope/telescope-symbols.nvim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
@@ -38,6 +41,7 @@ Plug 'harjotgill/CodeGPT.nvim'
 Plug 'MunifTanjim/nui.nvim'
 
 Plug 'Yggdroot/indentLine'
+Plug 'samoshkin/vim-mergetool'
 
 call plug#end()
 
@@ -99,8 +103,6 @@ map <C-c> "+y
 nnoremap <Leader>l :Files<CR>
 nnoremap <Leader>ff :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>pws :call fzf#run(fzf#wrap({'source': 'rg --column --line-number --no-heading --color=always ' . expand('<cword>'), 'options': '--ansi'}))<CR>
-nnoremap <Leader>pWs :call fzf#run(fzf#wrap({'source': 'rg --column --line-number --no-heading --color=always ' . expand('<cWORD>'), 'options': '--ansi'}))<CR>
 nnoremap <Leader>dd :CocFzfList diagnostics --current-buf<CR>
 nnoremap <Leader>ds :CocFzfList outline<CR>
 
@@ -588,5 +590,20 @@ require'nvim-treesitter.configs'.setup {
 require"octo".setup({
   picker = "fzf-lua"
 })
+
+require("telescope").setup {}
+local builtin = require "telescope.builtin"
+vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
+vim.keymap.set("n", "<leader>pws", function()
+  local word = vim.fn.expand "<cword>"
+  builtin.grep_string { search = word }
+end)
+vim.keymap.set("n", "<leader>pWs", function()
+  local word = vim.fn.expand "<cWORD>"
+  builtin.grep_string { search = word }
+end)
+vim.keymap.set("n", "<leader>sn", function()
+  builtin.find_files { cwd = vim.fn.stdpath "config" }
+end, { desc = "[S]earch [N]eovim files" })
 EOF
 
