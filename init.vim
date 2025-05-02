@@ -134,14 +134,18 @@ nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(
 inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
 inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"¦
 command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 let g:diagnostic_window_size = 3
+
+" IndentLines
+set list
+set listchars=tab:\¦\ 
+let g:indentLine_fileTypeExclude = ['startify', 'floaterm', 'coc-explorer', 'coctree', 'json']
 
 " Floaterms
 let g:ft_float_width = 0.9
@@ -537,8 +541,6 @@ call fuzzymenu#Add('󰚩 ChatGPT Chat', {'exec': ':call NormalExecWithArgs("Chat
       \ '󰚩 ChatGPT Edit With Instructions': {'visual': ':call VisualExecWithArgs("Chat code_edit", [["Instructions", 1]])' },
       \ },
       \ {'tags': ['visual','chatgpt']})
-
-let g:indentLine_fileTypeExclude = ['startify', 'floaterm', 'coc-explorer', 'coctree', 'json']
 
 lua << EOF
 require("bufferline").setup {
