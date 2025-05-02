@@ -100,9 +100,9 @@ nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 
 map <C-c> "+y
 
-nnoremap <Leader>l :Files<CR>
-nnoremap <Leader>ff :Rg<CR>
-nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>l :Telescope find_files<CR>
+nnoremap <Leader>ff :Telescope live_grep<CR>
+nnoremap <Leader>b :Telescope <CR>
 nnoremap <Leader>dd :CocFzfList diagnostics --current-buf<CR>
 nnoremap <Leader>ds :CocFzfList outline<CR>
 
@@ -593,7 +593,21 @@ require"octo".setup({
   picker = "fzf-lua"
 })
 
-require("telescope").setup {}
+require("telescope").setup {
+  defaults = {
+      file_ignore_patterns = {
+        "node_modules/",
+        "%.git/",
+        "dist/",
+        "target/"
+      },
+    },
+    pickers = {
+      find_files = {
+        hidden = true, -- show hidden files
+      },
+    },
+}
 local builtin = require "telescope.builtin"
 vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 vim.keymap.set("n", "<leader>pws", function()
