@@ -28,7 +28,8 @@ Plug 'voldikss/vim-floaterm'
 Plug 'voldikss/fzf-floaterm'
 Plug 'voldikss/coc-floaterm'
 
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
+Plug 'Exafunction/windsurf.vim'
 Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'sainnhe/gruvbox-material'
@@ -113,6 +114,8 @@ nmap <Leader>cc <Plug>CommentaryLine
 
 nmap <silent> <Leader>xx <Plug>(Fzm)
 vmap <silent> <Leader>xx <Plug>(FzmVisual)
+
+inoremap <expr> <Tab> codeium#Accept()
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
