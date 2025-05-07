@@ -1,26 +1,37 @@
-local set = vim.opt_local
+local Terminal = require("toggleterm.terminal").Terminal
 
--- Set local settings for terminal buffers
-vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup("custom-term-open", {}),
-  callback = function()
-    set.number = false
-    set.relativenumber = false
-    set.scrolloff = 0
+local terminals = {}
 
-    vim.bo.filetype = "terminal"
-  end,
-})
+local Terminal = require("toggleterm.terminal").Terminal
 
--- Easily hit escape in terminal mode.
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
-vim.keymap.set("t", "jk", "<c-\\><c-n>")
+-- Table to store terminal instances by ID
+local terminals = {}
 
--- Open a terminal at the bottom of the screen with a fixed height.
+function _G.toggle_term(id, direction)
+  direction = direction or "float"
+
+  if not terminals[id] then
+    terminals[id] = Terminal:new {
+      id = id,
+      direction = direction,
+      hidden = true,
+    }
+  end
+
+  local term = terminals[id]
+  term:toggle()
+
+  -- Defer insert mode to ensure terminal buffer is focused
+  if term:is_open() then
+    vim.defer_fn(function()
+      vim.cmd "startinsert!"
+    end, 10) -- wait 10ms before entering insert mode
+  end
+end
+
+-- Map <Esc> in terminal mode to toggle the terminal
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>:lua toggle_term(1)<CR>]], { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>ft", function()
-  vim.cmd.new()
-  vim.cmd.wincmd "J"
-  vim.api.nvim_win_set_height(0, 12)
-  vim.wo.winfixheight = true
-  vim.cmd.term()
-end)
+  toggle_term(1, "float")
+end, { noremap = true, silent = true })
