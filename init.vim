@@ -6,8 +6,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -33,6 +32,8 @@ Plug 'Exafunction/windsurf.vim'
 Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'sainnhe/gruvbox-material'
+Plug 'folke/tokyonight.nvim'
+Plug 'rose-pine/neovim'
 Plug 'folke/tokyonight.nvim'
 
 Plug 'pwntester/octo.nvim'
@@ -251,14 +252,6 @@ augroup coc_actions
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-let g:airline#extensions#coc#show_coc_status = 0
-let airline#extensions#coc#error_symbol = ''
-let airline#extensions#coc#warning_symbol = ''
-
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#hunks#non_zero_only = 1
 
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git*" --glob "!node_modules/*" --glob "!dist/*"'
 
@@ -595,6 +588,8 @@ require'nvim-treesitter.configs'.setup {
 require"octo".setup({
   picker = "fzf-lua"
 })
+
+require('lualine').setup()
 
 require("telescope").setup {
   defaults = {
