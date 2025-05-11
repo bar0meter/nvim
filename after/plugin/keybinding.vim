@@ -11,7 +11,7 @@ endfunction
 
 nnoremap <leader>qq :call ToggleQuickFix()<CR>
 
-nnoremap <leader>dd :Trouble diagnostics<CR>
+nnoremap <leader>dd :Telescope diagnostics bufnr=0<CR>
 nnoremap <leader>xx :Telescope<CR>
 
 nnoremap <leader>zz :lua vim.diagnostic.open_float()<CR>
