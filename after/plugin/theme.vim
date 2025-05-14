@@ -1,5 +1,5 @@
 let g:gruvbox_contrast_dark = "medium"
-colorscheme gruvbox-material
+colorscheme tokyonight-storm
 
 " https://superuser.com/questions/921920/display-trailing-spaces-in-vim
 " augroup HighlightTrailingWhitespace

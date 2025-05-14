@@ -93,12 +93,6 @@ return { -- Autocompletioncm
           mode = "symbol",
           maxwidth = 50,
           symbol_map = kinds,
-          menu = {
-            copilot = "[Copilot]",
-            nvim_lsp = "[LSP]",
-            buffer = "[Buffer]",
-            path = "[Path]",
-          },
         },
       },
       sorting = {
