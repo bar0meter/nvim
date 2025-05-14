@@ -1,4 +1,42 @@
-return { -- Autocompletion
+local kinds = {
+  Array = "",
+  Boolean = "",
+  Class = "",
+  Color = "",
+  Constant = "",
+  Constructor = "",
+  Enum = "",
+  EnumMember = "",
+  Event = "",
+  Field = "",
+  File = "",
+  Folder = "",
+  Function = "",
+  Interface = "",
+  Key = "",
+  Keyword = "",
+  Method = "",
+  Module = "",
+  Namespace = "",
+  Null = "",
+  Number = "",
+  Object = "",
+  Operator = "",
+  Package = "",
+  Property = "",
+  Reference = "",
+  Snippet = "",
+  String = "",
+  Struct = "",
+  Text = "",
+  TypeParameter = "",
+  Unit = "",
+  Value = "",
+  Variable = "",
+  Copilot = "", -- custom addition
+}
+
+return { -- Autocompletioncm
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
@@ -35,11 +73,13 @@ return { -- Autocompletion
     "hrsh7th/cmp-path",
     "zbirenbaum/copilot.lua",
     "zbirenbaum/copilot-cmp",
+    "onsails/lspkind.nvim",
   },
   config = function()
     -- See `:help cmp`
     local cmp = require "cmp"
     local luasnip = require "luasnip"
+    local lspkind = require "lspkind"
     luasnip.config.setup {}
 
     cmp.setup {
@@ -47,6 +87,32 @@ return { -- Autocompletion
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
+      },
+      formatting = {
+        format = require("lspkind").cmp_format {
+          mode = "symbol",
+          maxwidth = 50,
+          symbol_map = kinds,
+          menu = {
+            copilot = "[Copilot]",
+            nvim_lsp = "[LSP]",
+            buffer = "[Buffer]",
+            path = "[Path]",
+          },
+        },
+      },
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          require("copilot_cmp.comparators").prioritize,
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
       },
       completion = { completeopt = "menu,menuone,noinsert" },
 
@@ -104,8 +170,10 @@ return { -- Autocompletion
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
       sources = {
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
+        { name = "buffer" },
         { name = "path" },
       },
     }
