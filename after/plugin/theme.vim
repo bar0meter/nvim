@@ -1,5 +1,5 @@
 let g:gruvbox_contrast_dark = "medium"
-colorscheme tokyonight-storm
+colorscheme duskfox
 
 " https://superuser.com/questions/921920/display-trailing-spaces-in-vim
 " augroup HighlightTrailingWhitespace
@@ -12,9 +12,9 @@ colorscheme tokyonight-storm
 "    autocmd BufWinLeave * call clearmatches()
 " augroup END
 
-augroup NoCursorLine
-    autocmd!
-    autocmd VimEnter,WinEnter,BufWinEnter * set nocursorline
-    autocmd WinLeave * set cursorline
-augroup END
+" augroup NoCursorLine
+"     autocmd!
+"     autocmd VimEnter,WinEnter,BufWinEnter * set nocursorline
+"     autocmd WinLeave * set cursorline
+" augroup END
 

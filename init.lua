@@ -7,8 +7,8 @@ vim.g.maplocalleader = ","
 vim.g.have_nerd_font = false
 
 vim.opt.number = true
-vim.opt.relativenumber = false
-vim.opt.cursorline = false
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 -- vim.opt.laststatus = 0
 
