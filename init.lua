@@ -35,11 +35,15 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorcolumn = false
 
+vim.opt.colorcolumn = "80"
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append "@-@"
+
+vim.opt.updatetime = 50
+
 vim.opt.termguicolors = true
 
 vim.opt.syntax = "off"
-
-vim.o.signcolumn = "no"
 
 vim.opt.swapfile = false
 

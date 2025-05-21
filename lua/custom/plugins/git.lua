@@ -6,7 +6,7 @@ return {
     "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
     "sindrets/diffview.nvim",
-    "f-person/git-blame.nvim",
+    -- "f-person/git-blame.nvim",
     "pwntester/octo.nvim",
     "nvim-lua/plenary.nvim",
   },

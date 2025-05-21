@@ -1,5 +1,5 @@
 let g:gruvbox_contrast_dark = "medium"
-colorscheme gruvbox
+colorscheme rose-pine-moon
 
 " https://superuser.com/questions/921920/display-trailing-spaces-in-vim
 " augroup HighlightTrailingWhitespace
@@ -18,3 +18,11 @@ augroup NoCursorLine
     autocmd WinLeave * set cursorline
 augroup END
 
+augroup Transparency
+    autocmd!
+    autocmd VimEnter * hi Normal guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi NonText guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi NormalFloat guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi TelescopeNormal guibg=NONE ctermbg=NONE
+    autocmd VimEnter * hi TelescopeResultsNormal guibg=NONE ctermbg=NONE
+augroup end

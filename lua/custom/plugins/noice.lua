@@ -1,4 +1,4 @@
-return {
+local noice = {
   "folke/noice.nvim",
   event = "VeryLazy",
   opts = {
@@ -33,3 +33,5 @@ return {
     }
   end,
 }
+
+return {}

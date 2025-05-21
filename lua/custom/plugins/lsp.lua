@@ -256,6 +256,9 @@ local lspconfig = {
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
     local lspconfig = require "lspconfig"
+    local runtime_path = vim.split(package.path, ";")
+    table.insert(runtime_path, "lua/?.lua")
+    table.insert(runtime_path, "lua/?/init.lua")
 
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -284,8 +287,11 @@ local lspconfig = {
         lua_ls = {
           settings = {
             Lua = {
-              hint = {
-                enable = true, -- necessary
+              runtime = {
+                version = "LuaJIT", -- Neovim uses LuaJIT
+              },
+              diagnostics = {
+                globals = { "vim" },
               },
             },
           },
@@ -375,6 +381,18 @@ local lspconfig = {
         end
       end,
     })
+
+    vim.diagnostic.config {
+      -- update_in_insert = true,
+      float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+      },
+    }
   end,
 }
 
