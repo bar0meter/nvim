@@ -24,4 +24,6 @@ local lualine = {
   end,
 }
 
-return {}
+return {
+  lualine,
+}

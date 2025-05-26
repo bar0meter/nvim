@@ -1,5 +1,5 @@
 let g:gruvbox_contrast_dark = "medium"
-colorscheme rose-pine-moon
+colorscheme tokyonight-moon
 
 " https://superuser.com/questions/921920/display-trailing-spaces-in-vim
 " augroup HighlightTrailingWhitespace
@@ -12,17 +12,6 @@ colorscheme rose-pine-moon
 "    autocmd BufWinLeave * call clearmatches()
 " augroup END
 
-augroup NoCursorLine
-    autocmd!
-    autocmd VimEnter,WinEnter,BufWinEnter * set nocursorline
-    autocmd WinLeave * set cursorline
-augroup END
 
-augroup Transparency
-    autocmd!
-    autocmd VimEnter * hi Normal guibg=NONE ctermbg=NONE
-    autocmd VimEnter * hi NonText guibg=NONE ctermbg=NONE
-    autocmd VimEnter * hi NormalFloat guibg=NONE ctermbg=NONE
-    autocmd VimEnter * hi TelescopeNormal guibg=NONE ctermbg=NONE
-    autocmd VimEnter * hi TelescopeResultsNormal guibg=NONE ctermbg=NONE
-augroup end
+highlight! NormalFloat guibg=#1f2335  " Choose a slightly lighter background than default
+  highlight! FloatBorder guibg=#1f2335 guifg=#1f2335
