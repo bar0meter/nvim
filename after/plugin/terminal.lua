@@ -30,4 +30,4 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>:lua toggle_term(1)<CR>]], { noremap = 
 
 vim.keymap.set("n", "<leader>ft", function()
   toggle_term(1, "horizontal")
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "toggleterm" })
