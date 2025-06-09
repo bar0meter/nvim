@@ -2,6 +2,10 @@ local gruvbox_material = {
   "sainnhe/gruvbox-material",
 }
 
+local tokyonight = {
+  "folke/tokyonight.nvim",
+}
+
 local gruvbuddy = {
   "tjdevries/colorbuddy.nvim",
 }
@@ -40,4 +44,5 @@ return {
   gruvbox_material,
   gruvbox,
   gruvbuddy,
+  tokyonight,
 }

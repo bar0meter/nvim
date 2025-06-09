@@ -10,7 +10,7 @@ return {
       },
       shade_terminals = false,
       float_opts = {
-        border = "none", -- thin border. Use "solid" for a really minimal look (NVIM 0.9+)
+        border = "single", -- thin border. Use "solid" for a really minimal look (NVIM 0.9+)
         winblend = 5,
         highlights = {
           border = "FloatBorder",
