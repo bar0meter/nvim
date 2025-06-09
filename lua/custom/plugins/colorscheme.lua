@@ -2,6 +2,10 @@ local gruvbox_material = {
   "sainnhe/gruvbox-material",
 }
 
+local gruvbuddy = {
+  "tjdevries/colorbuddy.nvim",
+}
+
 local gruvbox = {
   "ellisonleao/gruvbox.nvim",
   config = function()
@@ -35,4 +39,5 @@ local gruvbox = {
 return {
   gruvbox_material,
   gruvbox,
+  gruvbuddy,
 }
