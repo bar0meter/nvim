@@ -35,7 +35,7 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorcolumn = false
 
--- vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append "@-@"
 
@@ -76,6 +76,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
+vim.opt.bs = "2"
 
 -- List chars
 -- vim.opt.list = true
