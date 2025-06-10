@@ -22,7 +22,7 @@ local gruvbox = {
       italic = {
         strings = false,
         emphasis = false,
-        comments = false,
+        comments = true,
         operators = false,
         folds = false,
       },
@@ -35,7 +35,7 @@ local gruvbox = {
       palette_overrides = {},
       overrides = {},
       dim_inactive = false,
-      transparent_mode = true,
+      transparent_mode = false,
     }
   end,
 }

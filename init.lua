@@ -10,7 +10,7 @@ vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.cursorline = false
 
--- vim.opt.laststatus = 0
+vim.opt.laststatus = 3
 
 vim.opt.mouse = "a"
 
