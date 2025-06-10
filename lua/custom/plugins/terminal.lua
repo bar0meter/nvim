@@ -5,7 +5,10 @@ return {
     require("toggleterm").setup {
       highlights = {
         Normal = {
-          guibg = "#282828",
+          guibg = "None",
+        },
+        FloatBorder = {
+          guibg = "None",
         },
       },
       shade_terminals = false,
