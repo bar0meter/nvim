@@ -72,10 +72,10 @@ vim.keymap.set("n", "<Leader>qw", "<Cmd>bufdo bd<CR>")
 vim.keymap.set("n", "<Leader>tr", "<Cmd>tabnew<CR>")
 vim.keymap.set("n", "<Leader>te", "<Cmd>tabclose<CR>")
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.expandtab = true
-vim.opt.bs = "2"
 
 -- List chars
 -- vim.opt.list = true
