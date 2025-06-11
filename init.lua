@@ -7,7 +7,7 @@ vim.g.maplocalleader = ","
 vim.g.have_nerd_font = false
 
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.cursorline = false
 
 vim.opt.laststatus = 3
@@ -35,7 +35,7 @@ vim.opt.scrolloff = 10
 
 vim.opt.cursorcolumn = false
 
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append "@-@"
 
@@ -75,7 +75,6 @@ vim.keymap.set("n", "<Leader>te", "<Cmd>tabclose<CR>")
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
-vim.opt.expandtab = true
 vim.opt.bs = "2"
 
 -- List chars

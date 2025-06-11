@@ -26,12 +26,26 @@ return { -- Autoformat
               "-",
             },
           },
+          prettier = {
+            command = "prettier",
+            args = { "--stdin-filepath", "$FILENAME", "--loglevel", "debug" },
+            cwd = require("conform.util").root_file { ".prettierrc", ".prettierrc.yaml", "package.json", ".git" },
+            condition = function(ctx)
+              -- vim.notify("[Conform] Running prettier on " .. vim.inspect(ctx))
+              return true
+            end,
+          },
         },
         formatters_by_ft = {
           lua = { "stylua" },
           blade = { "blade-formatter" },
           ocaml = { "ml-format" },
           ocaml_mlx = { "ocamlformat_mlx" },
+          javascript = { "prettier" },
+          typescript = { "prettier" },
+          json = { "prettier" },
+          yaml = { "prettier" },
+          html = { "prettier" },
         },
       }
 
