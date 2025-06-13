@@ -15,6 +15,4 @@ local airline = {
   end,
 }
 
-return {
-  airline,
-}
+return {}
