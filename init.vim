@@ -72,6 +72,7 @@ set softtabstop=2   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 set ignorecase
 set smartcase
+set laststatus=3
 
 " allow to scroll in the preview and other actions
 set mouse=a
@@ -147,7 +148,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 let g:diagnostic_window_size = 3
 
 " IndentLines
-set list
+" set list
 set listchars=tab:\¦\ 
 let g:indentLine_fileTypeExclude = ['startify', 'floaterm', 'coc-explorer', 'coctree', 'json']
 
@@ -577,7 +578,6 @@ end, {})
 vim.keymap.set("n", "-", ":edit %:h<CR>", { noremap = true })
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
   sync_install = false,
   auto_install = true,
   highlight = {
