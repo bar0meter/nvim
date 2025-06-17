@@ -40,9 +40,22 @@ local gruvbox = {
   end,
 }
 
+local rosepine = {
+  "rose-pine/neovim",
+  name = "rose-pine",
+  config = function()
+    require("rose-pine").setup {
+      disable_background = true,
+      disable_float_background = true,
+      disable_italics = true,
+    }
+  end,
+}
+
 return {
   gruvbox_material,
   gruvbox,
   gruvbuddy,
   tokyonight,
+  rosepine,
 }

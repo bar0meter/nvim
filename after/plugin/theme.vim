@@ -1,4 +1,4 @@
-colorscheme gruvbox
+colorscheme rose-pine
 
 augroup Transparent
   autocmd!
