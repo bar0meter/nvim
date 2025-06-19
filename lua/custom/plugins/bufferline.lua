@@ -1,4 +1,4 @@
-local bufferline = {
+return {
   "akinsho/bufferline.nvim",
   version = "*",
   dependencies = "nvim-tree/nvim-web-devicons",
@@ -9,8 +9,4 @@ local bufferline = {
       },
     }
   end,
-}
-
-return {
-  bufferline,
 }

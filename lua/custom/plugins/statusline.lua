@@ -1,20 +1,25 @@
-local airline = {
-  "vim-airline/vim-airline",
-  dependencies = { "vim-airline/vim-airline-themes" },
-  config = function()
-    vim.g.airline_powerline_fonts = 1
-    vim.cmd [[
-      let g:airline_powerline_fonts = 1
-      let g:airline#extensions#whitespace#enabled = 0
-      let g:airline#extensions#hunks#enabled = 1
-      let g:airline#extensions#hunks#non_zero_only = 1
-    ]]
-    vim.cmd [[
-      AirlineTheme gruvbox-material
-    ]]
-  end,
-}
-
 return {
-  airline,
+  "nvim-lualine/lualine.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    require("lualine").setup {
+      sections = {
+        lualine_c = {
+          {
+            "filename",
+            path = 1, -- options: 0 = just filename, 1 = relative path, 2 = absolute path, 3 = short path
+          },
+          {
+            "diagnostics",
+            sources = { "nvim_diagnostic" },
+            sections = { "error", "warn", "info", "hint" },
+            symbols = { error = " ", warn = " ", info = " ", hint = " " },
+            colored = true,
+            update_in_insert = false,
+            always_visible = false,
+          },
+        },
+      },
+    }
+  end,
 }
