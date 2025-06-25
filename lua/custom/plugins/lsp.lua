@@ -316,22 +316,8 @@ local lspconfig = {
   end,
 }
 
-local typescript_tools = {
-  "pmizio/typescript-tools.nvim",
-  dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-  opts = {},
-  config = function()
-    require("typescript-tools").setup {
-      settings = {
-        tsserver_file_preferences = {},
-      },
-    }
-  end,
-}
-
 return {
   jdtls,
-  typescript_tools,
   lspconfig,
   scala_metals,
   schemastore,
