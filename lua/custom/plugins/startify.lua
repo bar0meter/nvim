@@ -1,4 +1,4 @@
-return {
+local startify = {
   "mhinz/vim-startify",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -26,3 +26,5 @@ return {
    ]]
   end,
 }
+
+return {}
