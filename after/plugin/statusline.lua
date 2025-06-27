@@ -58,4 +58,4 @@ end
 
 M.setup()
 
-return M
+return {}

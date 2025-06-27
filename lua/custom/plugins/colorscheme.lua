@@ -3,9 +3,6 @@ local gruvbuddy = {
   config = function()
     require("colorbuddy").colorscheme "gruvbuddy"
 
-    vim.cmd [[
-      colorscheme gruvbuddy
-    ]]
     local colorbuddy = require "colorbuddy"
     local c = colorbuddy.colors
     local s = colorbuddy.styles
@@ -24,6 +21,14 @@ local gruvbuddy = {
   end,
 }
 
+local gruvbox_material = {
+  "sainnhe/gruvbox-material",
+}
+
+local nightfox = { "EdenEast/nightfox.nvim" }
+
 return {
   gruvbuddy,
+  gruvbox_material,
+  nightfox,
 }

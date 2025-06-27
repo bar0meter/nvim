@@ -1,4 +1,4 @@
-return {
+local copilot = {
   "fang2hou/blink-copilot",
   dependencies = {
     {
@@ -19,3 +19,5 @@ return {
     require("blink-copilot").setup {}
   end,
 }
+
+return {}
