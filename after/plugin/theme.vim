@@ -1,2 +1,2 @@
-colorscheme duskfox
+colorscheme gruvbox-material
 

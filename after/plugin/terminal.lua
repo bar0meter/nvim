@@ -20,10 +20,10 @@ local function setup_terminal_esc_behavior(buf)
 end
 
 -- Custom terminal toggle behavior that forces float mode
-local function terminal_toggle()
+local function terminal_toggle(position)
   local snacks = require "snacks"
   local terminal = snacks.terminal.get(nil, {
-    win = { position = "float" },
+    win = { position },
     create = false,
   })
 
@@ -39,14 +39,16 @@ local function terminal_toggle()
     end
   else
     -- No valid terminal exists, create a new floating one
-    terminal = snacks.terminal(nil, { win = { position = "float" } })
+    terminal = snacks.terminal(nil, { win = { position } })
     vim.cmd.startinsert()
     setup_terminal_esc_behavior(terminal.buf)
   end
 end
 
 -- Set the toggle keymap
-vim.keymap.set("n", "<leader>ft", terminal_toggle, { desc = "Toggle Floating Terminal" })
+vim.keymap.set("n", "<leader>ft", function()
+  terminal_toggle "split"
+end, { desc = "Toggle Floating Terminal" })
 
 -- Setup ESC behavior when a terminal opens
 vim.api.nvim_create_autocmd("TermOpen", {
