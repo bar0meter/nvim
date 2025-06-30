@@ -1,33 +1,69 @@
-local Terminal = require("toggleterm.terminal").Terminal
+-- Function to set ESC behavior: ESC -> stopinsert, second ESC -> close terminal
+local function setup_terminal_esc_behavior(buf)
+  -- Clear old mappings if any
+  pcall(vim.keymap.del, "t", "<esc>", { buffer = buf })
+  pcall(vim.keymap.del, "n", "<esc>", { buffer = buf })
 
--- Table to store terminal instances by ID
-local terminals = {}
-
-function _G.toggle_term(id, direction)
-  direction = direction or "float"
-
-  if not terminals[id] then
-    terminals[id] = Terminal:new {
-      id = id,
-      direction = direction,
-      hidden = true,
-    }
-  end
-
-  local term = terminals[id]
-  term:toggle()
-
-  -- Defer insert mode to ensure terminal buffer is focused
-  if term:is_open() then
+  vim.keymap.set("t", "<esc>", function()
+    vim.cmd "stopinsert"
     vim.defer_fn(function()
-      vim.cmd "startinsert!"
-    end, 10) -- wait 10ms before entering insert mode
+      vim.keymap.set("n", "<esc>", function()
+        if vim.bo.filetype == "snacks_terminal" then
+          local win = vim.api.nvim_get_current_win()
+          if vim.api.nvim_win_is_valid(win) then
+            vim.api.nvim_win_close(win, false)
+          end
+        end
+      end, { buffer = buf, nowait = true })
+    end, 50)
+  end, { buffer = buf, nowait = true })
+end
+
+-- Custom terminal toggle behavior that forces float mode
+local function terminal_toggle()
+  local snacks = require "snacks"
+  local terminal = snacks.terminal.get(nil, {
+    win = { position = "float" },
+    create = false,
+  })
+
+  if terminal and terminal:valid() then
+    if terminal.win and vim.api.nvim_win_is_valid(terminal.win) then
+      -- Terminal is visible, do nothing (ESC will handle closing)
+      return
+    else
+      -- Terminal exists but hidden, show it again
+      terminal:show()
+      vim.cmd.startinsert()
+      setup_terminal_esc_behavior(terminal.buf)
+    end
+  else
+    -- No valid terminal exists, create a new floating one
+    terminal = snacks.terminal(nil, { win = { position = "float" } })
+    vim.cmd.startinsert()
+    setup_terminal_esc_behavior(terminal.buf)
   end
 end
 
--- Map <Esc> in terminal mode to toggle the terminal
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>:lua toggle_term(1)<CR>]], { noremap = true, silent = true })
+-- Set the toggle keymap
+vim.keymap.set("n", "<leader>ft", terminal_toggle, { desc = "Toggle Floating Terminal" })
 
-vim.keymap.set("n", "<leader>ft", function()
-  toggle_term(1, "float")
-end, { noremap = true, silent = true, desc = "toggleterm" })
+-- Setup ESC behavior when a terminal opens
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function(args)
+    local buf = args.buf
+    if vim.bo[buf].filetype == "snacks_terminal" then
+      setup_terminal_esc_behavior(buf)
+    end
+  end,
+})
+
+-- Re-apply ESC behavior when re-entering a terminal buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function(args)
+    local buf = args.buf
+    if vim.bo[buf].filetype == "snacks_terminal" then
+      setup_terminal_esc_behavior(buf)
+    end
+  end,
+})

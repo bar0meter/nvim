@@ -1,5 +1,4 @@
-return {
-  -- amongst your other plugins
+local terminal = {
   "akinsho/toggleterm.nvim",
   config = function()
     require("toggleterm").setup {
@@ -11,9 +10,10 @@ return {
           guibg = "None",
         },
       },
-      shade_terminals = false,
+      shade_terminals = true,
+      shade_factor = 1,
       float_opts = {
-        border = "single", -- thin border. Use "solid" for a really minimal look (NVIM 0.9+)
+        border = "none", -- thin border. Use "solid" for a really minimal look (NVIM 0.9+)
         winblend = 5,
         highlights = {
           border = "FloatBorder",
@@ -24,3 +24,5 @@ return {
     }
   end,
 }
+
+return {}
