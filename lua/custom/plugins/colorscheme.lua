@@ -27,8 +27,13 @@ local gruvbox_material = {
 
 local nightfox = { "EdenEast/nightfox.nvim" }
 
+local gruvbox = {
+  "ellisonleao/gruvbox.nvim",
+}
+
 return {
   gruvbuddy,
   gruvbox_material,
   nightfox,
+  gruvbox,
 }
