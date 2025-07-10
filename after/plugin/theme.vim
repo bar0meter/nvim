@@ -1,2 +1,1 @@
-colorscheme solarized
-
+hi clear StatusLine
