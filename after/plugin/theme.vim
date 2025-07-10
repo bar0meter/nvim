@@ -1,2 +1,2 @@
-colorscheme gruvbox-material
+colorscheme solarized
 

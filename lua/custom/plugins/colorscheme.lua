@@ -31,9 +31,14 @@ local gruvbox = {
   "ellisonleao/gruvbox.nvim",
 }
 
+local solarized = {
+  "maxmx03/solarized.nvim",
+}
+
 return {
   gruvbuddy,
   gruvbox_material,
   nightfox,
   gruvbox,
+  solarized,
 }

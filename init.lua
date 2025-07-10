@@ -6,9 +6,9 @@ vim.g.maplocalleader = ","
 
 vim.g.have_nerd_font = false
 
-vim.opt.number = true
+vim.opt.number = false
 vim.opt.relativenumber = false
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 vim.opt.laststatus = 3
 
@@ -36,7 +36,7 @@ vim.opt.scrolloff = 10
 vim.opt.cursorcolumn = false
 
 -- vim.opt.colorcolumn = "80"
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "no"
 vim.opt.isfname:append "@-@"
 
 vim.opt.shada = { "'10", "<0", "s10", "h" }
