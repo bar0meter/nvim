@@ -1,1 +1,1 @@
-hi clear StatusLine
+colorscheme gruvbox-material

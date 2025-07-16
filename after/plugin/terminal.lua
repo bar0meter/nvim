@@ -23,7 +23,10 @@ end
 local function terminal_toggle(terminal_position)
   local snacks = require "snacks"
   local terminal = snacks.terminal.get(nil, {
-    win = { position = terminal_position },
+    win = { 
+      position = terminal_position,
+      wo = { winbar = "" }, -- Remove terminal title
+    },
     create = false,
   })
 
@@ -34,12 +37,24 @@ local function terminal_toggle(terminal_position)
     else
       -- Terminal exists but hidden, show it again
       terminal:show()
+      -- Fix colors when showing existing terminal
+      vim.api.nvim_win_set_option(0, "winhighlight", "Normal:Normal,NormalNC:Normal")
+      vim.wo.winhl = "Normal:Normal,NormalNC:Normal"
       vim.cmd.startinsert()
       setup_terminal_esc_behavior(terminal.buf)
     end
   else
     -- No valid terminal exists, create a new floating one
-    terminal = snacks.terminal(nil, { win = { position = terminal_position } })
+    terminal = snacks.terminal(nil, { 
+      win = { 
+        position = terminal_position,
+        wo = { winbar = "" }, -- Remove terminal title
+      },
+      env = { TERM = "xterm-256color" },
+    })
+    -- Fix colors for new terminal
+    vim.api.nvim_win_set_option(0, "winhighlight", "Normal:Normal,NormalNC:Normal")
+    vim.wo.winhl = "Normal:Normal,NormalNC:Normal"
     vim.cmd.startinsert()
     setup_terminal_esc_behavior(terminal.buf)
   end
@@ -69,3 +84,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+-- Fix terminal colors to match Normal neovim colors
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function()
+    if vim.bo.filetype == "snacks_terminal" then
+      -- Set terminal colors to match Normal background
+      vim.api.nvim_win_set_option(0, "winhighlight", "Normal:Normal,NormalNC:Normal")
+      -- Ensure terminal uses normal colorscheme colors
+      vim.wo.winhl = "Normal:Normal,NormalNC:Normal"
+    end
+  end,
+})
+
