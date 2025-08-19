@@ -247,6 +247,17 @@ local lspconfig = {
         eslint = {},
 
         bashls = {},
+
+        vtsls = {
+          autoUseWorkspaceTsdk = true,
+          settings = {
+            typescript = {
+              tsserver = {
+                maxTsServerMemory = 10000,
+              },
+            },
+          },
+        },
       },
       --  You can press `g?` for help in this menu.
       require("mason").setup {}
