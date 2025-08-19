@@ -91,6 +91,9 @@ local jdtls = {
       end
       local nvim_root = vim.fn.expand "$HOME/.config/nvim"
       local install_path = nvim_root .. "/resources/jdtls"
+
+      print("JDTLS: Using install_path : " .. install_path)
+
       local os
       if vim.fn.has "macunix" then
         os = "mac_arm"
@@ -106,7 +109,7 @@ local jdtls = {
           "-Declipse.product=org.eclipse.jdt.ls.core.product",
           "-Dlog.protocol=true",
           "-Dlog.level=ALL",
-          "-javaagent:" .. install_path .. "/lombok.jar",
+          -- "-javaagent:" .. install_path .. "/lombok.jar",
           "-Xms1g",
           "--add-modules=ALL-SYSTEM",
           "--add-opens",
