@@ -21,6 +21,10 @@ local gruvbuddy = {
   end,
 }
 
+local kanagawa = {
+  "rebelot/kanagawa.nvim",
+}
+
 local gruvbox_material = {
   "sainnhe/gruvbox-material",
 }
@@ -66,4 +70,5 @@ return {
   nightfox,
   gruvbox,
   solarized,
+  kanagawa,
 }
