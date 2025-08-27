@@ -23,7 +23,7 @@ end
 local function terminal_toggle(terminal_position)
   local snacks = require "snacks"
   local terminal = snacks.terminal.get(nil, {
-    win = { 
+    win = {
       position = terminal_position,
       wo = { winbar = "" }, -- Remove terminal title
     },
@@ -45,8 +45,8 @@ local function terminal_toggle(terminal_position)
     end
   else
     -- No valid terminal exists, create a new floating one
-    terminal = snacks.terminal(nil, { 
-      win = { 
+    terminal = snacks.terminal(nil, {
+      win = {
         position = terminal_position,
         wo = { winbar = "" }, -- Remove terminal title
       },
@@ -62,7 +62,7 @@ end
 
 -- Set the toggle keymap
 vim.keymap.set("n", "<leader>ft", function()
-  terminal_toggle "bottom"
+  terminal_toggle "float"
 end, { desc = "Toggle Floating Terminal" })
 
 -- Setup ESC behavior when a terminal opens
@@ -96,4 +96,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
     end
   end,
 })
-
