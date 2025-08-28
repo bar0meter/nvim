@@ -1,2 +1,1 @@
-colorscheme default
-set notermguicolors
+colorscheme duskfox

@@ -21,6 +21,10 @@ local gruvbuddy = {
   end,
 }
 
+local onedarkpro = {
+  "olimorris/onedarkpro.nvim",
+}
+
 local kanagawa = {
   "rebelot/kanagawa.nvim",
 }
@@ -67,4 +71,6 @@ local solarized = {
 return {
   gruvbuddy,
   gruvbox_material,
+  onedarkpro,
+  nightfox,
 }
