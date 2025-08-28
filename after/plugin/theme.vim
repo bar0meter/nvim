@@ -1,1 +1,2 @@
-colorscheme kanagawa
+colorscheme default
+set notermguicolors

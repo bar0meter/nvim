@@ -43,7 +43,7 @@ vim.opt.shada = { "'10", "<0", "s10", "h" }
 
 vim.opt.updatetime = 50
 
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 
 vim.opt.syntax = "off"
 

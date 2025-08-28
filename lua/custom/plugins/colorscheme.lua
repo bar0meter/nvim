@@ -35,7 +35,7 @@ local gruvbox = {
   "ellisonleao/gruvbox.nvim",
   config = function()
     require("gruvbox").setup {
-      terminal_colors = true, -- add neovim terminal colors
+      terminal_colors = false, -- add neovim terminal colors
       undercurl = true,
       underline = true,
       bold = true,
@@ -67,8 +67,4 @@ local solarized = {
 return {
   gruvbuddy,
   gruvbox_material,
-  nightfox,
-  gruvbox,
-  solarized,
-  kanagawa,
 }
