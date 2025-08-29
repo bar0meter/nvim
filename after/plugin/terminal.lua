@@ -62,7 +62,7 @@ end
 
 -- Set the toggle keymap
 vim.keymap.set("n", "<leader>ft", function()
-  terminal_toggle "float"
+  terminal_toggle "bottom"
 end, { desc = "Toggle Floating Terminal" })
 
 -- Setup ESC behavior when a terminal opens
