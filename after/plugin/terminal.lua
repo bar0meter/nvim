@@ -25,6 +25,7 @@ local function terminal_toggle(terminal_position)
   local terminal = snacks.terminal.get(nil, {
     win = {
       position = terminal_position,
+      height = 0.25,
       wo = { winbar = "" }, -- Remove terminal title
     },
     create = false,
@@ -48,6 +49,7 @@ local function terminal_toggle(terminal_position)
     terminal = snacks.terminal(nil, {
       win = {
         position = terminal_position,
+        height = 0.25,
         wo = { winbar = "" }, -- Remove terminal title
       },
       env = { TERM = "xterm-256color" },
