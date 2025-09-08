@@ -1,1 +1,2 @@
-colorscheme onehalfdark
+colorscheme gruvbox
+

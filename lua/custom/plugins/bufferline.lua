@@ -17,4 +17,4 @@ local bufferline = {
   end,
 }
 
-return bufferline
+return {}

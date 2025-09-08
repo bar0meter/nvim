@@ -100,10 +100,10 @@ local gruvbox = {
       bold = true,
       italic = {
         strings = false,
-        emphasis = true,
-        comments = true,
+        emphasis = false,
+        comments = false,
         operators = false,
-        folds = true,
+        folds = false,
       },
       strikethrough = true,
       invert_selection = false,
@@ -114,7 +114,7 @@ local gruvbox = {
       palette_overrides = {},
       overrides = {},
       dim_inactive = false,
-      transparent_mode = false,
+      transparent_mode = true,
     }
   end,
 }
@@ -197,9 +197,6 @@ local catppuccin = {
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
       },
     }
-
-    -- setup must be called before loading
-    vim.cmd.colorscheme "catppuccin"
   end,
 }
 
@@ -211,4 +208,5 @@ return {
   kanagawa,
   tokyonight,
   catppuccin,
+  gruvbox,
 }
