@@ -84,6 +84,8 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.bs = "2"
 
+vim.opt.shortmess:append "I"
+
 -- List chars
 -- vim.opt.list = true
 -- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↲", extends = "❯", precedes = "❮" }
