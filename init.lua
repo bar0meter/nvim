@@ -64,6 +64,13 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 1
 
 vim.keymap.set("i", "jk", "<Esc>")
+vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("i", "jJ", "<Esc>")
+vim.keymap.set("i", "jJ", "<Esc>")
+vim.keymap.set("i", "JJ", "<Esc>")
+vim.keymap.set("i", "jJ", "<Esc>")
+vim.keymap.set("i", "jK", "<Esc>")
+vim.keymap.set("i", "JK", "<Esc>")
 
 vim.keymap.set("n", "<Leader>e", "<Cmd>quit<CR>")
 vim.keymap.set("n", "<Leader>w", "<Cmd>bw<CR>")

@@ -1,1 +1,1 @@
-colorscheme kanagawa
+colorscheme onehalfdark

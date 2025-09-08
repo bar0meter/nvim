@@ -21,3 +21,11 @@ nnoremap <leader>, :Telescope<CR>
 nnoremap <leader>ga :AdvancedGitSearch<CR>
 vmap <silent> <leader>ga :AdvancedGitSearch<CR>
 
+inoremap jj <esc>
+inoremap jJ <esc>
+inoremap Jj <esc>
+inoremap JJ <esc>
+inoremap jk <esc>
+inoremap jK <esc>
+inoremap Jk <esc>
+inoremap JK <esc>
