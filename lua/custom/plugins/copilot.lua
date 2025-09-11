@@ -1,4 +1,4 @@
-return {
+local blink_copilot = {
   "fang2hou/blink-copilot",
   dependencies = {
     {
@@ -19,3 +19,9 @@ return {
     require("blink-copilot").setup {}
   end,
 }
+
+local github_copilot = {
+  "github/copilot.vim",
+}
+
+return {}

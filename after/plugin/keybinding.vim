@@ -29,3 +29,5 @@ inoremap jk <esc>
 inoremap jK <esc>
 inoremap Jk <esc>
 inoremap JK <esc>
+
+nnoremap <leader>cs :Telescope colorscheme<CR>
