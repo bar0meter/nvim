@@ -17,7 +17,7 @@ local function enableTransparency()
   vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
   vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none" })
   vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
-  -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "#7c6f64" })
+  vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "#7c6f64" })
 
   -- transparent background for nvim-tree
   vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
