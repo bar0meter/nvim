@@ -20,6 +20,10 @@ local catppuccin = {
   "catppuccin/nvim",
 }
 
+local sitrunna = {
+  "eemed/sitruuna.vim",
+}
+
 local monokai_pro = {
   "gthelding/monokai-pro.nvim",
   config = function()
@@ -72,4 +76,5 @@ return {
   bamboo,
   everforest,
   matteblack,
+  sitrunna,
 }

@@ -312,32 +312,21 @@ local lspconfig = {
     })
 
     vim.diagnostic.config {
-      -- update_in_insert = true,
-      float = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.INFO] = "󰋼 ",
+          [vim.diagnostic.severity.HINT] = "󰌵 ",
+        },
+        numhl = {
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.HINT] = "",
+          [vim.diagnostic.severity.INFO] = "",
+        },
       },
-      signs = true,
-      underline = true,
-      virtual_text = false,
     }
-
-    local function define_sign(name, icon)
-      vim.fn.sign_define(name, {
-        text = icon,
-        texthl = name,
-        numhl = "",
-      })
-    end
-
-    define_sign("DiagnosticSignError", "")
-    define_sign("DiagnosticSignWarn", "")
-    define_sign("DiagnosticSignHint", "")
-    define_sign("DiagnosticSignInfo", "")
   end,
 }
 
