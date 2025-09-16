@@ -46,6 +46,8 @@
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "f64efd33a51ea89bdb847fb3aaf716e96b83ba1a" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },
+  "vim-airline": { "branch": "master", "commit": "e40a696db0cb8ae412bceee93c94ff27091151ee" },
+  "vim-airline-themes": { "branch": "master", "commit": "0e976956eb674db8a6f72fae4dda6d1277433660" },
   "vim-avro": { "branch": "master", "commit": "bc3905323f72fe30a6a232fc27b640402da60fbc" },
   "vim-commentary": { "branch": "master", "commit": "64a654ef4a20db1727938338310209b6a63f60c9" },
   "vim-flog": { "branch": "master", "commit": "665b16ac8915f746bc43c9572b4581a5e9047216" },

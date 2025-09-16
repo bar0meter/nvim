@@ -1,2 +1,2 @@
-colorscheme everforest
+colorscheme onehalfdark
 

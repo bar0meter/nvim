@@ -1,4 +1,4 @@
-return {
+local lir = {
   "tamago324/lir.nvim",
   config = function()
     local loaded, lir = pcall(require, "lir")
@@ -34,3 +34,5 @@ return {
     vim.keymap.set("n", "-", ":edit %:h<CR>", { noremap = true })
   end,
 }
+
+return lir

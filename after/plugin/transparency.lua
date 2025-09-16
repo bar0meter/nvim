@@ -42,4 +42,4 @@ local function enableTransparency()
   vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { bg = "none" })
 end
 
-enableTransparency()
+-- enableTransparency()
