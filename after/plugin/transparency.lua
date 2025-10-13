@@ -40,6 +40,12 @@ local function enableTransparency()
   vim.api.nvim_set_hl(0, "NotifyWARNBorder", { bg = "none" })
   vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { bg = "none" })
   vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { bg = "none" })
+
+  vim.api.nvim_set_hl(0, "BufferLineFill", { fg = "#ffffff", bg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineBackground", { fg = "#ffffff" })
+  vim.api.nvim_set_hl(0, "BufferLineBufferSelected", { bold = true, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", fg = "NONE" })
+  vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", {})
 end
 
 enableTransparency()

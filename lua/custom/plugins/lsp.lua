@@ -24,7 +24,9 @@ end
 local schemastore = {
   "b0o/schemastore.nvim",
   config = function()
-    require("lspconfig").jsonls.setup {
+    vim.lsp.config.jsonls = {
+      cmd = { "vscode-json-language-server", "--stdio" },
+      filetypes = { "json", "jsonc" },
       settings = {
         json = {
           schemas = require("schemastore").json.schemas(),
@@ -33,7 +35,9 @@ local schemastore = {
       },
     }
 
-    require("lspconfig").yamlls.setup {
+    vim.lsp.config.yamlls = {
+      cmd = { "yaml-language-server", "--stdio" },
+      filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
       settings = {
         yaml = {
           schemaStore = {
@@ -196,15 +200,10 @@ local lspconfig = {
     table.insert(runtime_path, "lua/?.lua")
     table.insert(runtime_path, "lua/?/init.lua")
 
-    local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-    if not lspconfig_status_ok then
-      return
-    end
-
-    lspconfig.gleam.setup {
+    vim.lsp.config.gleam = {
       cmd = { "gleam", "lsp" },
       filetypes = { "gleam" },
-      root_dir = lspconfig.util.root_pattern("gleam.toml", ".git"),
+      root_markers = { "gleam.toml", ".git" },
     }
 
     local servers =
@@ -296,7 +295,7 @@ local lspconfig = {
               vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
             end,
           }
-          require("lspconfig")[server_name].setup(server)
+          vim.lsp.enable(server_name, server)
         end,
       },
     }

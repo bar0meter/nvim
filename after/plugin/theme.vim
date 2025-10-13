@@ -1,2 +1,1 @@
-colorscheme gruvbox
-
+colorscheme everforest
