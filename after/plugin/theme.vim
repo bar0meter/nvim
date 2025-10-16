@@ -1,1 +1,1 @@
-colorscheme everforest
+colorscheme deus

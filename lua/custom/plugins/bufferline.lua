@@ -36,6 +36,4 @@ local barbar = {
   config = true,
 }
 
-return {
-  barbar,
-}
+return {}

@@ -1,5 +1,5 @@
 local deus = {
-  "ajmwagar/vim-deus",
+  "theniceboy/nvim-deus",
 }
 
 local kanagawa = {
