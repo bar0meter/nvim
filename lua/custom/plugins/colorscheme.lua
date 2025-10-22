@@ -2,6 +2,10 @@ local deus = {
   "theniceboy/nvim-deus",
 }
 
+local gruvbuddy = {
+  "tjdevries/colorbuddy.nvim",
+}
+
 local kanagawa = {
   "rebelot/kanagawa.nvim",
   opts = {
@@ -142,4 +146,5 @@ return {
   matteblack,
   sitrunna,
   deus,
+  gruvbuddy,
 }

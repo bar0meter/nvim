@@ -50,4 +50,4 @@ end
 
 enableTransparency()
 
-vim.api.nvim_set_hl(0, "Normal", { bg = "#252525", fg = "#ebdbb2" })
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "#252525", fg = "#ebdbb2" })

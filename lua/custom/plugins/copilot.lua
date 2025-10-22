@@ -24,4 +24,6 @@ local github_copilot = {
   "github/copilot.vim",
 }
 
-return {}
+return {
+  github_copilot,
+}
