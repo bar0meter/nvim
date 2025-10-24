@@ -2,6 +2,14 @@ local deus = {
   "theniceboy/nvim-deus",
 }
 
+local vscode_modern = {
+  "gmr458/vscode_modern_theme.nvim",
+}
+
+local vscode = {
+  "Mofiqul/vscode.nvim",
+}
+
 local gruvbuddy = {
   "tjdevries/colorbuddy.nvim",
 }
@@ -145,6 +153,7 @@ return {
   everforest,
   matteblack,
   sitrunna,
-  deus,
   gruvbuddy,
+  vscode_modern,
+  vscode,
 }

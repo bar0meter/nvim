@@ -1,1 +1,1 @@
-colorscheme gruvbuddy
+colorscheme vscode
