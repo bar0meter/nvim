@@ -237,8 +237,6 @@ local lspconfig = {
           },
         },
 
-        jinja_lsp = {},
-
         pyright = {},
 
         terraformls = {},

@@ -1,1 +1,1 @@
-colorscheme vscode
+colorscheme onehalfdark
