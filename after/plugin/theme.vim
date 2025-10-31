@@ -1,1 +1,1 @@
-colorscheme onehalfdark
+colorscheme deus

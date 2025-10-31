@@ -1,0 +1,2 @@
+WRN 2025-10-28T20:16:05.689 ?.81270    server_start:193: Failed to start server: operation not permitted: /var/folders/61/p9t_4p71411frdjc526mn7180000gn/T/nvim.ag/MMnfY1/nvim.81270.0
+WRN 2025-10-28T20:16:25.148 ?.81430    server_start:193: Failed to start server: operation not permitted: /var/folders/61/p9t_4p71411frdjc526mn7180000gn/T/nvim.ag/b5xyLu/nvim.81430.0

@@ -17,7 +17,7 @@ local function enableTransparency()
   vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
   vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none" })
   vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
-  -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "#5c6370" })
+  vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "#5c6370" })
 
   -- transparent background for nvim-tree
   vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
@@ -47,7 +47,3 @@ local function enableTransparency()
   vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", fg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", {})
 end
-
--- enableTransparency()
-
--- vim.api.nvim_set_hl(0, "Normal", { bg = "#252525", fg = "#ebdbb2" })

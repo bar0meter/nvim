@@ -1,4 +1,4 @@
-return { -- Highlight, edit, and navigate code
+local treesitter = { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   opts = {
@@ -113,3 +113,5 @@ return { -- Highlight, edit, and navigate code
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   end,
 }
+
+return {}

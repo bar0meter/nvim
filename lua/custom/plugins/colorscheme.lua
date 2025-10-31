@@ -1,5 +1,6 @@
 local deus = {
-  "theniceboy/nvim-deus",
+  -- "theniceboy/nvim-deus",
+  "ajmwagar/vim-deus",
 }
 
 local vscode_modern = {
@@ -156,4 +157,5 @@ return {
   gruvbuddy,
   vscode_modern,
   vscode,
+  deus,
 }
