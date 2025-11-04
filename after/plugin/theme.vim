@@ -1,1 +1,1 @@
-colorscheme deus
+colorscheme catppuccin
