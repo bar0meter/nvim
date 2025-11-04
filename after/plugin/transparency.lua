@@ -47,3 +47,5 @@ local function enableTransparency()
   vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", fg = "NONE" })
   vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", {})
 end
+
+enableTransparency()

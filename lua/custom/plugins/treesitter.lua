@@ -114,4 +114,6 @@ local treesitter = { -- Highlight, edit, and navigate code
   end,
 }
 
-return {}
+return {
+  treesitter,
+}

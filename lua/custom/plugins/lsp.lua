@@ -242,8 +242,6 @@ local lspconfig = {
 
         terraformls = {},
 
-        eslint = {},
-
         bashls = {},
 
         vtsls = {
