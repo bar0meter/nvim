@@ -1,1 +1,1 @@
-colorscheme catppuccin
+colorscheme duskfox

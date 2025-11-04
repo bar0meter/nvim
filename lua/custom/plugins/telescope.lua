@@ -25,6 +25,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
   },
   config = function()
     require("telescope").setup {
+      on_attach = function()
+        vim.opt_local.cursorline = false
+      end,
       defaults = {
         layout_config = {
           prompt_position = "top",
