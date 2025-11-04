@@ -20,9 +20,7 @@ return {
         left_mouse_command = "buffer %d",
 
         -- 🎨 Icons
-        buffer_close_icon = "",
         modified_icon = "",
-        close_icon = "", -- global close (far right)
         show_close_icon = false, -- disables the far-right X
         show_buffer_close_icons = true, -- enables per-buffer X icon     }
 
