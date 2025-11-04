@@ -1,1 +1,1 @@
-colorscheme duskfox
+colorscheme kanagawa

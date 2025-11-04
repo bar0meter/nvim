@@ -35,4 +35,4 @@ local lir = {
   end,
 }
 
-return lir
+return {}
