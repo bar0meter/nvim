@@ -31,3 +31,5 @@ inoremap Jk <esc>
 inoremap JK <esc>
 
 nnoremap <leader>cs :Telescope colorscheme<CR>
+
+nnoremap <leader>rr :Rest run<CR>
