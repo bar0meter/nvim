@@ -99,6 +99,16 @@ nnoremap <C-n> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
 nnoremap <C-p> :cprevious<CR>
 
+" Toggle quickfix window
+function! ToggleQuickfix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+nnoremap qq :call ToggleQuickfix()<CR>
+
 nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 
 map <C-c> "+y
