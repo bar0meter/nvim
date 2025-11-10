@@ -165,9 +165,7 @@ if rest_ok then
   })
 
   -- Rest.nvim keybindings
-  vim.keymap.set('n', '<Leader>rr', '<Plug>RestNvim', { desc = 'Run request under cursor' })
-  vim.keymap.set('n', '<Leader>rp', '<Plug>RestNvimPreview', { desc = 'Preview request cURL command' })
-  vim.keymap.set('n', '<Leader>rl', '<Plug>RestNvimLast', { desc = 'Re-run last request' })
+  vim.keymap.set('n', '<Leader>rr', ':Rest run<CR>', { desc = 'Run request under cursor' })
 end
 
 -- Fidget.nvim configuration (LSP progress notifications)
