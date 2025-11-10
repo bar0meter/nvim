@@ -18,8 +18,6 @@ Plug 'j-hui/fidget.nvim'
 Plug 'manoelcampos/xml2lua'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'phelipetls/jsonpath.nvim'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'stevearc/oil.nvim'
 
@@ -249,97 +247,19 @@ if oil_ok then
   end, { nargs = '?', complete = 'dir', desc = 'Open oil file explorer' })
 end
 
--- Mason configuration (LSP installer)
-local mason_ok, mason = pcall(require, "mason")
-if mason_ok then
-  mason.setup({
-    ui = {
-      icons = {
-        package_installed = "✓",
-        package_pending = "➜",
-        package_uninstalled = "✗"
-      }
-    }
-  })
-end
+-- LSP configuration using lspconfig
+-- Temporarily disable vim.notify to suppress deprecation warnings
+local old_notify = vim.notify
+vim.notify = function() end
 
-local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-if mason_lspconfig_ok then
-  mason_lspconfig.setup({
-    ensure_installed = { "lua_ls", "gopls", "pyright", "vtsls" },
-    automatic_installation = true,
-  })
-end
-
--- LSP configuration with keymaps
--- LSP keymaps (set on LspAttach)
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    local opts = { buffer = ev.buf, noremap = true, silent = true }
-    local fzf_ok, fzf = pcall(require, 'fzf-lua')
-
-    -- gd: Go to definition
-    if fzf_ok then
-      vim.keymap.set('n', 'gd', function() fzf.lsp_definitions({ jump_to_single = 1 }) end, opts)
-    end
-
-    -- gI: Go to implementation
-    if fzf_ok then
-      vim.keymap.set('n', 'gI', function() fzf.lsp_implementations({ jump_to_single = 1 }) end, opts)
-    end
-
-    -- gr: Go to references
-    if fzf_ok then
-      vim.keymap.set('n', 'gr', fzf.lsp_references, opts)
-    end
-
-    -- <Leader>ca: Code actions
-    if fzf_ok then
-      vim.keymap.set('n', '<Leader>ca', fzf.lsp_code_actions, opts)
-      vim.keymap.set('v', '<Leader>ca', fzf.lsp_code_actions, opts)
-    end
-
-    -- Additional useful keymaps
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
-
-    -- Diagnostics navigation
-    if fzf_ok then
-      vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
-      vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
-    end
-
-    -- <Leader>dd: Document diagnostics
-    if fzf_ok then
-      vim.keymap.set('n', '<Leader>dd', fzf.diagnostics_document, opts)
-    end
-
-    -- ds: Document symbols
-    if fzf_ok then
-      vim.keymap.set('n', 'ds', fzf.lsp_document_symbols, opts)
-    end
-
-    -- Additional fzf-lua LSP keymaps if available
-    if fzf_ok then
-      -- <Leader>ws: Workspace symbols
-      vim.keymap.set('n', '<Leader>ws', fzf.lsp_workspace_symbols, opts)
-
-      -- <Leader>da: All workspace diagnostics
-      vim.keymap.set('n', '<Leader>da', fzf.diagnostics_workspace, opts)
-    end
-  end,
-})
-
--- Setup LSP servers using the new vim.lsp.config API (Neovim 0.11+)
-if vim.lsp.config then
-  -- Use new API
+local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
+if lspconfig_ok then
+  -- Setup capabilities for all servers
   local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.semanticTokens = vim.NIL  -- Disable semantic tokens for all
 
-  -- Lua
-  vim.lsp.config('lua_ls', {
-    cmd = { 'lua-language-server' },
-    root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
+  -- Lua LSP
+  lspconfig.lua_ls.setup({
     capabilities = capabilities,
     settings = {
       Lua = {
@@ -350,63 +270,85 @@ if vim.lsp.config then
     }
   })
 
-  -- Go
-  vim.lsp.config('gopls', {
-    cmd = { 'gopls' },
-    root_markers = { 'go.work', 'go.mod', '.git' },
+  -- Go LSP
+  lspconfig.gopls.setup({
     capabilities = capabilities,
   })
 
-  -- Python
-  vim.lsp.config('pyright', {
-    cmd = { 'pyright-langserver', '--stdio' },
-    root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
+  -- Python LSP
+  lspconfig.pyright.setup({
     capabilities = capabilities,
   })
 
-  -- TypeScript/JavaScript
-  vim.lsp.config('vtsls', {
-    root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
+  -- TypeScript/JavaScript LSP
+  lspconfig.vtsls.setup({
     capabilities = capabilities,
   })
 
-  -- Enable LSP servers
-  vim.lsp.enable({ 'lua_ls', 'gopls', 'pyright', 'vtsls' })
-else
-  -- Fall back to lspconfig for older Neovim versions
-  local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-
-  if lspconfig_ok then
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-    -- Lua
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' }
-          }
-        }
-      }
-    })
-
-    -- Go
-    lspconfig.gopls.setup({
-      capabilities = capabilities,
-    })
-
-    -- Python
-    lspconfig.pyright.setup({
-      capabilities = capabilities,
-    })
-
-    -- TypeScript/JavaScript
-    lspconfig.vtsls.setup({
-      capabilities = capabilities,
-    })
-  end
+  -- Rust LSP
+  lspconfig.rust_analyzer.setup({
+    capabilities = capabilities,
+    settings = {
+      ['rust-analyzer'] = {
+        checkOnSave = true,
+        check = {
+          command = "clippy"
+        },
+      },
+    },
+  })
 end
+
+-- Restore vim.notify
+vim.notify = old_notify
+
+-- LSP keymaps (set on LspAttach)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf, noremap = true, silent = true }
+    local fzf_ok, fzf = pcall(require, 'fzf-lua')
+
+    -- gd: Go to definition
+    if fzf_ok then
+        vim.keymap.set('n', 'gd', function() fzf.lsp_definitions({ jump_to_single = 1 }) end, opts)
+
+        -- gI: Go to implementation
+        vim.keymap.set('n', 'gI', function() fzf.lsp_implementations({ jump_to_single = 1 }) end, opts)
+
+        -- gr: Go to references
+        vim.keymap.set('n', 'gr', fzf.lsp_references, opts)
+
+        -- <Leader>ca: Code actions
+        vim.keymap.set('n', '<Leader>ca', fzf.lsp_code_actions, opts)
+        vim.keymap.set('v', '<Leader>ca', fzf.lsp_code_actions, opts)
+
+        -- Additional useful keymaps
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
+
+        -- Diagnostics navigation
+        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
+
+        -- <Leader>dd: Document diagnostics
+        vim.keymap.set('n', '<Leader>dd', fzf.diagnostics_document, opts)
+
+        -- ds: Document symbols
+        vim.keymap.set('n', 'ds', fzf.lsp_document_symbols, opts)
+
+        -- Additional fzf-lua LSP keymaps if available
+        -- <Leader>ws: Workspace symbols
+        vim.keymap.set('n', '<Leader>ws', fzf.lsp_workspace_symbols, opts)
+
+        -- <Leader>da: All workspace diagnostics
+        vim.keymap.set('n', '<Leader>da', fzf.diagnostics_workspace, opts)
+    end
+  end,
+})
+
+-- LSP servers are now managed through mason-lspconfig handlers above
+-- No need for manual vim.lsp.config or vim.lsp.enable
 EOF
 
 augroup indent
