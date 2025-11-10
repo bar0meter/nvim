@@ -5,7 +5,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
       {
-        "<leader>ee",
+        "<leader>fr",
         function()
           local oil = require "oil"
           local bufnr = vim.api.nvim_get_current_buf()

@@ -115,7 +115,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup {
   "tpope/vim-sleuth",
-  { import = "custom.plugins" },
+  { import = "barometer.plugins" },
   "gurpreetatwal/vim-avro",
 }
 
