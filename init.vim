@@ -11,14 +11,13 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'diepm/vim-rest-console'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'rest-nvim/rest.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'j-hui/fidget.nvim'
 Plug 'manoelcampos/xml2lua'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'phelipetls/jsonpath.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'diepm/vim-rest-console'
 Plug 'stevearc/oil.nvim'
 
 call plug#end()
@@ -135,47 +134,11 @@ package.cpath = package.cpath .. ';' .. '/Users/ag/.luarocks/lib/lua/5.4/?.so'
 -- Fzf-lua configuration
 local fzf_ok, fzf = pcall(require, 'fzf-lua')
 if fzf_ok then
-  fzf.setup({})
-end
-
--- Treesitter configuration
-local treesitter_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-if treesitter_ok then
-  treesitter.setup({
-    auto_install = true,
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false,
-    },
-    indent = {
-      enable = false
+  fzf.setup({
+    fzf_opts = {
+      ['--layout'] = 'reverse-list',  -- Prompt at bottom
     },
   })
-end
-
--- Rest.nvim configuration
-local rest_ok, rest = pcall(require, "rest-nvim")
-if rest_ok then
-  rest.setup({
-    result = {
-      show_url = true,
-      show_http_info = true,
-      show_headers = true,
-      formatters = {
-        json = "jq",
-        html = function(body)
-          return vim.fn.system({"tidy", "-i", "-q", "-"}, body)
-        end
-      },
-    },
-    jump_to_request = false,
-    env_file = '.env',
-    custom_dynamic_variables = {},
-    yank_dry_run = true,
-  })
-
-  -- Rest.nvim keybindings
-  vim.keymap.set('n', '<Leader>rr', ':Rest run<CR>', { desc = 'Run request under cursor' })
 end
 
 -- Fidget.nvim configuration (LSP progress notifications)
