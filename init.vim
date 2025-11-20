@@ -12,10 +12,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'diepm/vim-rest-console'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'j-hui/fidget.nvim'
-Plug 'manoelcampos/xml2lua'
-Plug 'nvim-neotest/nvim-nio'
-Plug 'phelipetls/jsonpath.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'diepm/vim-rest-console'
 Plug 'stevearc/oil.nvim'
@@ -106,7 +102,7 @@ function! ToggleQuickfix()
         cclose
     endif
 endfunction
-nnoremap qq :call ToggleQuickfix()<CR>
+nnoremap <leader>qq :call ToggleQuickfix()<CR>
 
 nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 
@@ -227,7 +223,6 @@ local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
 if lspconfig_ok then
   -- Setup capabilities for all servers
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.semanticTokens = vim.NIL  -- Disable semantic tokens for all
 
   -- Lua LSP
   lspconfig.lua_ls.setup({
@@ -320,6 +315,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- LSP servers are now managed through mason-lspconfig handlers above
 -- No need for manual vim.lsp.config or vim.lsp.enable
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+})
+
 EOF
 
 augroup indent
