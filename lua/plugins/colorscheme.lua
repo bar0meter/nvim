@@ -1,5 +1,5 @@
 local deus = {
-    "theniceboy/nvim-deus",
+    "ajmwagar/vim-deus",
     config = function()
         vim.cmd.colorscheme("deus")
     end,
