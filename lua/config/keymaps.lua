@@ -53,3 +53,25 @@ vim.keymap.set("n", "-", "<cmd>lua require('oil').open()<CR>")
 vim.keymap.set("x", "<Leader>c", "<Plug>Commentary", {})
 vim.keymap.set("n", "<Leader>c", "<Plug>Commentary", {})
 vim.keymap.set("n", "<Leader>cc", "<Plug>CommentaryLine", {})
+
+function ToggleQuickFix()
+	local quickfix_windows = vim.fn.getwininfo()
+	local is_quickfix_open = false
+
+	-- Iterate through windows to check if any is a quickfix window
+	for _, win_info in ipairs(quickfix_windows) do
+		if win_info.quickfix == 1 then
+			is_quickfix_open = true
+			break
+		end
+	end
+
+	if is_quickfix_open then
+		vim.cmd("cclose")
+	else
+		vim.cmd("copen")
+	end
+end
+
+-- Map <leader>qq to the Lua function
+vim.api.nvim_set_keymap("n", "<leader>qq", ":lua ToggleQuickFix()<CR>", { noremap = true, silent = true })
