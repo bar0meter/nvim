@@ -1,0 +1,51 @@
+-- transparent background
+
+local function enableTransparency()
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
+	vim.api.nvim_set_hl(0, "Terminal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+	vim.api.nvim_set_hl(0, "FoldColumn", { bg = "none" })
+	vim.api.nvim_set_hl(0, "Folded", { bg = "none" })
+	vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+	vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none" })
+	vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+	vim.api.nvim_set_hl(0, "LineNr", { bg = "none", fg = "#5c6370" })
+
+	-- transparent background for nvim-tree
+	vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NvimTreeVertSplit", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
+
+	-- transparent notify background
+	vim.api.nvim_set_hl(0, "NotifyINFOBody", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyERRORBody", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyWARNBody", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyTRACEBody", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyDEBUGBody", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyINFOTitle", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyERRORTitle", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyWARNTitle", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyTRACETitle", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyDEBUGTitle", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyINFOBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyERRORBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyWARNBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { bg = "none" })
+
+	vim.api.nvim_set_hl(0, "BufferLineFill", { fg = "#ffffff", bg = "NONE" })
+	vim.api.nvim_set_hl(0, "BufferLineBackground", { fg = "#ffffff" })
+	vim.api.nvim_set_hl(0, "BufferLineBufferSelected", { bold = true, bg = "NONE" })
+	vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", fg = "NONE" })
+	vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", {})
+end
+
+-- enableTransparency()

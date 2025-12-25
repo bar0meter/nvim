@@ -1,4 +1,5 @@
 vim.g.mapleader = "," -- space leader key
+vim.g.editorconfig = false -- disable built-in editorconfig
 vim.o.mouse = "" -- disable mouse in nvim
 
 vim.o.termguicolors = true -- enable 24-bit colors
@@ -6,6 +7,8 @@ vim.o.updatetime = 200 -- save swap file with 200ms debouncing
 vim.o.autoread = true -- auto update file if changed outside of nvim
 vim.o.undofile = true -- persistant undo history
 vim.o.number = true -- enable line numbers
+vim.o.relativenumber = true -- enable relative line number
+vim.o.cursorline = false -- disable cursorline
 
 vim.o.completeopt = "menu,menuone,noselect,preview" -- omnicomplete options for popup menu
 vim.o.pumheight = 10 -- max height of completion menu
@@ -17,6 +20,9 @@ vim.o.ignorecase = true -- case-insensitive search
 vim.o.smartcase = true -- until search pattern contains upper case characters
 vim.o.incsearch = true -- enable highlighting search in progress
 
+vim.o.tabstop = 8 -- tab character width
+vim.o.shiftwidth = 4 -- indent width for autoindent
+vim.o.softtabstop = 8 -- tab key inserts this many spaces
 vim.o.expandtab = true -- use appropriate number of spaces with tab
 vim.o.smartindent = true -- indenting correctly after {
 vim.o.autoindent = true -- copy indent from current line when starting new line
