@@ -2,6 +2,10 @@ local deus = {
 	"ajmwagar/vim-deus",
 }
 
+local gruvbox = {
+	"ellisonleao/gruvbox.nvim",
+}
+
 local kanagawa = {
 	"rebelot/kanagawa.nvim",
 	config = function()
@@ -86,4 +90,5 @@ return {
 	deus,
 	kanagawa,
 	onedark,
+	gruvbox,
 }

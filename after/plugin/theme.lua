@@ -51,7 +51,8 @@ local function apply_theme_for_terminal()
 	if term_program == "iTerm.app" then
 		vim.cmd.colorscheme("deus")
 	else
-		vim.cmd.colorscheme("deus")
+		vim.cmd.colorscheme("kanagawa-dragon")
+		enableTransparency()
 	end
 end
 
