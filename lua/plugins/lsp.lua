@@ -5,7 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
-		vim.lsp.enable({ "lua_ls", "vtsls", "gopls", "biome" })
+		vim.lsp.enable({ "lua_ls", "gopls", "biome" })
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -21,21 +21,6 @@ return {
 				vim.keymap.set({ "n", "x" }, "<leader>ca", function()
 					require("tiny-code-action").code_action()
 				end, { noremap = true, silent = true })
-
-				vim.keymap.set("n", "<leader>li", function()
-					if vim.bo.filetype == "typescript" or vim.bo.filetype == "typescriptreact" then
-						vim.lsp.buf.code_action({
-							apply = true,
-							---@diagnostic disable-next-line: assign-type-mismatch
-							context = { only = { "source.removeUnused.ts" }, diagnostics = {} },
-						})
-						vim.defer_fn(function()
-							vim.lsp.buf.format({ timeout_ms = 10000 })
-						end, 100) -- 100ms delay
-					else
-						vim.lsp.buf.format({ timeout_ms = 10000 })
-					end
-				end)
 
 				vim.keymap.set("n", "<leader>k", function()
 					vim.diagnostic.open_float({
