@@ -1,77 +1,85 @@
-local airline = {
-	"vim-airline/vim-airline",
-}
-
-local lualine = {
+return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	config = function()
-		require("lualine").setup({
+	event = "VeryLazy",
+	init = function()
+		vim.g.lualine_laststatus = vim.o.laststatus
+		if vim.fn.argc(-1) > 0 then
+			vim.o.statusline = " "
+		else
+			vim.o.laststatus = 0
+		end
+	end,
+	opts = function()
+		vim.o.laststatus = vim.g.lualine_laststatus
+
+		return {
 			options = {
-				icons_enabled = true,
 				theme = "auto",
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-				disabled_filetypes = {
-					statusline = {},
-					winbar = {},
-				},
-				ignore_focus = {},
-				always_divide_middle = true,
-				always_show_tabline = true,
-				globalstatus = false,
-				refresh = {
-					statusline = 100,
-					tabline = 100,
-					winbar = 100,
-				},
+				globalstatus = vim.o.laststatus == 3,
+				disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_b = { "branch" },
 				lualine_c = {
-					"filename",
+					{
+						"diagnostics",
+						symbols = {
+							error = " ",
+							warn = " ",
+							info = " ",
+							hint = " ",
+						},
+					},
+					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+					{ "filename", path = 1 },
+				},
+				lualine_x = {
 					{
 						function()
-							return " "
-						end,
-						color = function()
-							local ok, sidekick_status = pcall(require, "sidekick.status")
-							if ok then
-								local status = sidekick_status.get()
-								if status then
-									return status.kind == "Error" and "DiagnosticError"
-										or status.busy and "DiagnosticWarn"
-										or "Special"
-								end
+							local status = vim.lsp.status()
+							if status and status ~= "" then
+								return " " .. status
 							end
+							return ""
 						end,
-						cond = function()
-							local ok, sidekick_status = pcall(require, "sidekick.status")
-							return ok and sidekick_status.get() ~= nil
+					},
+					{
+						require("lazy.status").updates,
+						cond = require("lazy.status").has_updates,
+						color = { fg = "#ff9e64" },
+					},
+					{
+						"diff",
+						symbols = {
+							added = " ",
+							modified = " ",
+							removed = " ",
+						},
+						source = function()
+							local gitsigns = vim.b.gitsigns_status_dict
+							if gitsigns then
+								return {
+									added = gitsigns.added,
+									modified = gitsigns.changed,
+									removed = gitsigns.removed,
+								}
+							end
 						end,
 					},
 				},
-				lualine_x = { "encoding", "fileformat", "filetype" },
-				lualine_y = { "progress" },
-				lualine_z = { "location" },
+				lualine_y = {
+					{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+					{ "location", padding = { left = 0, right = 1 } },
+				},
+				lualine_z = {
+					function()
+						return " " .. os.date("%R")
+					end,
+				},
 			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = { "filename" },
-				lualine_x = { "location" },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			tabline = {},
-			winbar = {},
-			inactive_winbar = {},
-			extensions = {},
-		})
+			extensions = { "lazy", "fzf" },
+		}
 	end,
-}
-
-return {
-	airline,
 }

@@ -1,5 +1,5 @@
 vim.g.mapleader = "," -- space leader key
-vim.g.editorconfig = false -- disable built-in editorconfig
+vim.g.editorconfig = false -- enable built-in editorconfig
 vim.o.mouse = "" -- disable mouse in nvim
 
 vim.o.termguicolors = true -- enable 24-bit colors
@@ -33,6 +33,8 @@ vim.o.splitright = true -- better splitting
 
 vim.o.wrap = false -- disable wrapping
 vim.o.breakindent = true -- prevent line wrapping
+
+vim.o.colorcolumn = "80"
 
 vim.diagnostic.config({ virtual_text = true }) -- inline diagnostics
 

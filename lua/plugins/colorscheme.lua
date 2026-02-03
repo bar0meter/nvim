@@ -17,7 +17,17 @@ local gruvbox = {
 	end,
 }
 
+local gruvbox_material = {
+	"sainnhe/gruvbox-material",
+}
+
+local everforest = {
+	"neanias/everforest-nvim",
+}
+
 return {
 	deus,
 	gruvbox,
+	gruvbox_material,
+	everforest,
 }

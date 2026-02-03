@@ -14,19 +14,8 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	config = function()
-		local bottom_pane_config = {
-			layout_strategy = "bottom_pane",
-			layout_config = {
-				height = 0.4,
-				prompt_position = "bottom",
-			},
-			border = true,
-			sorting_strategy = "descending",
-			hidden = true,
-		}
-
 		require("telescope").setup({
-			defaults = bottom_pane_config,
+			defaults = {},
 			extensions = {
 				fzf = {},
 				["ui-select"] = {},
