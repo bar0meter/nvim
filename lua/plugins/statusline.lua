@@ -1,6 +1,5 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
 	event = "VeryLazy",
 	init = function()
 		vim.g.lualine_laststatus = vim.o.laststatus
@@ -16,6 +15,7 @@ return {
 		return {
 			options = {
 				theme = "auto",
+				icons_enabled = false,
 				globalstatus = vim.o.laststatus == 3,
 				disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
 			},
@@ -26,13 +26,13 @@ return {
 					{
 						"diagnostics",
 						symbols = {
-							error = " ",
-							warn = " ",
-							info = " ",
-							hint = " ",
+							error = "E:",
+							warn = "W:",
+							info = "I:",
+							hint = "H:",
 						},
 					},
-					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+					{ "filetype", separator = "", padding = { left = 1, right = 0 } },
 					{ "filename", path = 1 },
 				},
 				lualine_x = {
@@ -40,7 +40,7 @@ return {
 						function()
 							local status = vim.lsp.status()
 							if status and status ~= "" then
-								return " " .. status
+								return "[LSP] " .. status
 							end
 							return ""
 						end,
@@ -53,9 +53,9 @@ return {
 					{
 						"diff",
 						symbols = {
-							added = " ",
-							modified = " ",
-							removed = " ",
+							added = "+",
+							modified = "~",
+							removed = "-",
 						},
 						source = function()
 							local gitsigns = vim.b.gitsigns_status_dict
@@ -75,7 +75,7 @@ return {
 				},
 				lualine_z = {
 					function()
-						return " " .. os.date("%R")
+						return os.date("%R")
 					end,
 				},
 			},

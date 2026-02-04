@@ -7,7 +7,7 @@ vim.o.updatetime = 200 -- save swap file with 200ms debouncing
 vim.o.autoread = true -- auto update file if changed outside of nvim
 vim.o.undofile = true -- persistant undo history
 vim.o.number = true -- enable line numbers
-vim.o.relativenumber = true -- enable relative line number
+vim.o.relativenumber = false -- enable relative line number
 vim.o.cursorline = false -- disable cursorline
 
 vim.o.completeopt = "menu,menuone,noselect,preview" -- omnicomplete options for popup menu
@@ -34,7 +34,7 @@ vim.o.splitright = true -- better splitting
 vim.o.wrap = false -- disable wrapping
 vim.o.breakindent = true -- prevent line wrapping
 
-vim.o.colorcolumn = "80"
+vim.o.colorcolumn = "0"
 
 vim.diagnostic.config({ virtual_text = true }) -- inline diagnostics
 
