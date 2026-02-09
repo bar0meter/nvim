@@ -2,6 +2,13 @@ local deus = {
 	"ajmwagar/vim-deus",
 }
 
+local tokyonight = {
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
+	opts = {},
+}
+
 local solarized = {
 	"maxmx03/solarized.nvim",
 	lazy = false,
@@ -95,4 +102,5 @@ return {
 	gruvbox_material,
 	everforest,
 	solarized,
+	tokyonight,
 }
