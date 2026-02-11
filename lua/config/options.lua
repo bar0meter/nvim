@@ -6,9 +6,13 @@ vim.o.termguicolors = true -- enable 24-bit colors
 vim.o.updatetime = 200 -- save swap file with 200ms debouncing
 vim.o.autoread = true -- auto update file if changed outside of nvim
 vim.o.undofile = true -- persistant undo history
-vim.o.number = true -- enable line numbers
+vim.o.number = false -- enable line numbers
 vim.o.relativenumber = false -- enable relative line number
 vim.o.cursorline = false -- disable cursorline
+vim.o.showtabline = 2
+
+vim.o.list = true
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 vim.o.completeopt = "menu,menuone,noselect,preview" -- omnicomplete options for popup menu
 vim.o.pumheight = 10 -- max height of completion menu
@@ -20,10 +24,11 @@ vim.o.ignorecase = true -- case-insensitive search
 vim.o.smartcase = true -- until search pattern contains upper case characters
 vim.o.incsearch = true -- enable highlighting search in progress
 
-vim.o.tabstop = 8 -- tab character width
-vim.o.shiftwidth = 4 -- indent width for autoindent
-vim.o.softtabstop = 8 -- tab key inserts this many spaces
-vim.o.expandtab = true -- use appropriate number of spaces with tab
+-- Set indentation defaults for all filetypes
+vim.opt.tabstop = 4 -- Show tabs as 4 spaces
+vim.opt.shiftwidth = 2 -- Indent using 2 spaces
+vim.opt.softtabstop = 2 -- Number of spaces <Tab> counts for in insert mode
+vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.o.smartindent = true -- indenting correctly after {
 vim.o.autoindent = true -- copy indent from current line when starting new line
 vim.o.scrolloff = 8 -- always keep 8 lines above/below cursor unless at start/end of file
@@ -38,4 +43,6 @@ vim.o.colorcolumn = "0"
 
 vim.diagnostic.config({ virtual_text = true }) -- inline diagnostics
 
-vim.opt.clipboard = "unnamedplus"
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)

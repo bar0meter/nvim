@@ -10,7 +10,7 @@ local function apply_theme_for_terminal()
 		vim.cmd("hi clear SignColumn")
 		vim.opt.laststatus = 0
 	else
-		vim.cmd.colorscheme("tokyonight-night")
+		vim.cmd.colorscheme("duskfox")
 	end
 end
 

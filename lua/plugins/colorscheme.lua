@@ -96,6 +96,10 @@ local everforest = {
 	"neanias/everforest-nvim",
 }
 
+local nightfox = {
+	"EdenEast/nightfox.nvim",
+}
+
 return {
 	deus,
 	gruvbox,
@@ -103,4 +107,5 @@ return {
 	everforest,
 	solarized,
 	tokyonight,
+	nightfox,
 }
