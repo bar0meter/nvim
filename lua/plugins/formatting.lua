@@ -1,32 +1,22 @@
-local disable_format_ft = {
-	typescript = true,
-	typescriptreact = true,
-	javascript = true,
-	javascriptreact = true,
-}
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
 
 return {
 	{
 		"stevearc/conform.nvim",
 		opts = {
-			format_on_save = function(bufnr)
-				local ft = vim.bo[bufnr].filetype
-
-				-- Disable format on save for these filetypes
-				if disable_format_ft[ft] then
-					return false
-				end
-
-				return {
-					timeout_ms = 8000,
-					lsp_format = "fallback",
-				}
-			end,
-
 			formatters_by_ft = {
 				lua = { "stylua" },
 				graphql = { "prettierd" },
 				go = { "goimports", "gofmt" },
+				typescript = { "biome" },
+				javascript = { "biome" },
+				typescriptreact = { "biome" },
+				javascriptreact = { "biome" },
 			},
 		},
 	},

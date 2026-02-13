@@ -37,8 +37,6 @@ local treesitter = { -- Highlight, edit, and navigate code
 				vim.treesitter.start()
 				-- folds, provided by Neovim
 				vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-				-- indentation, provided by nvim-treesitter
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			end,
 		})
 	end,
