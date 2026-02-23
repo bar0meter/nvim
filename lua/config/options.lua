@@ -6,7 +6,7 @@ vim.o.termguicolors = true -- enable 24-bit colors
 vim.o.updatetime = 200 -- save swap file with 200ms debouncing
 vim.o.autoread = true -- auto update file if changed outside of nvim
 vim.o.undofile = true -- persistant undo history
-vim.o.number = false -- enable line numbers
+vim.o.number = true -- enable line numbers
 vim.o.relativenumber = false -- enable relative line number
 vim.o.cursorline = false -- disable cursorline
 vim.o.showtabline = 2
@@ -25,9 +25,9 @@ vim.o.smartcase = true -- until search pattern contains upper case characters
 vim.o.incsearch = true -- enable highlighting search in progress
 
 -- Set indentation defaults for all filetypes
-vim.opt.tabstop = 4 -- Show tabs as 4 spaces
-vim.opt.shiftwidth = 2 -- Indent using 2 spaces
-vim.opt.softtabstop = 2 -- Number of spaces <Tab> counts for in insert mode
+vim.opt.tabstop = 8 -- Show tabs as 4 spaces
+vim.opt.shiftwidth = 8 -- Indent using 2 spaces
+vim.opt.softtabstop = 8 -- Number of spaces <Tab> counts for in insert mode
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.o.smartindent = true -- indenting correctly after {
 vim.o.autoindent = true -- copy indent from current line when starting new line
