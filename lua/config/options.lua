@@ -1,47 +1,43 @@
-vim.g.mapleader = "," -- space leader key
-vim.g.editorconfig = false -- enable built-in editorconfig
-vim.o.mouse = "" -- disable mouse in nvim
+vim.g.mapleader = ","
+vim.g.editorconfig = false
+vim.o.mouse = ""
 
-vim.o.termguicolors = true -- enable 24-bit colors
-vim.o.updatetime = 200 -- save swap file with 200ms debouncing
-vim.o.autoread = true -- auto update file if changed outside of nvim
-vim.o.undofile = true -- persistant undo history
-vim.o.number = true -- enable line numbers
-vim.o.relativenumber = false -- enable relative line number
-vim.o.cursorline = false -- disable cursorline
+vim.o.termguicolors = true
+vim.o.updatetime = 200
+vim.o.autoread = true
+vim.o.undofile = true
+vim.o.number = false
+vim.o.relativenumber = false
+vim.o.cursorline = false
 vim.o.showtabline = 2
 
-vim.o.list = true
-vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
+vim.o.completeopt = "menu,menuone,noselect,preview"
+vim.o.pumheight = 10
+vim.o.winborder = "rounded"
+vim.o.showmode = false
 
-vim.o.completeopt = "menu,menuone,noselect,preview" -- omnicomplete options for popup menu
-vim.o.pumheight = 10 -- max height of completion menu
-vim.o.winborder = "rounded" -- rounded border
-vim.o.showmode = false -- disable showing mode below statusline
+vim.o.signcolumn = "yes"
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.incsearch = true
 
-vim.o.signcolumn = "yes" -- always show sign column
-vim.o.ignorecase = true -- case-insensitive search
-vim.o.smartcase = true -- until search pattern contains upper case characters
-vim.o.incsearch = true -- enable highlighting search in progress
+vim.opt.tabstop = 8
+vim.opt.shiftwidth = 8
+vim.opt.softtabstop = 8
+vim.opt.expandtab = true
+vim.o.smartindent = true
+vim.o.autoindent = true
+vim.o.scrolloff = 8
 
--- Set indentation defaults for all filetypes
-vim.opt.tabstop = 8 -- Show tabs as 4 spaces
-vim.opt.shiftwidth = 8 -- Indent using 2 spaces
-vim.opt.softtabstop = 8 -- Number of spaces <Tab> counts for in insert mode
-vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.o.smartindent = true -- indenting correctly after {
-vim.o.autoindent = true -- copy indent from current line when starting new line
-vim.o.scrolloff = 8 -- always keep 8 lines above/below cursor unless at start/end of file
+vim.o.splitbelow = true
+vim.o.splitright = true
 
-vim.o.splitbelow = true -- better splitting
-vim.o.splitright = true -- better splitting
-
-vim.o.wrap = false -- disable wrapping
-vim.o.breakindent = true -- prevent line wrapping
+vim.o.wrap = false
+vim.o.breakindent = true
 
 vim.o.colorcolumn = "0"
 
-vim.diagnostic.config({ virtual_text = true }) -- inline diagnostics
+vim.diagnostic.config({ virtual_text = true })
 
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
