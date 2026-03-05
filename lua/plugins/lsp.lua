@@ -12,6 +12,7 @@ return {
 			callback = function(ev)
 				local opts = { buffer = ev.buf }
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
 				vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)

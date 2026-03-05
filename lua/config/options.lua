@@ -10,7 +10,7 @@ vim.o.number = true
 vim.o.relativenumber = false
 vim.o.cursorline = false
 
-vim.o.completeopt = "menu,menuone,noselect,preview"
+vim.o.completeopt = "menu,menuone,noinsert,preview"
 vim.o.pumheight = 10
 vim.o.winborder = "rounded"
 vim.o.showmode = false

@@ -17,7 +17,15 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "U", "<C-r>")
 
 -- after a search, press escape to clear highlights
-vim.keymap.set("n", "<Esc>", ":nohl<CR>")
+vim.keymap.set("n", "<Esc>", function()
+	vim.cmd("nohl")
+	-- close any floating windows (hover docs, etc.)
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		if vim.api.nvim_win_get_config(win).relative ~= "" then
+			vim.api.nvim_win_close(win, false)
+		end
+	end
+end)
 
 -- Swap between split buffers
 vim.keymap.set("n", "<C-Left>", ":wincmd h<CR>")
