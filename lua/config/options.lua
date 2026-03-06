@@ -7,7 +7,7 @@ vim.o.updatetime = 200
 vim.o.autoread = true
 vim.o.undofile = true
 vim.o.number = true
-vim.o.relativenumber = false
+vim.o.relativenumber = true
 vim.o.cursorline = false
 
 vim.o.completeopt = "menu,menuone,noinsert,preview"
@@ -31,15 +31,13 @@ vim.o.scrolloff = 8
 vim.o.splitbelow = true
 vim.o.splitright = true
 
-vim.o.wrap = false
+vim.o.wrap = true
 vim.o.breakindent = true
 
 vim.o.colorcolumn = "0"
+vim.o.fillchars = "eob: "
 
 vim.opt.cmdheight = 0
-
--- vim.opt.winbar = "%=%{expand('%:p:h:t')}/%t%="
--- vim.opt.winbar = "%=%f%="
 
 vim.diagnostic.config({ virtual_text = true })
 
