@@ -43,7 +43,16 @@ local function enable_transparency()
 	vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { bold = true, bg = "none" })
 end
 
-vim.cmd.colorscheme("tokyonight")
+-- Read theme from shared config (set by theme-set script)
+local theme_file = vim.fn.expand("~/.config/themes/current_theme")
+local colorscheme = "tokyonight"
+if vim.fn.filereadable(theme_file) == 1 then
+	local lines = vim.fn.readfile(theme_file)
+	if #lines > 0 and lines[1] ~= "" then
+		colorscheme = lines[1]
+	end
+end
+vim.cmd.colorscheme(colorscheme)
 
 vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = enable_transparency,

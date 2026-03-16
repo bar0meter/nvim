@@ -22,9 +22,25 @@ local nightfox = {
 	"EdenEast/nightfox.nvim",
 }
 
+local rosepine = {
+	"rose-pine/neovim",
+}
+
+local catppuccin = {
+	"catppuccin/nvim",
+	name = "catppuccin",
+}
+
+local gruvbox = {
+	"ellisonleao/gruvbox.nvim",
+}
+
 return {
 	deus,
 	tokyonight,
 	nightfox,
 	vscode,
+	rosepine,
+	catppuccin,
+	gruvbox,
 }
