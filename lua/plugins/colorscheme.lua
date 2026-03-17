@@ -2,9 +2,6 @@ local deus = {
 	"ajmwagar/vim-deus",
 	lazy = false,
 	priority = 1000,
-	config = function()
-		vim.cmd.colorscheme("deus")
-	end,
 }
 
 local tokyonight = {
@@ -35,6 +32,15 @@ local gruvbox = {
 	"ellisonleao/gruvbox.nvim",
 }
 
+local gruvbox_flat = {
+	"eddyekofo94/gruvbox-flat.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		vim.cmd.colorscheme("gruvbox-flat")
+	end,
+}
+
 return {
 	deus,
 	tokyonight,
@@ -43,4 +49,5 @@ return {
 	rosepine,
 	catppuccin,
 	gruvbox,
+	gruvbox_flat,
 }

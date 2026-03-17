@@ -5,7 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
-		vim.lsp.enable({ "lua_ls", "gopls", "biome", "tsgo", "rust_analyzer", "yamlls", "jsonls", "bashls" })
+		vim.lsp.enable({ "lua_ls", "gopls", "biome", "oxlint", "tsgo", "rust_analyzer", "yamlls", "jsonls", "bashls" })
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
