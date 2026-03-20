@@ -9,6 +9,9 @@ local tokyonight = {
 	lazy = false,
 	priority = 1000,
 	opts = {},
+	config = function()
+		vim.cmd.colorscheme("tokyonight-night")
+	end,
 }
 
 local vscode = {
@@ -36,9 +39,6 @@ local gruvbox_flat = {
 	"eddyekofo94/gruvbox-flat.nvim",
 	lazy = false,
 	priority = 1000,
-	config = function()
-		vim.cmd.colorscheme("gruvbox-flat")
-	end,
 }
 
 return {
