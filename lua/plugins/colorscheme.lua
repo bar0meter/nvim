@@ -4,14 +4,20 @@ local deus = {
 	priority = 1000,
 }
 
+local everforest = {
+	"sainnhe/everforest",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		vim.cmd.colorscheme("everforest")
+	end,
+}
+
 local tokyonight = {
 	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
 	opts = {},
-	config = function()
-		vim.cmd.colorscheme("tokyonight-night")
-	end,
 }
 
 local vscode = {
@@ -50,4 +56,5 @@ return {
 	catppuccin,
 	gruvbox,
 	gruvbox_flat,
+	everforest,
 }
