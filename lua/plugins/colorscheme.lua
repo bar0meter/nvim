@@ -8,9 +8,18 @@ local everforest = {
 	"sainnhe/everforest",
 	lazy = false,
 	priority = 1000,
-	config = function()
-		vim.cmd.colorscheme("everforest")
-	end,
+}
+
+local sonokai = {
+	"sainnhe/sonokai",
+	lazy = false,
+	priority = 1000,
+}
+
+local edge = {
+	"sainnhe/edge",
+	lazy = false,
+	priority = 1000,
 }
 
 local tokyonight = {
@@ -39,6 +48,21 @@ local catppuccin = {
 
 local gruvbox = {
 	"ellisonleao/gruvbox.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
+		require("gruvbox").setup({
+			terminal_colors = true,
+			italic = {
+				strings = false,
+				emphasis = false,
+				comments = false,
+				operators = false,
+				folds = false,
+			},
+		})
+		vim.cmd.colorscheme("gruvbox")
+	end,
 }
 
 local gruvbox_flat = {
@@ -57,4 +81,6 @@ return {
 	gruvbox,
 	gruvbox_flat,
 	everforest,
+	edge,
+	sonokai,
 }
