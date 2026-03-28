@@ -1,6 +1,7 @@
 return {
 	"nvim-mini/mini.nvim",
 	version = false,
+	event = "VeryLazy",
 	config = function()
 		-- enhanced, a and i keybinds
 		require("mini.ai").setup()

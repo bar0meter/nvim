@@ -1,7 +1,9 @@
 return {
 	"stevearc/oil.nvim",
-	lazy = false,
-	keys = {},
+	cmd = "Oil",
+	keys = {
+		{ "-", "<cmd>Oil<cr>", desc = "Open Oil file manager" },
+	},
 	dependencies = {
 		"refractalize/oil-git-status.nvim",
 	},

@@ -56,8 +56,6 @@ vim.keymap.set("n", "<leader>h", function()
 	vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
 end)
 
-vim.keymap.set("n", "-", "<cmd>lua require('oil').open()<CR>")
-
 vim.keymap.set("x", "<Leader>c", "<Plug>Commentary", {})
 vim.keymap.set("n", "<Leader>c", "<Plug>Commentary", {})
 vim.keymap.set("n", "<Leader>cc", "<Plug>CommentaryLine", {})

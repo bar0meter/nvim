@@ -1,13 +1,7 @@
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-})
-
 return {
 	{
 		"stevearc/conform.nvim",
+		event = "BufWritePre",
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -18,10 +12,12 @@ return {
 				typescriptreact = { "oxlint", "biome" },
 				javascriptreact = { "oxlint", "biome" },
 			},
+			format_on_save = {},
 		},
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		event = "InsertEnter",
 		config = function()
 			require("nvim-ts-autotag").setup()
 		end,

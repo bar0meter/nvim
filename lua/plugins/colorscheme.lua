@@ -1,31 +1,26 @@
 local deus = {
 	"ajmwagar/vim-deus",
-	lazy = false,
-	priority = 1000,
+	lazy = true,
 }
 
 local everforest = {
 	"sainnhe/everforest",
-	lazy = false,
-	priority = 1000,
+	lazy = true,
 }
 
 local sonokai = {
 	"sainnhe/sonokai",
-	lazy = false,
-	priority = 1000,
+	lazy = true,
 }
 
 local edge = {
 	"sainnhe/edge",
-	lazy = false,
-	priority = 1000,
+	lazy = true,
 }
 
 local tokyonight = {
 	"folke/tokyonight.nvim",
-	lazy = false,
-	priority = 1000,
+	lazy = true,
 	opts = {},
 }
 
@@ -66,8 +61,7 @@ local gruvbox = {
 
 local gruvbox_flat = {
 	"eddyekofo94/gruvbox-flat.nvim",
-	lazy = false,
-	priority = 1000,
+	lazy = true,
 }
 
 return {

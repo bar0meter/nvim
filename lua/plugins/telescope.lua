@@ -1,13 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	lazy = false,
-	keys = {
-		{ "<leader>sf", "<cmd>Telescope find_files<cr>" },
-		{ "<leader>sg", "<cmd>Telescope live_grep<cr>" },
-		{ "<leader>sh", "<cmd>Telescope help_tags<cr>" },
-		{ "<leader>sd", "<cmd>Telescope diagnostics<cr>" },
-		{ "<leader>sb", "<cmd>Telescope buffers<cr>" },
-	},
+	event = "VeryLazy",
+	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",

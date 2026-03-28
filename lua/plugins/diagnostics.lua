@@ -1,5 +1,6 @@
 return {
 	"artemave/workspace-diagnostics.nvim",
+	event = "LspAttach",
 	config = function()
 		require("workspace-diagnostics").setup({
 			workspace_files = function()
