@@ -10,8 +10,10 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cursorline = true
 
-vim.o.completeopt = "menu,menuone,noinsert,preview"
+vim.o.completeopt = "menu,menuone,noinsert,popup"
 vim.o.pumheight = 10
+vim.o.pumborder = "rounded"
+vim.o.pummaxwidth = 60
 vim.o.winborder = "rounded"
 vim.o.showmode = false
 
