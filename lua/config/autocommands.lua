@@ -75,31 +75,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Built-in LSP completion (Neovim 0.12+)
 		vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-
-		-- LSP keymaps
-		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
-		-- grt (type_definition) and grx (codelens) are now built-in defaults in 0.12
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-
-		vim.keymap.set({ "n", "x" }, "<leader>ca", function()
-			require("tiny-code-action").code_action()
-		end, { buffer = ev.buf, noremap = true, silent = true })
-
-		vim.keymap.set("n", "<leader>k", function()
-			vim.diagnostic.open_float({ border = "rounded" })
-		end, opts)
-
-		-- Accept completion with CR
-		vim.keymap.set("i", "<CR>", function()
-			if vim.fn.pumvisible() == 1 then
-				return "<C-y>"
-			end
-			return "<CR>"
-		end, { buffer = ev.buf, expr = true })
 	end,
 })

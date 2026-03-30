@@ -137,69 +137,12 @@ require("telescope").setup({
 pcall(require("telescope").load_extension, "fzf")
 require("telescope").load_extension("ui-select")
 
-local telescope_builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>l", function()
-	telescope_builtin.find_files({
-		file_ignore_patterns = { "^./.git/", "^node_modules/" },
-		prompt_title = "[S]earch [F]iles",
-		find_command = { "rg", "--files", "--hidden", "-g", "!.git", "--sort", "accessed" },
-	})
-end, { desc = "[S]earch [F]iles" })
-
-vim.keymap.set("n", "<leader>ss", function()
-	telescope_builtin.current_buffer_fuzzy_find({})
-end, { desc = "[/] Fuzzily search in current buffer" })
-
-vim.keymap.set("n", "<leader>sw", telescope_builtin.grep_string, { desc = "[S]earch current [W]ord" })
-
-vim.keymap.set("n", "<leader>ff", function()
-	telescope_builtin.live_grep({ prompt_title = "[S]earch by [G]rep" })
-end, { desc = "[S]earch by [G]rep" })
-
-vim.keymap.set("n", "<leader>dd", function()
-	telescope_builtin.diagnostics({ prompt_title = "[S]earch [D]iagnostics" })
-end, { desc = "[S]earch [D]iagnostics" })
-
-vim.keymap.set("n", "<leader>sr", telescope_builtin.resume, { desc = "[S]earch [R]esume" })
-vim.keymap.set("n", "<leader>s.", telescope_builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-
-vim.keymap.set("n", "<leader>b", function()
-	telescope_builtin.buffers({ prompt_title = "[ ] Find existing buffers" })
-end, { desc = "[ ] Find existing buffers" })
-
-vim.keymap.set("n", "<leader>gt", function()
-	telescope_builtin.git_files({
-		prompt_title = "Ignore tests folder",
-		file_ignore_patterns = { "tests", "functional_tests", "snapshots", ".github", "codegen", "node_modules" },
-	})
-end, { desc = "[Ignore tests]" })
-
-vim.keymap.set("n", "<leader>ps", function()
-	telescope_builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
-
-vim.keymap.set("n", "<leader>sf", function()
-	telescope_builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" })
-end, { desc = "[S]earch [/] in Open Files" })
-
-vim.keymap.set("n", "<leader>pws", function()
-	telescope_builtin.grep_string({ search = vim.fn.expand("<cword>") })
-end)
-vim.keymap.set("n", "<leader>pWs", function()
-	telescope_builtin.grep_string({ search = vim.fn.expand("<cWORD>") })
-end)
-
-vim.keymap.set("n", "<leader>sn", function()
-	telescope_builtin.find_files({ cwd = vim.fn.stdpath("config") })
-end, { desc = "[S]earch [N]eovim files" })
-
 -- Oil
 require("oil").setup({
 	win_options = { signcolumn = "yes:2" },
 	view_options = { show_hidden = true },
 })
 require("oil-git-status").setup({ show_ignored = false })
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Oil file manager" })
 
 -- Mini
 require("mini.ai").setup()
@@ -253,16 +196,8 @@ require("snacks").setup({
 })
 
 -- LuaSnip
-local ls = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
-ls.add_snippets("go", require("snippets.go"))
-
-vim.keymap.set({ "i", "s" }, "<C-l>", function()
-	ls.jump(1)
-end)
-vim.keymap.set({ "i", "s" }, "<C-h>", function()
-	ls.jump(-1)
-end)
+require("luasnip").add_snippets("go", require("snippets.go"))
 
 -- LazyDev
 require("lazydev").setup({
@@ -307,7 +242,3 @@ require("todo-comments").setup({ signs = false })
 
 -- Gopher
 require("gopher").setup({})
-vim.keymap.set("n", "<leader>goat", ":GoTestAdd<cr>")
-vim.keymap.set("n", "<leader>got", ":GoTestsAll<cr>")
-vim.keymap.set("n", "<leader>goe", ":GoTestsExp<cr>")
-vim.keymap.set("n", "<leader>goj", ":GoTagsAdd json<cr>")
