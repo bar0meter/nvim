@@ -67,6 +67,11 @@ vim.api.nvim_create_autocmd("BufRead", {
 -- 	end,
 -- })
 
+-- update all vim.pack packages
+vim.api.nvim_create_user_command("PackUpdate", function()
+	vim.pack.update()
+end, { desc = "Update all packages" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
 	callback = function(ev)
