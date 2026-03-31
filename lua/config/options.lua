@@ -8,7 +8,7 @@ vim.o.autoread = true
 vim.o.undofile = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.cursorline = true
+vim.o.cursorline = false
 
 vim.o.completeopt = "menu,menuone,noinsert,popup"
 vim.o.pumheight = 10
