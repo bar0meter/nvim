@@ -7,15 +7,7 @@ end
 vim.pack.add({
 	-- Colorschemes
 	gh("ellisonleao/gruvbox.nvim"),
-	gh("folke/tokyonight.nvim"),
-	gh("EdenEast/nightfox.nvim"),
-	gh("Mofiqul/vscode.nvim"),
-	gh("rose-pine/neovim"),
-	{ src = gh("catppuccin/nvim"), name = "catppuccin" },
-	gh("ajmwagar/vim-deus"),
 	gh("sainnhe/everforest"),
-	gh("sainnhe/edge"),
-	gh("sainnhe/sonokai"),
 
 	-- LSP & Development
 	gh("neovim/nvim-lspconfig"),
@@ -68,6 +60,7 @@ vim.pack.add({
 
 -- Gruvbox (active colorscheme)
 require("gruvbox").setup({
+	contrast = "hard",
 	italic = {
 		strings = false,
 		emphasis = false,
