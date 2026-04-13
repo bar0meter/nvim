@@ -7,6 +7,7 @@ end
 vim.pack.add({
 	-- Colorschemes
 	gh("ellisonleao/gruvbox.nvim"),
+	gh("folke/tokyonight.nvim"),
 	gh("sainnhe/everforest"),
 
 	-- LSP & Development
@@ -58,6 +59,12 @@ vim.pack.add({
 -- Plugin configuration
 ------------------------------------------------------
 
+-- vim-rest-console: output body only, no headers, no status line
+vim.g.vrc_show_command = 0
+vim.g.vrc_curl_opts = { ["-s"] = "" }
+vim.g.vrc_auto_format_response_patterns = { json = "jq ." }
+vim.g.vrc_output_buffer_name = "__VRC_OUTPUT.json"
+
 -- Gruvbox (active colorscheme)
 require("gruvbox").setup({
 	contrast = "hard",
@@ -69,7 +76,7 @@ require("gruvbox").setup({
 		folds = false,
 	},
 })
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("tokyonight")
 
 -- Treesitter
 local ts = require("nvim-treesitter")
