@@ -105,16 +105,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>k", function()
 			vim.diagnostic.open_float({ border = "rounded" })
 		end, opts)
-
-		-- Accept completion with CR
-		vim.keymap.set("i", "<CR>", function()
-			if vim.fn.pumvisible() == 1 then
-				return "<C-y>"
-			end
-			return "<CR>"
-		end, { buffer = ev.buf, expr = true })
 	end,
 })
+
+vim.keymap.set({ "i", "s", "n" }, "<Esc>", function()
+	if require("luasnip").expand_or_jumpable() then
+		require("luasnip").unlink_current()
+	end
+	vim.cmd.nohlsearch()
+	return "<Esc>"
+end, { desc = "Escape and stop snippet session", expr = true })
 
 ------------------------------------------------------
 -- Telescope keymaps
