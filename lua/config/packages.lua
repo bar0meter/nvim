@@ -145,12 +145,38 @@ require("oil").setup({
 require("oil-git-status").setup({ show_ignored = false })
 
 -- Bufferline
+local function update_highlight(name, opts)
+	local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
+	if not ok then
+		return
+	end
+
+	vim.api.nvim_set_hl(0, name, vim.tbl_extend("force", hl, opts))
+end
+
+local function style_bufferline_filenames()
+	for _, name in ipairs({ "BufferLineBuffer", "BufferLineBufferVisible", "BufferLineBufferSelected" }) do
+		update_highlight(name, { italic = false, bold = false })
+	end
+
+	for _, name in ipairs({
+		"BufferLineWarning",
+		"BufferLineWarningVisible",
+		"BufferLineWarningSelected",
+		"BufferLineError",
+		"BufferLineErrorVisible",
+		"BufferLineErrorSelected",
+	}) do
+		update_highlight(name, { italic = true, bold = true })
+	end
+end
+
 require("bufferline").setup({
 	options = {
 		show_close_icon = false,
 		show_buffer_close_icons = false,
 		truncate_names = false,
-		indicator = { style = "underline" },
+		indicator = { style = "none" },
 		close_command = function(bufnr)
 			vim.api.nvim_buf_delete(bufnr, { force = false })
 		end,
@@ -161,6 +187,14 @@ require("bufferline").setup({
 			return vim.trim(indicator)
 		end,
 	},
+})
+style_bufferline_filenames()
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = vim.api.nvim_create_augroup("bufferline_filename_style", { clear = true }),
+	callback = function()
+		vim.schedule(style_bufferline_filenames)
+	end,
 })
 
 -- Gitsigns
