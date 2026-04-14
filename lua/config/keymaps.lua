@@ -188,6 +188,14 @@ end, { desc = "[S]earch [N]eovim files" })
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Oil file manager" })
 
 ------------------------------------------------------
+-- Bufferline keymaps
+------------------------------------------------------
+
+vim.keymap.set("n", "<leader>bp", "<cmd>BufferLinePick<cr>", { desc = "Pick a buffer to open" })
+vim.keymap.set("n", "<leader>bc", "<cmd>BufferLinePickClose<cr>", { desc = "Pick a buffer to close" })
+vim.keymap.set("n", "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", { desc = "Close other buffers" })
+
+------------------------------------------------------
 -- Snippet keymaps
 ------------------------------------------------------
 

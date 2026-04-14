@@ -34,10 +34,24 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 
 vim.o.wrap = true
+vim.o.linebreak = true
 vim.o.breakindent = true
 
 vim.o.colorcolumn = "0"
-vim.o.fillchars = "eob: "
+vim.o.foldcolumn = "1"
+vim.o.foldlevelstart = 99
+vim.wo.foldtext = ""
+
+local arrows = require("icons").arrows
+vim.opt.fillchars = {
+	eob = " ",
+	fold = " ",
+	foldclose = arrows.right,
+	foldopen = arrows.down,
+	foldsep = " ",
+	foldinner = " ",
+	msgsep = "─",
+}
 
 vim.opt.cmdheight = 0
 
