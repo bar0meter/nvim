@@ -1,5 +1,7 @@
 -- Neovim 0.12+ built-in package management (vim.pack)
 
+local palette = require("palette")
+
 local gh = function(x)
 	return "https://github.com/" .. x
 end
@@ -26,6 +28,7 @@ vim.pack.add({
 	gh("nvim-telescope/telescope.nvim"),
 	gh("nvim-telescope/telescope-ui-select.nvim"),
 	gh("nvim-telescope/telescope-fzf-native.nvim"),
+	gh("Bekaboo/dropbar.nvim"),
 
 	-- File management
 	gh("stevearc/oil.nvim"),
@@ -137,6 +140,13 @@ require("telescope").setup({
 pcall(require("telescope").load_extension, "fzf")
 require("telescope").load_extension("ui-select")
 
+-- Dropbar
+require("dropbar").setup({
+	bar = {
+		hover = true,
+	},
+})
+
 -- Oil
 require("oil").setup({
 	win_options = { signcolumn = "yes:2" },
@@ -167,7 +177,9 @@ local function style_bufferline_filenames()
 		"BufferLineErrorVisible",
 		"BufferLineErrorSelected",
 	}) do
-		update_highlight(name, { italic = true, bold = true })
+		local fg = name:find("Warning", 1, true) and palette.yellow or palette.red
+		local bg = name:find("Selected", 1, true) and palette.bg_selected or palette.bg_alt
+		update_highlight(name, { fg = fg, bg = bg, italic = true, bold = true })
 	end
 end
 

@@ -1,6 +1,7 @@
 vim.g.mapleader = ","
 vim.g.editorconfig = false
-vim.o.mouse = ""
+vim.o.mouse = "a"
+vim.o.mousemoveevent = true
 
 vim.o.termguicolors = true
 vim.o.updatetime = 200
@@ -10,25 +11,21 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cursorline = false
 
-vim.o.completeopt = "menu,menuone,noinsert,popup"
-vim.o.pumheight = 10
+-- Completion.
+vim.opt.wildignore:append({ ".DS_Store" })
+vim.o.completeopt = "menuone,noselect,noinsert"
+vim.o.pumheight = 15
 vim.o.pumborder = "rounded"
-vim.o.pummaxwidth = 60
-vim.o.winborder = "rounded"
-vim.o.showmode = false
 
 vim.o.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.incsearch = true
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
-vim.opt.expandtab = true
-vim.o.smartindent = true
-vim.o.autoindent = true
-vim.o.scrolloff = 8
+-- Use an indentation of 4 spaces.
+vim.o.sw = 4
+vim.o.ts = 4
+vim.o.et = true
 
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -37,10 +34,18 @@ vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.breakindent = true
 
-vim.o.colorcolumn = "0"
+-- Folding.
 vim.o.foldcolumn = "1"
 vim.o.foldlevelstart = 99
 vim.wo.foldtext = ""
+
+-- Update times and timeouts.
+vim.o.updatetime = 300
+vim.o.timeoutlen = 500
+vim.o.ttimeoutlen = 10
+
+vim.opt.list = true
+vim.opt.listchars = { space = "⋅", trail = "⋅", tab = "  ↦" }
 
 local arrows = require("icons").arrows
 vim.opt.fillchars = {
