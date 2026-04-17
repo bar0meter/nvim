@@ -129,6 +129,10 @@
       "rev": "64a654ef4a20db1727938338310209b6a63f60c9",
       "src": "https://github.com/tpope/vim-commentary"
     },
+    "vim-deus": {
+      "rev": "1be965e7bc1c01e7db5e46dcd0e50d32d4eef434",
+      "src": "https://github.com/ajmwagar/vim-deus"
+    },
     "vim-rest-console": {
       "rev": "7b407f47185468d1b57a8bd71cdd66c9a99359b2",
       "src": "https://github.com/diepm/vim-rest-console"

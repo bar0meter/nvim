@@ -90,7 +90,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
 	callback = function(ev)
 		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gd", function()
+			vim.lsp.buf.definition({
+				on_list = function(list)
+					if #list.items > 0 then
+						vim.lsp.util.show_document(list.items[1].user_data, "utf-8", { focus = true })
+					end
+				end,
+			})
+		end, opts)
+		vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)

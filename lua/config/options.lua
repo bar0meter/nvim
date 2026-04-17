@@ -23,8 +23,8 @@ vim.o.smartcase = true
 vim.o.incsearch = true
 
 -- Use an indentation of 4 spaces.
-vim.o.sw = 4
-vim.o.ts = 4
+vim.o.sw = 8
+vim.o.ts = 8
 vim.o.et = true
 
 vim.o.splitbelow = true
@@ -43,9 +43,6 @@ vim.wo.foldtext = ""
 vim.o.updatetime = 300
 vim.o.timeoutlen = 500
 vim.o.ttimeoutlen = 10
-
-vim.opt.list = true
-vim.opt.listchars = { space = "⋅", trail = "⋅", tab = "  ↦" }
 
 local arrows = require("icons").arrows
 vim.opt.fillchars = {
