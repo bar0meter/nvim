@@ -94,6 +94,22 @@ local function apply_ui_highlights()
 
 	-- silence unused variable warnings
 	local _ = warn_fg or error_fg or hint_fg
+
+	-- deus is a pre-treesitter theme; re-link structural @-groups to Normal
+	-- so they use deus's warm yellowish fg instead of terminal white
+	if vim.g.colors_name == "deus" then
+		for _, group in ipairs({
+			"@variable",
+			"@variable.member",
+			"@variable.parameter",
+			"@operator",
+			"@punctuation.bracket",
+			"@punctuation.delimiter",
+			"@punctuation.special",
+		}) do
+			set_hl(group, { link = "Normal" })
+		end
+	end
 end
 
 return {
