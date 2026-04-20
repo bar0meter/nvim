@@ -1,4 +1,3 @@
-
 local function update_highlight(name, opts)
 	local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
 	if not ok then
@@ -128,7 +127,7 @@ return {
 			scope = { enabled = true },
 			scroll = { enabled = true },
 			statuscolumn = { enabled = true },
-			words = { enabled = true },
+			words = { enabled = false },
 		})
 	end,
 }
