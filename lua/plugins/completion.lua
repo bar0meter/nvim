@@ -8,7 +8,7 @@ return {
 	setup = function()
 		require("blink.cmp").setup({
 			keymap = {
-				["<CR>"] = { "accept", "fallback" },
+				["<CR>"] = { "select_and_accept", "fallback" },
 				["<C-\\>"] = { "hide", "fallback" },
 				["<C-n>"] = { "select_next", "show" },
 				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
