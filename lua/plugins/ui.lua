@@ -25,7 +25,6 @@ end
 
 return {
 	packs = {
-		GH("folke/noice.nvim"),
 		GH("MunifTanjim/nui.nvim"),
 		GH("rcarriga/nvim-notify"),
 		GH("folke/snacks.nvim"),
@@ -98,21 +97,6 @@ return {
 				nmap("<leader>gr", gs.reset_hunk, "Reset hunk")
 				nmap("<leader>gs", gs.stage_hunk, "Stage hunk")
 			end,
-		})
-
-		require("noice").setup({
-			views = {
-				cmdline_popup = {
-					position = { row = 0, col = "50%" },
-				},
-				popupmenu = {
-					position = { row = 3, col = "50%" },
-				},
-			},
-			routes = {
-				-- let snacks.picker handle vim.ui.select
-				{ filter = { event = "select" }, opts = { skip = true } },
-			},
 		})
 
 		require("snacks").setup({
