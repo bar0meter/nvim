@@ -1,4 +1,3 @@
-
 local function set_hl(name, opts)
 	vim.api.nvim_set_hl(0, name, opts)
 end
@@ -118,9 +117,24 @@ return {
 		GH("folke/tokyonight.nvim"),
 		GH("sainnhe/everforest"),
 		GH("ajmwagar/vim-deus"),
+		GH("edeneast/nightfox.nvim"),
 	},
 	setup = function()
-		vim.cmd.colorscheme("deus")
+		-- Default options:
+		require("gruvbox").setup({
+			italic = {
+				strings = false,
+				emphasis = false,
+				comments = false,
+				operators = false,
+				folds = false,
+			},
+			contrast = "", -- can be "hard", "soft" or empty string
+			palette_overrides = {},
+			overrides = {},
+			dim_inactive = false,
+		})
+		vim.cmd.colorscheme("gruvbox")
 
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			group = vim.api.nvim_create_augroup("custom_ui_highlights", { clear = true }),
