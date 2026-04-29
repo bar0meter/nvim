@@ -1,4 +1,3 @@
-
 -- Pre-compute workspace files asynchronously so LspAttach doesn't block
 local _ws_files_cache = nil
 local ignore_dirs = { ".yarn", "node_modules", "dist", "build" }
@@ -35,31 +34,19 @@ end
 
 return {
 	packs = {
-		GH("neovim/nvim-lspconfig"),
 		GH("rachartier/tiny-code-action.nvim"),
-		GH("folke/lazydev.nvim"),
 		GH("b0o/SchemaStore.nvim"),
 		GH("artemave/workspace-diagnostics.nvim"),
 	},
 	setup = function()
-		vim.lsp.enable({
-			"lua_ls",
-			"gopls",
-			"biome",
-			"oxlint",
-			"tsgo",
-			"rust_analyzer",
-			"yamlls",
-			"jsonls",
-			"bashls",
-		})
+		local servers = { "lua_ls", "gopls", "oxlint", "tsgo", "rust_analyzer", "yamlls", "jsonls", "bashls" }
 
-		require("lazydev").setup({
-			library = {
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				{ path = "snacks.nvim", words = { "Snacks" } },
-			},
-		})
+		for _, server in ipairs(servers) do
+			local config = require("lsp." .. server)
+			config.name = server
+			vim.lsp.config(server, config)
+			vim.lsp.enable(server)
+		end
 
 		prefetch_workspace_files()
 

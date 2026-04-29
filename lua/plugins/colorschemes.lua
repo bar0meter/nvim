@@ -114,10 +114,8 @@ end
 return {
 	packs = {
 		GH("ellisonleao/gruvbox.nvim"),
-		GH("folke/tokyonight.nvim"),
 		GH("sainnhe/everforest"),
 		GH("ajmwagar/vim-deus"),
-		GH("edeneast/nightfox.nvim"),
 	},
 	setup = function()
 		-- Default options:
