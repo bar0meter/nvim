@@ -134,7 +134,7 @@ return {
 			overrides = {},
 			dim_inactive = false,
 		})
-		vim.cmd.colorscheme("gruvbox")
+		vim.cmd.colorscheme("deus")
 
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			group = vim.api.nvim_create_augroup("custom_ui_highlights", { clear = true }),
