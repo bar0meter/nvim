@@ -86,19 +86,6 @@ vim.api.nvim_set_keymap("n", "<leader>qq", ":lua ToggleQuickFix()<CR>", { norema
 -- LSP keymaps (buffer-local, set on LspAttach)
 ------------------------------------------------------
 
--- :LspList — show LSP clients attached to current buffer in one line
-vim.api.nvim_create_user_command("LspList", function()
-	local clients = vim.lsp.get_clients({ bufnr = 0 })
-	if #clients == 0 then
-		vim.notify("No LSP clients attached", vim.log.levels.WARN)
-		return
-	end
-	local names = vim.tbl_map(function(c)
-		return c.name
-	end, clients)
-	vim.notify("LSP: " .. table.concat(names, ", "))
-end, { desc = "List LSP clients attached to current buffer" })
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
 	callback = function(ev)
