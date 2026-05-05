@@ -20,6 +20,15 @@ return {
 	---@type lspconfig.settings.lua_ls
 	settings = {
 		Lua = {
+			runtime = { version = "LuaJIT" },
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+					"${3rd}/luv/library",
+				},
+			},
+			diagnostics = { globals = { "vim" } },
 			codeLens = { enable = true },
 			hint = { enable = true, semicolon = "Disable" },
 		},
