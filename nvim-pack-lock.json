@@ -5,7 +5,7 @@
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "SchemaStore.nvim": {
-      "rev": "20d4e9970798123e6197acb1c85c4b1e897efd29",
+      "rev": "6db1246640e9e1bdf8a1d1f6d27a940fc0a572d5",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "blink.cmp": {
@@ -34,7 +34,7 @@
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
     "mini.nvim": {
-      "rev": "be81509b7160aa02264a59789164a2e1c4a6750a",
+      "rev": "48555f1615f08c6318150aacb52bf7d61a5af798",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-treesitter": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
     },
     "telescope.nvim": {
-      "rev": "506338434fec5ad19cb1f8d45bf92d66c4917393",
+      "rev": "f04ab730b8f9c6bf3f54a206d0dcddfd70c52d59",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "tiny-code-action.nvim": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/diepm/vim-rest-console"
     },
     "workspace-diagnostics.nvim": {
-      "rev": "0dcd7d0a6c8f6e1ddb5bb72e1412aa4c9388718f",
+      "rev": "a35321d8401878cc9558e357acfd0da58b582739",
       "src": "https://github.com/artemave/workspace-diagnostics.nvim"
     }
   }

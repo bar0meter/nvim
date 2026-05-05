@@ -42,9 +42,6 @@ return {
 		local servers = { "lua_ls", "gopls", "oxlint", "tsgo", "rust_analyzer", "yamlls", "jsonls", "bashls" }
 
 		for _, server in ipairs(servers) do
-			local config = require("lsp." .. server)
-			config.name = server
-			vim.lsp.config(server, config)
 			vim.lsp.enable(server)
 		end
 
