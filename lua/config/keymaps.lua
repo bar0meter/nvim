@@ -118,12 +118,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.keymap.set({ "i", "s", "n" }, "<Esc>", function()
-	if require("luasnip").expand_or_jumpable() then
-		require("luasnip").unlink_current()
-	end
 	vim.cmd.nohlsearch()
 	return "<Esc>"
-end, { desc = "Escape and stop snippet session", expr = true })
+end, { desc = "Escape and clear search highlight", expr = true })
 
 ------------------------------------------------------
 -- Telescope keymaps
@@ -217,17 +214,6 @@ end, { desc = "Select next context" })
 vim.keymap.set("n", "<leader>bp", "<cmd>BufferLinePick<cr>", { desc = "Pick a buffer to open" })
 vim.keymap.set("n", "<leader>bc", "<cmd>BufferLinePickClose<cr>", { desc = "Pick a buffer to close" })
 vim.keymap.set("n", "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", { desc = "Close other buffers" })
-
-------------------------------------------------------
--- Snippet keymaps
-------------------------------------------------------
-
-vim.keymap.set({ "i", "s" }, "<C-l>", function()
-	require("luasnip").jump(1)
-end)
-vim.keymap.set({ "i", "s" }, "<C-h>", function()
-	require("luasnip").jump(-1)
-end)
 
 ------------------------------------------------------
 -- Gopher keymaps
