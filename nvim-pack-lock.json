@@ -5,7 +5,7 @@
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "SchemaStore.nvim": {
-      "rev": "6db1246640e9e1bdf8a1d1f6d27a940fc0a572d5",
+      "rev": "1ccbd3720b5064146b16d7761957da302ea1e86f",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "blink.cmp": {
@@ -17,14 +17,6 @@
       "rev": "dca1a190aa85f9065979ef35802fb77131911106",
       "src": "https://github.com/stevearc/conform.nvim"
     },
-    "everforest": {
-      "rev": "aeef62ee97872d2557d25904d160ec93a4a355f8",
-      "src": "https://github.com/sainnhe/everforest"
-    },
-    "flexoki-neovim": {
-      "rev": "c3e2251e813d29d885a7cbbe9808a7af234d845d",
-      "src": "https://github.com/kepano/flexoki-neovim"
-    },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
@@ -33,33 +25,17 @@
       "rev": "27ba078f14dd39fcd5e8a57d7009cdd77450ebbb",
       "src": "https://github.com/olexsmir/gopher.nvim"
     },
-    "gruvbox.nvim": {
-      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
-      "src": "https://github.com/ellisonleao/gruvbox.nvim"
-    },
-    "lualine.nvim": {
-      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
-      "src": "https://github.com/nvim-lualine/lualine.nvim"
-    },
     "mini.nvim": {
-      "rev": "48555f1615f08c6318150aacb52bf7d61a5af798",
+      "rev": "199b3344d4c0dab13e45483834ce11bb7744fa3a",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
-    "nord.nvim": {
-      "rev": "87394d4fc35c901bbe38326a78d31ab1ead826b6",
-      "src": "https://github.com/gbprod/nord.nvim"
-    },
-    "nordic.nvim": {
-      "rev": "9fb62116b891184049c50ca6ffb0d3bc100a1a6e",
-      "src": "https://github.com/AlexvZyl/nordic.nvim"
+    "nightfox.nvim": {
+      "rev": "26b61b1f856ec37cae3cb64f5690adb955f246a1",
+      "src": "https://github.com/EdenEast/nightfox.nvim"
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
-    },
-    "nvim-web-devicons": {
-      "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
-      "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil-git-status.nvim": {
       "rev": "a3e2ccb00cb8822115e28a9a1791eda051d940c9",
@@ -74,7 +50,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "telescope-fzf-native.nvim": {
-      "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",
+      "rev": "b25b749b9db64d375d782094e2b9dce53ad53a40",
       "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
     },
     "telescope.nvim": {
