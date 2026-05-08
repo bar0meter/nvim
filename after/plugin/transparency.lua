@@ -43,4 +43,4 @@ local function enable_transparency()
 	vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", { bold = true, bg = "none" })
 end
 
-enable_transparency()
+-- enable_transparency()
