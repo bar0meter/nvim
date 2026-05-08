@@ -74,3 +74,44 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		client.server_capabilities.semanticTokensProvider = nil
 	end,
 })
+
+-- welcome screen when nvim opens with no arguments
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		if vim.fn.argc() ~= 0 then
+			return
+		end
+
+		vim.cmd("enew")
+		local lines = {
+			"Welcome back, commander.",
+		}
+		local width = vim.api.nvim_win_get_width(0)
+		local height = vim.api.nvim_win_get_height(0)
+		local centered = {}
+
+		for _, line in ipairs(lines) do
+			local padding = math.floor((width - vim.api.nvim_strwidth(line)) / 2)
+			if line == "" or padding <= 0 then
+				table.insert(centered, line)
+			else
+				table.insert(centered, string.rep(" ", padding) .. line)
+			end
+		end
+
+		local top_padding = math.floor((height - #centered * 2) / 2)
+		for _ = 1, top_padding do
+			table.insert(centered, 1, "")
+		end
+
+		vim.api.nvim_buf_set_lines(0, 0, -1, false, centered)
+		local buf = vim.api.nvim_get_current_buf()
+		vim.bo[buf].buftype = "nofile"
+		vim.bo[buf].bufhidden = "hide"
+		vim.bo[buf].swapfile = false
+		vim.bo[buf].modifiable = false
+		vim.bo[buf].readonly = true
+		vim.bo[buf].filetype = "dashboard"
+		vim.bo[buf].buflisted = false
+	end,
+})
