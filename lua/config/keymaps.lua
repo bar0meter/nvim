@@ -56,10 +56,8 @@ vim.keymap.set("n", "<leader>h", function()
 	vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
 end)
 
--- Commentary
-vim.keymap.set("x", "<Leader>c", "<Plug>Commentary", {})
-vim.keymap.set("n", "<Leader>c", "<Plug>Commentary", {})
-vim.keymap.set("n", "<Leader>cc", "<Plug>CommentaryLine", {})
+-- Comment (mini.comment): gc / gcc are provided by the plugin
+vim.keymap.set({ "n", "x" }, "<Leader>cc", "gcc", { remap = true, desc = "Toggle comment line" })
 
 -- Quickfix toggle
 function ToggleQuickFix()
@@ -109,7 +107,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		vim.keymap.set({ "n", "x" }, "<leader>ca", function()
 			require("tiny-code-action").code_action()
-		end, { buffer = ev.buf, noremap = true, silent = true })
+		end, { buffer = ev.buf, noremap = true, silent = true, desc = "Code action" })
 
 		vim.keymap.set("n", "<leader>k", function()
 			vim.diagnostic.open_float({ border = "rounded" })

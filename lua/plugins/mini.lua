@@ -11,6 +11,7 @@ return {
 		require("mini.statusline").setup({ use_icons = true })
 		require("mini.tabline").setup()
 		require("mini.completion").setup()
+		require("mini.comment").setup()
 
 		local function pum_accept(fallback)
 			return function()

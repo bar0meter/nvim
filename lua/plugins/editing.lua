@@ -1,6 +1,5 @@
 return {
 	packs = {
-		GH("tpope/vim-commentary"),
 		GH("stevearc/conform.nvim"),
 		GH("NMAC427/guess-indent.nvim"),
 	},
