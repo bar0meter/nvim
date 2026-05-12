@@ -1,4 +1,6 @@
 vim.g.mapleader = ","
+vim.g.have_nerd_font = true
+
 vim.g.editorconfig = false
 vim.o.mouse = "a"
 vim.o.mousemoveevent = true
@@ -7,9 +9,16 @@ vim.o.termguicolors = true
 vim.o.updatetime = 200
 vim.o.autoread = true
 vim.o.undofile = true
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.cursorline = false
+vim.o.number = false
+vim.o.relativenumber = false
+
+vim.o.showtabline = 2
+
+vim.o.inccommand = "split"
+vim.o.cursorline = true
+
+vim.o.list = true
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Completion.
 vim.opt.wildignore:append({ ".DS_Store" })
@@ -17,15 +26,16 @@ vim.o.completeopt = "menuone,noselect,noinsert"
 vim.o.pumheight = 15
 vim.o.pumborder = "rounded"
 
-vim.o.signcolumn = "no"
+vim.o.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.incsearch = true
 
--- Use an indentation of 4 spaces.
-vim.o.sw = 8
-vim.o.ts = 8
-vim.o.et = true
+-- Set indentation defaults for all filetypes
+vim.opt.tabstop = 4      -- Show tabs as 4 spaces
+vim.opt.shiftwidth = 2   -- Indent using 2 spaces
+vim.opt.softtabstop = 2  -- Number of spaces <Tab> counts for in insert mode
+vim.opt.expandtab = true -- Use spaces instead of tabs
 
 vim.o.splitbelow = true
 vim.o.splitright = true
