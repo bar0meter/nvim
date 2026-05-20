@@ -17,9 +17,6 @@ vim.o.showtabline = 2
 vim.o.inccommand = "split"
 vim.o.cursorline = true
 
-vim.o.list = true
-vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
-
 -- Completion.
 vim.opt.wildignore:append({ ".DS_Store" })
 vim.o.completeopt = "menuone,noselect,noinsert"
@@ -31,10 +28,6 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.incsearch = true
 
--- Set indentation defaults for all filetypes
-vim.opt.tabstop = 4      -- Show tabs as 4 spaces
-vim.opt.shiftwidth = 2   -- Indent using 2 spaces
-vim.opt.softtabstop = 2  -- Number of spaces <Tab> counts for in insert mode
 vim.opt.expandtab = true -- Use spaces instead of tabs
 
 vim.o.splitbelow = true

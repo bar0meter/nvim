@@ -57,7 +57,8 @@ vim.keymap.set("n", "<leader>h", function()
 end)
 
 -- Comment (mini.comment): gc / gcc are provided by the plugin
-vim.keymap.set({ "n", "x" }, "<Leader>cc", "gcc", { remap = true, desc = "Toggle comment line" })
+vim.keymap.set("n", "<Leader>cc", "gcc", { remap = true, desc = "Toggle comment line" })
+vim.keymap.set("x", "<Leader>c", "gc", { remap = true, desc = "Toggle comment selection" })
 
 -- Quickfix toggle
 function ToggleQuickFix()

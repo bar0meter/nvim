@@ -4,6 +4,6 @@ return {
 		GH("EdenEast/nightfox.nvim"),
 	},
 	setup = function()
-		vim.cmd.colorscheme("duskfox")
+		vim.cmd.colorscheme("deus")
 	end,
 }
