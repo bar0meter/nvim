@@ -9,7 +9,7 @@ vim.o.termguicolors = true
 vim.o.updatetime = 200
 vim.o.autoread = true
 vim.o.undofile = true
-vim.o.number = false
+vim.o.number = true
 vim.o.relativenumber = false
 
 vim.o.showtabline = 2
@@ -29,6 +29,9 @@ vim.o.smartcase = true
 vim.o.incsearch = true
 
 vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 4
 
 vim.o.splitbelow = true
 vim.o.splitright = true
