@@ -5,6 +5,6 @@ return {
 		GH("rebelot/kanagawa.nvim"),
 	},
 	setup = function()
-		vim.cmd.colorscheme("kanagawa-dragon")
+		vim.cmd.colorscheme("duskfox")
 	end,
 }

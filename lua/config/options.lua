@@ -23,15 +23,12 @@ vim.o.completeopt = "menuone,noselect,noinsert"
 vim.o.pumheight = 15
 vim.o.pumborder = "rounded"
 
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "no"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.incsearch = true
 
 vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 4
 
 vim.o.splitbelow = true
 vim.o.splitright = true

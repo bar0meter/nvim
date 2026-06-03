@@ -22,7 +22,7 @@ return {
 			},
 			indent = {
 				priority = 1,
-				enabled = true,
+				enabled = false,
 				char = "│",
 				only_scope = false,
 				only_current = false,
