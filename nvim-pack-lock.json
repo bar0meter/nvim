@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "19936230448bfb3dfd4314070e8bc499ceb55928",
+      "rev": "8fa7f9cb8805f8abf27432d4b1e7c4be83d76807",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "gitsigns.nvim": {
@@ -21,7 +21,7 @@
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "mini.nvim": {
-      "rev": "11afe78a10570fe1d0c7ed0b6fc2b5b19098cb45",
+      "rev": "ff8b3580935818ef2f21bdd651f057a2ae071eab",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nightfox.nvim": {
@@ -67,6 +67,10 @@
     "vim-rest-console": {
       "rev": "7b407f47185468d1b57a8bd71cdd66c9a99359b2",
       "src": "https://github.com/diepm/vim-rest-console"
+    },
+    "vscode.nvim": {
+      "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
+      "src": "https://github.com/mofiqul/vscode.nvim"
     },
     "workspace-diagnostics.nvim": {
       "rev": "a35321d8401878cc9558e357acfd0da58b582739",
