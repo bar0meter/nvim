@@ -15,7 +15,7 @@ vim.o.relativenumber = false
 vim.o.showtabline = 2
 
 vim.o.inccommand = "split"
-vim.o.cursorline = true
+vim.o.cursorline = false
 
 -- Completion.
 vim.opt.wildignore:append({ ".DS_Store" })
@@ -38,7 +38,7 @@ vim.o.linebreak = true
 vim.o.breakindent = true
 
 -- Folding.
-vim.o.foldcolumn = "1"
+vim.o.foldcolumn = "0"
 vim.o.foldlevelstart = 99
 vim.wo.foldtext = ""
 
