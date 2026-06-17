@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "8fa7f9cb8805f8abf27432d4b1e7c4be83d76807",
+      "rev": "3dca2d2153cfbc9aab937c1be0441e371101b0b8",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "gitsigns.nvim": {
@@ -12,6 +12,10 @@
       "rev": "27ba078f14dd39fcd5e8a57d7009cdd77450ebbb",
       "src": "https://github.com/olexsmir/gopher.nvim"
     },
+    "gruvbox.nvim": {
+      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
     "guess-indent.nvim": {
       "rev": "84a4987ff36798c2fc1169cbaff67960aed9776f",
       "src": "https://github.com/NMAC427/guess-indent.nvim"
@@ -21,7 +25,7 @@
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "mini.nvim": {
-      "rev": "ff8b3580935818ef2f21bdd651f057a2ae071eab",
+      "rev": "a59a9b7fb0a42cbcf022938ee5f0724320b66f63",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nightfox.nvim": {
