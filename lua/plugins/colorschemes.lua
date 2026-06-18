@@ -18,7 +18,7 @@ return {
 				folds = false,
 			},
 			inverse = true, -- invert background for search, diffs, statuslines and errors
-			contrast = "hard", -- can be "hard", "soft" or empty string
+			contrast = "", -- can be "hard", "soft" or empty string
 		})
 
 		vim.g.gruvbox_material_disable_italic_comment = true
