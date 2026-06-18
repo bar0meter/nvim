@@ -4,7 +4,8 @@ return {
 		GH("EdenEast/nightfox.nvim"),
 		GH("rebelot/kanagawa.nvim"),
 		GH("mofiqul/vscode.nvim"),
-		GH("ellisonleao/gruvbox.nvim")
+		GH("ellisonleao/gruvbox.nvim"),
+		GH("sainnhe/gruvbox-material")
 	},
 	setup = function()
 		require("gruvbox").setup({
@@ -19,6 +20,8 @@ return {
 			inverse = true, -- invert background for search, diffs, statuslines and errors
 			contrast = "hard", -- can be "hard", "soft" or empty string
 		})
+
+		vim.g.gruvbox_material_disable_italic_comment = true
 
 		vim.cmd.colorscheme("gruvbox")
 	end,
