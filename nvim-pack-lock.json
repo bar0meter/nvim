@@ -36,6 +36,10 @@
       "rev": "26b61b1f856ec37cae3cb64f5690adb955f246a1",
       "src": "https://github.com/EdenEast/nightfox.nvim"
     },
+    "octo.nvim": {
+      "rev": "7fed87415c401954f73401bbed0fd736b9611e7c",
+      "src": "https://github.com/pwntester/octo.nvim"
+    },
     "oil-git-status.nvim": {
       "rev": "a3e2ccb00cb8822115e28a9a1791eda051d940c9",
       "src": "https://github.com/refractalize/oil-git-status.nvim"
