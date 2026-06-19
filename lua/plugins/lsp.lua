@@ -52,5 +52,38 @@ return {
 				return _ws_files_cache or {}
 			end,
 		})
+
+		-- Surface LSP actions in the fuzzymenu.
+		local ok, fzm = pcall(require, "fuzzymenu")
+		if ok then
+			fzm.add({
+				{ category = "LSP", name = "Format buffer", run = function()
+					vim.lsp.buf.format({ async = true })
+				end },
+				{ category = "LSP", name = "Rename symbol", run = function()
+					vim.lsp.buf.rename()
+				end },
+				{ category = "LSP", name = "Code action", run = function()
+					require("tiny-code-action").code_action()
+				end },
+				{ category = "LSP", name = "Organize imports", run = function()
+					vim.lsp.buf.code_action({
+						context = { only = { "source.organizeImports" }, diagnostics = {} },
+						apply = true,
+					})
+				end },
+				{ category = "LSP", name = "Document symbols", run = function()
+					require("telescope.builtin").lsp_document_symbols()
+				end },
+				{ category = "LSP", name = "Workspace symbols", run = function()
+					require("telescope.builtin").lsp_dynamic_workspace_symbols()
+				end },
+				{ category = "LSP", name = "Populate workspace diagnostics", run = function()
+					for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+						require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+					end
+				end },
+			})
+		end
 	end,
 }

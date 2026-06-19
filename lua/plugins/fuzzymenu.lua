@@ -30,12 +30,36 @@ return {
 			{ category = "LSP", name = "Toggle inlay hints", run = function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 			end },
+			{ category = "Search", name = "Help tags", run = function()
+				require("telescope.builtin").help_tags()
+			end },
+			{ category = "Search", name = "Commands", run = function()
+				require("telescope.builtin").commands()
+			end },
+			{ category = "Search", name = "Keymaps", run = function()
+				require("telescope.builtin").keymaps()
+			end },
+			{ category = "Search", name = "Command history", run = function()
+				require("telescope.builtin").command_history()
+			end },
+			{ category = "Search", name = "Resume last picker", run = function()
+				require("telescope.builtin").resume()
+			end },
+			{ category = "UI", name = "Colorscheme", run = function()
+				require("telescope.builtin").colorscheme({ enable_preview = true })
+			end },
 			{ category = "Config", name = "Edit Neovim config", run = function()
 				require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 			end },
 			{ category = "Config", name = "Reload config", run = function()
 				vim.cmd("update")
 				vim.cmd("source $MYVIMRC")
+			end },
+			{ category = "Config", name = "Update plugins", run = function()
+				vim.cmd("PackUpdate")
+			end },
+			{ category = "Config", name = "Sync plugins (clean + update)", run = function()
+				vim.cmd("PackSync")
 			end },
 		})
 

@@ -42,6 +42,22 @@ return {
 				{ category = "GitHub", name = "Repo overview", run = octo("repo view") },
 				{ category = "GitHub", name = "Global search", run = octo("search") },
 			})
+
+			-- Git history/navigation via Telescope and hunk actions via gitsigns.
+			local builtin = require("telescope.builtin")
+			local gs = require("gitsigns")
+			fzm.add({
+				{ category = "Git", name = "Status", run = builtin.git_status },
+				{ category = "Git", name = "Commits (repo)", run = builtin.git_commits },
+				{ category = "Git", name = "Commits (buffer)", run = builtin.git_bcommits },
+				{ category = "Git", name = "Branches", run = builtin.git_branches },
+				{ category = "Git", name = "Stash", run = builtin.git_stash },
+				{ category = "Git", name = "Toggle line blame", run = gs.toggle_current_line_blame },
+				{ category = "Git", name = "Diff this", run = function() gs.diffthis() end },
+				{ category = "Git", name = "Preview hunk", run = gs.preview_hunk },
+				{ category = "Git", name = "Stage hunk", run = gs.stage_hunk },
+				{ category = "Git", name = "Reset hunk", run = gs.reset_hunk },
+			})
 		end
 	end,
 }
