@@ -23,6 +23,6 @@ return {
 
 		vim.g.gruvbox_material_disable_italic_comment = true
 
-		vim.cmd.colorscheme("gruvbox")
+		vim.cmd.colorscheme("gruvbox-material")
 	end,
 }

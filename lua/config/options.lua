@@ -24,7 +24,7 @@ vim.o.completeopt = "menuone,noselect,noinsert"
 vim.o.pumheight = 15
 vim.o.pumborder = "rounded"
 
-vim.o.signcolumn = "no"
+vim.o.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.incsearch = true
