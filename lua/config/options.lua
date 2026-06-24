@@ -11,7 +11,7 @@ vim.o.autoread = true
 vim.o.undofile = true
 vim.o.number = true
 vim.o.relativenumber = false
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = "no"
 
 vim.o.showtabline = 2
 
@@ -24,12 +24,13 @@ vim.o.completeopt = "menuone,noselect,noinsert"
 vim.o.pumheight = 15
 vim.o.pumborder = "rounded"
 
-vim.o.signcolumn = "yes"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.incsearch = true
 
 vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.o.tabstop = 2 -- A tab renders as 2 columns
+vim.o.shiftwidth = 2 -- Indent / >> shifts by 4
 
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -50,13 +51,13 @@ vim.o.ttimeoutlen = 10
 
 local arrows = require("icons").arrows
 vim.opt.fillchars = {
-	eob = " ",
-	fold = " ",
-	foldclose = arrows.right,
-	foldopen = arrows.down,
-	foldsep = " ",
-	foldinner = " ",
-	msgsep = "─",
+  eob = " ",
+  fold = " ",
+  foldclose = arrows.right,
+  foldopen = arrows.down,
+  foldsep = " ",
+  foldinner = " ",
+  msgsep = "─",
 }
 
 vim.opt.cmdheight = 0
@@ -66,5 +67,5 @@ vim.diagnostic.config({ virtual_text = true })
 vim.o.laststatus = 3
 
 vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
+  vim.o.clipboard = "unnamedplus"
 end)

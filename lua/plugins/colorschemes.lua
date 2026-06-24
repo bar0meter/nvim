@@ -1,28 +1,29 @@
 return {
-	packs = {
-		GH("ajmwagar/vim-deus"),
-		GH("EdenEast/nightfox.nvim"),
-		GH("rebelot/kanagawa.nvim"),
-		GH("mofiqul/vscode.nvim"),
-		GH("ellisonleao/gruvbox.nvim"),
-		GH("sainnhe/gruvbox-material")
-	},
-	setup = function()
-		require("gruvbox").setup({
-			bold = false,
-			italic = {
-				strings = false,
-				emphasis = false,
-				comments = false,
-				operators = false,
-				folds = false,
-			},
-			inverse = true, -- invert background for search, diffs, statuslines and errors
-			contrast = "", -- can be "hard", "soft" or empty string
-		})
+  packs = {
+    GH("ajmwagar/vim-deus"),
+    GH("EdenEast/nightfox.nvim"),
+    GH("rebelot/kanagawa.nvim"),
+    GH("mofiqul/vscode.nvim"),
+    GH("ellisonleao/gruvbox.nvim"),
+    GH("sainnhe/gruvbox-material"),
+    GH("neanias/everforest-nvim"),
+  },
+  setup = function()
+    require("gruvbox").setup({
+      bold = false,
+      italic = {
+        strings = false,
+        emphasis = false,
+        comments = false,
+        operators = false,
+        folds = false,
+      },
+      inverse = true, -- invert background for search, diffs, statuslines and errors
+      contrast = "", -- can be "hard", "soft" or empty string
+    })
 
-		vim.g.gruvbox_material_disable_italic_comment = true
+    vim.g.gruvbox_material_disable_italic_comment = true
 
-		vim.cmd.colorscheme("gruvbox-material")
-	end,
+    vim.cmd.colorscheme("everforest")
+  end,
 }
