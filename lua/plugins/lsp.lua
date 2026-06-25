@@ -40,8 +40,14 @@ return {
     },
     setup = function()
         local servers = { "lua_ls", "gopls", "oxlint", "tsgo", "rust_analyzer", "yamlls", "jsonls", "bashls" }
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+        -- Neovim 0.12 can create libuv watchers for LSP didChangeWatchedFiles
+        -- registrations. Large repos can exhaust file descriptors and raise EMFILE.
+        capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
         for _, server in ipairs(servers) do
+            vim.lsp.config(server, { capabilities = capabilities })
             vim.lsp.enable(server)
         end
 
