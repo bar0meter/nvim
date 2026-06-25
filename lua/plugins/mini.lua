@@ -11,6 +11,7 @@ return {
     require("mini.tabline").setup()
     require("mini.completion").setup()
     require("mini.comment").setup()
+    require("mini.statusline").setup()
 
     require("mini.files").setup({
       windows = {

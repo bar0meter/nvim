@@ -1,14 +1,14 @@
 -- source and update neovim config
 vim.keymap.set("n", "<leader>so", function()
-  vim.cmd("update")
-  vim.cmd("source $MYVIMRC")
+    vim.cmd("update")
+    vim.cmd("source $MYVIMRC")
 end)
 
 -- restart nvim and restore session
 local session_file = vim.fn.stdpath("state") .. "/Session.vim"
 vim.keymap.set("n", "<leader>re", function()
-  vim.cmd("mks! " .. vim.fn.fnameescape(session_file))
-  vim.cmd("restart source " .. vim.fn.fnameescape(session_file))
+    vim.cmd("mks! " .. vim.fn.fnameescape(session_file))
+    vim.cmd("restart source " .. vim.fn.fnameescape(session_file))
 end)
 
 vim.keymap.set("i", "jk", "<Esc>")
@@ -18,13 +18,13 @@ vim.keymap.set("n", "U", "<C-r>")
 
 -- after a search, press escape to clear highlights
 vim.keymap.set("n", "<Esc>", function()
-  vim.cmd("nohl")
-  -- close any floating windows (hover docs, etc.)
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    if vim.api.nvim_win_get_config(win).relative ~= "" then
-      vim.api.nvim_win_close(win, false)
+    vim.cmd("nohl")
+    -- close any floating windows (hover docs, etc.)
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_get_config(win).relative ~= "" then
+            vim.api.nvim_win_close(win, false)
+        end
     end
-  end
 end)
 
 -- Swap between split buffers
@@ -52,8 +52,8 @@ vim.keymap.set("v", "<C-Up>", ":m '<-2<CR>gv=gv")
 
 -- toggle inlayhints
 vim.keymap.set("n", "<leader>h", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-  vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
 end)
 
 -- Comment (mini.comment): gc / gcc are provided by the plugin
@@ -62,21 +62,21 @@ vim.keymap.set("x", "<Leader>c", "gc", { remap = true, desc = "Toggle comment se
 
 -- Quickfix toggle
 function ToggleQuickFix()
-  local quickfix_windows = vim.fn.getwininfo()
-  local is_quickfix_open = false
+    local quickfix_windows = vim.fn.getwininfo()
+    local is_quickfix_open = false
 
-  for _, win_info in ipairs(quickfix_windows) do
-    if win_info.quickfix == 1 then
-      is_quickfix_open = true
-      break
+    for _, win_info in ipairs(quickfix_windows) do
+        if win_info.quickfix == 1 then
+            is_quickfix_open = true
+            break
+        end
     end
-  end
 
-  if is_quickfix_open then
-    vim.cmd("cclose")
-  else
-    vim.cmd("copen")
-  end
+    if is_quickfix_open then
+        vim.cmd("cclose")
+    else
+        vim.cmd("copen")
+    end
 end
 
 vim.api.nvim_set_keymap("n", "<leader>qq", ":lua ToggleQuickFix()<CR>", { noremap = true, silent = true })
@@ -86,39 +86,39 @@ vim.api.nvim_set_keymap("n", "<leader>qq", ":lua ToggleQuickFix()<CR>", { norema
 ------------------------------------------------------
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-    vim.keymap.set("n", "gd", function()
-      vim.lsp.buf.definition({
-        on_list = function(list)
-          if #list.items > 0 then
-            vim.lsp.util.show_document(list.items[1].user_data, "utf-8", { focus = true })
-          end
-        end,
-      })
-    end, opts)
-    vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
-    -- grt (type_definition) and grx (codelens) are now built-in defaults in 0.12
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+        vim.keymap.set("n", "gd", function()
+            vim.lsp.buf.definition({
+                on_list = function(list)
+                    if #list.items > 0 then
+                        vim.lsp.util.show_document(list.items[1].user_data, "utf-8", { focus = true })
+                    end
+                end,
+            })
+        end, opts)
+        vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
+        -- grt (type_definition) and grx (codelens) are now built-in defaults in 0.12
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
-    vim.keymap.set({ "n", "x" }, "<leader>ca", function()
-      require("tiny-code-action").code_action()
-    end, { buffer = ev.buf, noremap = true, silent = true, desc = "Code action" })
+        vim.keymap.set({ "n", "x" }, "<leader>ca", function()
+            require("tiny-code-action").code_action()
+        end, { buffer = ev.buf, noremap = true, silent = true, desc = "Code action" })
 
-    vim.keymap.set("n", "<leader>k", function()
-      vim.diagnostic.open_float({ border = "rounded" })
-    end, opts)
-  end,
+        vim.keymap.set("n", "<leader>k", function()
+            vim.diagnostic.open_float({ border = "rounded" })
+        end, opts)
+    end,
 })
 
 vim.keymap.set({ "i", "s", "n" }, "<Esc>", function()
-  vim.cmd.nohlsearch()
-  return "<Esc>"
+    vim.cmd.nohlsearch()
+    return "<Esc>"
 end, { desc = "Escape and clear search highlight", expr = true })
 
 ------------------------------------------------------
@@ -126,64 +126,64 @@ end, { desc = "Escape and clear search highlight", expr = true })
 ------------------------------------------------------
 
 vim.keymap.set("n", "<leader>l", function()
-  require("telescope.builtin").find_files({
-    file_ignore_patterns = { "^./.git/", "^node_modules/" },
-    prompt_title = "[S]earch [F]iles",
-    find_command = { "rg", "--files", "--hidden", "-g", "!.git", "--sort", "accessed" },
-  })
+    require("telescope.builtin").find_files({
+        file_ignore_patterns = { "^./.git/", "^node_modules/" },
+        prompt_title = "[S]earch [F]iles",
+        find_command = { "rg", "--files", "--hidden", "-g", "!.git", "--sort", "accessed" },
+    })
 end, { desc = "[S]earch [F]iles" })
 
 vim.keymap.set("n", "<leader>ss", function()
-  require("telescope.builtin").current_buffer_fuzzy_find({})
+    require("telescope.builtin").current_buffer_fuzzy_find({})
 end, { desc = "[/] Fuzzily search in current buffer" })
 
 vim.keymap.set("n", "<leader>sw", function()
-  require("telescope.builtin").grep_string()
+    require("telescope.builtin").grep_string()
 end, { desc = "[S]earch current [W]ord" })
 
 vim.keymap.set("n", "<leader>ff", function()
-  require("telescope.builtin").live_grep({ prompt_title = "[S]earch by [G]rep" })
+    require("telescope.builtin").live_grep({ prompt_title = "[S]earch by [G]rep" })
 end, { desc = "[S]earch by [G]rep" })
 
 vim.keymap.set("n", "<leader>dd", function()
-  require("telescope.builtin").diagnostics({ prompt_title = "[S]earch [D]iagnostics" })
+    require("telescope.builtin").diagnostics({ prompt_title = "[S]earch [D]iagnostics" })
 end, { desc = "[S]earch [D]iagnostics" })
 
 vim.keymap.set("n", "<leader>sr", function()
-  require("telescope.builtin").resume()
+    require("telescope.builtin").resume()
 end, { desc = "[S]earch [R]esume" })
 vim.keymap.set("n", "<leader>s.", function()
-  require("telescope.builtin").oldfiles()
+    require("telescope.builtin").oldfiles()
 end, { desc = '[S]earch Recent Files ("." for repeat)' })
 
 vim.keymap.set("n", "<leader>b", function()
-  require("telescope.builtin").buffers({ prompt_title = "[ ] Find existing buffers" })
+    require("telescope.builtin").buffers({ prompt_title = "[ ] Find existing buffers" })
 end, { desc = "[ ] Find existing buffers" })
 
 vim.keymap.set("n", "<leader>gt", function()
-  require("telescope.builtin").git_files({
-    prompt_title = "Ignore tests folder",
-    file_ignore_patterns = { "tests", "functional_tests", "snapshots", ".github", "codegen", "node_modules" },
-  })
+    require("telescope.builtin").git_files({
+        prompt_title = "Ignore tests folder",
+        file_ignore_patterns = { "tests", "functional_tests", "snapshots", ".github", "codegen", "node_modules" },
+    })
 end, { desc = "[Ignore tests]" })
 
 vim.keymap.set("n", "<leader>ps", function()
-  require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+    require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
 vim.keymap.set("n", "<leader>sf", function()
-  require("telescope.builtin").live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" })
+    require("telescope.builtin").live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" })
 end, { desc = "[S]earch [/] in Open Files" })
 
 vim.keymap.set("n", "<leader>pws", function()
-  require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
+    require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
 end)
 vim.keymap.set("n", "<leader>pWs", function()
-  require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>") })
+    require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>") })
 end)
 
 vim.keymap.set("n", "<leader>sn", function()
-  require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+    require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "[S]earch [N]eovim files" })
 
 ------------------------------------------------------
@@ -197,13 +197,13 @@ vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Oil file manager" })
 ------------------------------------------------------
 
 vim.keymap.set("n", "<leader>;", function()
-  require("dropbar.api").pick()
+    require("dropbar.api").pick()
 end, { desc = "Pick symbols in winbar" })
 vim.keymap.set("n", "[;", function()
-  require("dropbar.api").goto_context_start()
+    require("dropbar.api").goto_context_start()
 end, { desc = "Go to start of current context" })
 vim.keymap.set("n", "];", function()
-  require("dropbar.api").select_next_context()
+    require("dropbar.api").select_next_context()
 end, { desc = "Select next context" })
 
 ------------------------------------------------------
