@@ -3,122 +3,121 @@ local _ws_files_cache = nil
 local ignore_dirs = { ".yarn", "node_modules", "dist", "build" }
 
 local function prefetch_workspace_files()
-  vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true },
-    function(r)
-      if r.code ~= 0 or not r.stdout or r.stdout == "" then
-        return
-      end
-      local root = vim.trim(r.stdout)
-      vim.system({ "git", "ls-files", root }, { text = true }, function(r2)
-        if r2.code ~= 0 or not r2.stdout then
-          return
+    vim.system({ "git", "rev-parse", "--show-toplevel" }, { text = true }, function(r)
+        if r.code ~= 0 or not r.stdout or r.stdout == "" then
+            return
         end
-        local files = {}
-        for _, f in ipairs(vim.split(r2.stdout, "\n")) do
-          if f ~= "" then
-            local ignored = false
-            for _, dir in ipairs(ignore_dirs) do
-              if f:match("^" .. dir .. "/") then
-                ignored = true
-                break
-              end
+        local root = vim.trim(r.stdout)
+        vim.system({ "git", "ls-files", root }, { text = true }, function(r2)
+            if r2.code ~= 0 or not r2.stdout then
+                return
             end
-            if not ignored then
-              table.insert(files, f)
+            local files = {}
+            for _, f in ipairs(vim.split(r2.stdout, "\n")) do
+                if f ~= "" then
+                    local ignored = false
+                    for _, dir in ipairs(ignore_dirs) do
+                        if f:match("^" .. dir .. "/") then
+                            ignored = true
+                            break
+                        end
+                    end
+                    if not ignored then
+                        table.insert(files, f)
+                    end
+                end
             end
-          end
-        end
-        _ws_files_cache = files
-      end)
+            _ws_files_cache = files
+        end)
     end)
 end
 
 return {
-  packs = {
-    GH("rachartier/tiny-code-action.nvim"),
-    GH("b0o/SchemaStore.nvim"),
-    GH("artemave/workspace-diagnostics.nvim"),
-  },
-  setup = function()
-    local servers = { "lua_ls", "gopls", "oxlint", "tsgo", "rust_analyzer", "yamlls", "jsonls", "bashls", "zls" }
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    packs = {
+        GH("rachartier/tiny-code-action.nvim"),
+        GH("b0o/SchemaStore.nvim"),
+        GH("artemave/workspace-diagnostics.nvim"),
+    },
+    setup = function()
+        local servers = { "lua_ls", "gopls", "oxlint", "tsgo", "rust_analyzer", "yamlls", "jsonls", "bashls", "zls" }
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-    -- Neovim 0.12 can create libuv watchers for LSP didChangeWatchedFiles
-    -- registrations. Large repos can exhaust file descriptors and raise EMFILE.
-    capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+        -- Neovim 0.12 can create libuv watchers for LSP didChangeWatchedFiles
+        -- registrations. Large repos can exhaust file descriptors and raise EMFILE.
+        capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
-    for _, server in ipairs(servers) do
-      vim.lsp.config(server, { capabilities = capabilities })
-      vim.lsp.enable(server)
-    end
+        for _, server in ipairs(servers) do
+            vim.lsp.config(server, { capabilities = capabilities })
+            vim.lsp.enable(server)
+        end
 
-    prefetch_workspace_files()
+        prefetch_workspace_files()
 
-    require("workspace-diagnostics").setup({
-      workspace_files = function()
-        return _ws_files_cache or {}
-      end,
-    })
+        require("workspace-diagnostics").setup({
+            workspace_files = function()
+                return _ws_files_cache or {}
+            end,
+        })
 
-    -- Surface LSP actions in the fuzzymenu.
-    local ok, fzm = pcall(require, "fuzzymenu")
-    if ok then
-      fzm.add({
-        {
-          category = "LSP",
-          name = "Format buffer",
-          run = function()
-            vim.lsp.buf.format({ async = true })
-          end,
-        },
-        {
-          category = "LSP",
-          name = "Rename symbol",
-          run = function()
-            vim.lsp.buf.rename()
-          end,
-        },
-        {
-          category = "LSP",
-          name = "Code action",
-          run = function()
-            require("tiny-code-action").code_action()
-          end,
-        },
-        {
-          category = "LSP",
-          name = "Organize imports",
-          run = function()
-            vim.lsp.buf.code_action({
-              context = { only = { "source.organizeImports" }, diagnostics = {} },
-              apply = true,
+        -- Surface LSP actions in the fuzzymenu.
+        local ok, fzm = pcall(require, "fuzzymenu")
+        if ok then
+            fzm.add({
+                {
+                    category = "LSP",
+                    name = "Format buffer",
+                    run = function()
+                        vim.lsp.buf.format({ async = true })
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Rename symbol",
+                    run = function()
+                        vim.lsp.buf.rename()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Code action",
+                    run = function()
+                        require("tiny-code-action").code_action()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Organize imports",
+                    run = function()
+                        vim.lsp.buf.code_action({
+                            context = { only = { "source.organizeImports" }, diagnostics = {} },
+                            apply = true,
+                        })
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Document symbols",
+                    run = function()
+                        require("telescope.builtin").lsp_document_symbols()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Workspace symbols",
+                    run = function()
+                        require("telescope.builtin").lsp_dynamic_workspace_symbols()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Populate workspace diagnostics",
+                    run = function()
+                        for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                            require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+                        end
+                    end,
+                },
             })
-          end,
-        },
-        {
-          category = "LSP",
-          name = "Document symbols",
-          run = function()
-            require("telescope.builtin").lsp_document_symbols()
-          end,
-        },
-        {
-          category = "LSP",
-          name = "Workspace symbols",
-          run = function()
-            require("telescope.builtin").lsp_dynamic_workspace_symbols()
-          end,
-        },
-        {
-          category = "LSP",
-          name = "Populate workspace diagnostics",
-          run = function()
-            for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-              require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
-            end
-          end,
-        },
-      })
-    end
-  end,
+        end
+    end,
 }

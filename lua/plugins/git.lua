@@ -14,13 +14,20 @@ return {
             },
         })
 
-        require("octo").setup({
-            file_panel = {
-                icons = function(name, _ext)
-                    return require("mini.icons").get("file", name)
-                end,
-            },
-        })
+        -- octo.setup() pulls in ~50ms of requires (half of startup) but is only
+        -- needed once you run an :Octo command. Defer it: a stub :Octo triggers
+        -- the real setup on first use, which overrides this command and dispatches.
+        -- ponytail: lazy-load, drop it back to eager if octo highlights/ft need it earlier.
+        vim.api.nvim_create_user_command("Octo", function(opts)
+            require("octo").setup({
+                file_panel = {
+                    icons = function(name, _ext)
+                        return require("mini.icons").get("file", name)
+                    end,
+                },
+            })
+            vim.cmd("Octo " .. opts.args)
+        end, { nargs = "*", desc = "Octo (lazy-loaded)" })
 
         -- Surface Octo's GitHub actions in the fuzzymenu.
         local ok, fzm = pcall(require, "fuzzymenu")
