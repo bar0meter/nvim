@@ -9,9 +9,9 @@ vim.o.termguicolors = true
 vim.o.updatetime = 200
 vim.o.autoread = true
 vim.o.undofile = true
-vim.o.number = true
+vim.o.number = false
 vim.o.relativenumber = false
-vim.o.signcolumn = "no"
+vim.o.signcolumn = "yes"
 
 vim.o.showtabline = 2
 
@@ -47,13 +47,13 @@ vim.o.ttimeoutlen = 10
 
 local arrows = require("icons").arrows
 vim.opt.fillchars = {
-    eob = " ",
-    fold = " ",
-    foldclose = arrows.right,
-    foldopen = arrows.down,
-    foldsep = " ",
-    foldinner = " ",
-    msgsep = "─",
+  eob = " ",
+  fold = " ",
+  foldclose = arrows.right,
+  foldopen = arrows.down,
+  foldsep = " ",
+  foldinner = " ",
+  msgsep = "─",
 }
 
 vim.opt.cmdheight = 0
@@ -63,5 +63,5 @@ vim.diagnostic.config({ virtual_text = true })
 vim.o.laststatus = 3
 
 vim.schedule(function()
-    vim.o.clipboard = "unnamedplus"
+  vim.o.clipboard = "unnamedplus"
 end)
