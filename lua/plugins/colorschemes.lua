@@ -5,6 +5,6 @@ return {
     GH("jnurmine/zenburn")
   },
   setup = function()
-    vim.cmd.colorscheme("zenburn")
+    vim.cmd.colorscheme("deus")
   end,
 }
