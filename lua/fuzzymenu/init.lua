@@ -47,9 +47,19 @@ function M.open(opts)
     local action_state = require("telescope.actions.state")
     local entry_display = require("telescope.pickers.entry_display")
 
+    -- Group by category, then alphabetically within each, so related actions
+    -- (all LSP, all Git, ...) show together regardless of registration order.
+    local items = vim.deepcopy(M.items)
+    table.sort(items, function(a, b)
+        if a.category ~= b.category then
+            return a.category < b.category
+        end
+        return a.name < b.name
+    end)
+
     -- Width of the widest category, for column alignment.
     local cat_width = 0
-    for _, item in ipairs(M.items) do
+    for _, item in ipairs(items) do
         cat_width = math.max(cat_width, vim.fn.strdisplaywidth(item.category))
     end
 
@@ -65,7 +75,7 @@ function M.open(opts)
         .new(opts, {
             prompt_title = "Fuzzymenu",
             finder = finders.new_table({
-                results = M.items,
+                results = items,
                 entry_maker = function(item)
                     return {
                         value = item,

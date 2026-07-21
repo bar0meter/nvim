@@ -87,10 +87,10 @@ return {
                 end,
             },
             {
-                category = "Search",
-                name = "Resume last picker",
+                category = "UI",
+                name = "Toggle folding",
                 run = function()
-                    require("telescope.builtin").resume()
+                    vim.wo.foldenable = not vim.wo.foldenable
                 end,
             },
             {
@@ -120,6 +120,13 @@ return {
                 name = "Update plugins",
                 run = function()
                     vim.cmd("PackUpdate")
+                end,
+            },
+            {
+                category = "Config",
+                name = "Clean plugins (remove unused)",
+                run = function()
+                    vim.cmd("PackClean")
                 end,
             },
             {

@@ -2,9 +2,10 @@ return {
   packs = {
     GH("ajmwagar/vim-deus"),
     GH("EdenEast/nightfox.nvim"),
-    GH("jnurmine/zenburn")
+    GH("jnurmine/zenburn"),
+    GH("morhetz/gruvbox")
   },
   setup = function()
-    vim.cmd.colorscheme("deus")
+    vim.cmd.colorscheme("duskfox")
   end,
 }

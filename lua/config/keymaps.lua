@@ -105,6 +105,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- grt (type_definition) and grx (codelens) are now built-in defaults in 0.12
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "<leader>ds", function()
+            require("telescope.builtin").lsp_document_symbols()
+        end, { buffer = ev.buf, desc = "Document symbols" })
 
         vim.keymap.set({ "n", "x" }, "<leader>ca", function()
             require("tiny-code-action").code_action()

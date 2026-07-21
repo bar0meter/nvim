@@ -10,13 +10,13 @@ vim.o.updatetime = 200
 vim.o.autoread = true
 vim.o.undofile = true
 vim.o.number = true
-vim.o.relativenumber = false
-vim.o.signcolumn = "no"
+vim.o.relativenumber = true
+vim.o.signcolumn = "yes"
 
 vim.o.showtabline = 2
 
 vim.o.inccommand = "split"
-vim.o.cursorline = false
+vim.o.cursorline = true
 
 -- Completion.
 vim.opt.wildignore:append({ ".DS_Store" })

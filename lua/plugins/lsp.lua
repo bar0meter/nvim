@@ -37,8 +37,11 @@ return {
         GH("rachartier/tiny-code-action.nvim"),
         GH("b0o/SchemaStore.nvim"),
         GH("artemave/workspace-diagnostics.nvim"),
+        GH("j-hui/fidget.nvim"),
     },
     setup = function()
+        require("fidget").setup()
+
         local servers = { "lua_ls", "gopls", "oxlint", "tsgo", "rust_analyzer", "yamlls", "jsonls", "bashls", "zls" }
         local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -82,6 +85,48 @@ return {
                     name = "Code action",
                     run = function()
                         require("tiny-code-action").code_action()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Go to definition",
+                    run = function()
+                        vim.lsp.buf.definition()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Go to implementation",
+                    run = function()
+                        vim.lsp.buf.implementation()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Find references",
+                    run = function()
+                        vim.lsp.buf.references()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Hover documentation",
+                    run = function()
+                        vim.lsp.buf.hover()
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "Line diagnostics",
+                    run = function()
+                        vim.diagnostic.open_float({ border = "rounded" })
+                    end,
+                },
+                {
+                    category = "LSP",
+                    name = "List clients",
+                    run = function()
+                        vim.cmd("LspList")
                     end,
                 },
                 {

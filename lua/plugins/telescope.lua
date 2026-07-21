@@ -3,12 +3,16 @@ return {
         GH("nvim-lua/plenary.nvim"),
         GH("nvim-telescope/telescope.nvim"),
         GH("nvim-telescope/telescope-fzf-native.nvim"),
+        GH("nvim-telescope/telescope-ui-select.nvim"),
     },
     setup = function()
         require("telescope").setup({
             defaults = {},
             extensions = {
                 fzf = {},
+                ["ui-select"] = {
+                    require("telescope.themes").get_dropdown(),
+                },
             },
             pickers = {
                 live_grep = {
@@ -25,5 +29,6 @@ return {
         })
 
         pcall(require("telescope").load_extension, "fzf")
+        pcall(require("telescope").load_extension, "ui-select")
     end,
 }
