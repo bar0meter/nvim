@@ -13,6 +13,28 @@ return {
     require("mini.comment").setup()
     require("mini.statusline").setup()
 
+    -- vim-airline "dark" theme palette (N1/N2/N3, I1, V1, RE)
+    local airline_hl = {
+      MiniStatuslineModeNormal = { fg = "#00005f", bg = "#dfff00", bold = true },
+      MiniStatuslineModeInsert = { fg = "#00005f", bg = "#00dfff", bold = true },
+      MiniStatuslineModeVisual = { fg = "#000000", bg = "#ffaf00", bold = true },
+      MiniStatuslineModeReplace = { fg = "#000000", bg = "#ff0000", bold = true },
+      MiniStatuslineModeCommand = { fg = "#00005f", bg = "#dfff00", bold = true },
+      MiniStatuslineModeOther = { fg = "#00005f", bg = "#00dfff", bold = true },
+      MiniStatuslineDevinfo = { fg = "#ffffff", bg = "#444444" },
+      MiniStatuslineFilename = { fg = "#9cffd3", bg = "#202020" },
+      MiniStatuslineFileinfo = { fg = "#ffffff", bg = "#444444" },
+      MiniStatuslineInactive = { fg = "#444444", bg = "#202020" },
+    }
+    local function set_airline_hl()
+      for name, val in pairs(airline_hl) do
+        vim.api.nvim_set_hl(0, name, val)
+      end
+    end
+    set_airline_hl()
+    -- colorschemes reset these, so reapply
+    vim.api.nvim_create_autocmd("ColorScheme", { callback = set_airline_hl })
+
     require("mini.files").setup({
       windows = {
         preview = true,
