@@ -58,6 +58,9 @@ vim.opt.fillchars = {
   msgsep = "─",
 }
 
+vim.o.list = true
+vim.opt.listchars = { eol = "↵" }
+
 vim.opt.cmdheight = 0
 
 vim.diagnostic.config({ virtual_text = true })
