@@ -31,6 +31,8 @@ vim.o.incsearch = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 
+vim.o.swapfile = false
+
 vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.breakindent = true
@@ -65,3 +67,6 @@ vim.o.laststatus = 3
 vim.schedule(function()
   vim.o.clipboard = "unnamedplus"
 end)
+
+vim.o.title = true
+vim.o.titlestring = '%t%( %M%)%( (%{expand("%:~:h")})%)%a (nvim)'
