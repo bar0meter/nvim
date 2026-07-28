@@ -47,19 +47,8 @@ vim.o.updatetime = 300
 vim.o.timeoutlen = 500
 vim.o.ttimeoutlen = 10
 
-local arrows = require("icons").arrows
-vim.opt.fillchars = {
-  eob = " ",
-  fold = " ",
-  foldclose = arrows.right,
-  foldopen = arrows.down,
-  foldsep = " ",
-  foldinner = " ",
-  msgsep = "─",
-}
-
 vim.o.list = true
-vim.opt.listchars = { eol = "↵" }
+vim.opt.listchars = { eol = "↵", tab = "  " }
 
 vim.opt.cmdheight = 0
 
