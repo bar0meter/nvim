@@ -1,7 +1,7 @@
 -- One function per colorscheme, each owning its own tweaks.
 -- Switch by changing `active` below.
 
-local active = "tokyonight"
+local active = "gruvbuddy"
 
 local schemes = {}
 
