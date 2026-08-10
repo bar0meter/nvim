@@ -65,7 +65,7 @@ schemes.tokyonight = function()
     },
   })
 
-  vim.cmd.colorscheme("tokyonight")
+  vim.cmd.colorscheme("tokyonight-night")
 
   -- express_line mode badge: bold accent text on the editor background
   local palette = require("tokyonight.colors").setup()
