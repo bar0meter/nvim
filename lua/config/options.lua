@@ -48,7 +48,6 @@ vim.o.timeoutlen = 500
 vim.o.ttimeoutlen = 10
 
 vim.o.list = true
-vim.opt.listchars = { eol = "↵", tab = "  " }
 
 vim.opt.cmdheight = 0
 
