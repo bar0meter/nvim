@@ -13,6 +13,9 @@ schemes.zenburn = function()
     hl.bg = nil
     vim.api.nvim_set_hl(0, name, hl)
   end
+
+  vim.api.nvim_set_hl(0, "StatusLine", { bg = "#3c3836", fg = "#ebdbb2" })
+  vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#32302f", fg = "#928374" })
 end
 
 return {
