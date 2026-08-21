@@ -9,8 +9,8 @@ vim.o.termguicolors = true
 vim.o.updatetime = 200
 vim.o.autoread = true
 vim.o.undofile = true
-vim.o.number = true
-vim.o.relativenumber = true
+vim.o.number = false
+vim.o.relativenumber = false
 vim.o.signcolumn = "yes"
 
 vim.o.showtabline = 2
