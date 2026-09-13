@@ -1,7 +1,7 @@
 -- One function per colorscheme, each owning its own tweaks.
 -- Switch by changing `active` below.
 
-local active = "zenburn"
+local active = "deus"
 
 local schemes = {}
 
@@ -18,9 +18,14 @@ schemes.zenburn = function()
   vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#32302f", fg = "#928374" })
 end
 
+schemes.deus = function()
+  vim.cmd.colorscheme("deus")
+end
+
 return {
   packs = {
     GH("phha/zenburn.nvim"),
+    GH("ajmwagar/vim-deus")
   },
   setup = function()
     schemes[active]()

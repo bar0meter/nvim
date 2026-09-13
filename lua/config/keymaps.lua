@@ -190,6 +190,17 @@ vim.keymap.set("n", "<leader>sn", function()
 end, { desc = "[S]earch [N]eovim files" })
 
 ------------------------------------------------------
+-- Twig worktree keymaps
+------------------------------------------------------
+
+vim.keymap.set("n", "<leader>tw", function()
+    require("twig").pick()
+end, { desc = "[T]wig [W]orktrees (<CR> switch, <C-x> rm, <C-n> new)" })
+vim.keymap.set("n", "<leader>tn", function()
+    require("twig").checkout_prompt()
+end, { desc = "[T]wig [N]ew worktree" })
+
+------------------------------------------------------
 -- Oil keymap
 ------------------------------------------------------
 

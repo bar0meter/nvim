@@ -52,6 +52,20 @@ return {
                 end,
             },
             {
+                category = "Twig",
+                name = "Switch worktree",
+                run = function()
+                    require("twig").pick()
+                end,
+            },
+            {
+                category = "Twig",
+                name = "New worktree (checkout)",
+                run = function()
+                    require("twig").checkout_prompt()
+                end,
+            },
+            {
                 category = "LSP",
                 name = "Toggle inlay hints",
                 run = function()
