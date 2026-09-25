@@ -1,7 +1,7 @@
 -- One function per colorscheme, each owning its own tweaks.
 -- Switch by changing `active` below.
 
-local active = "deus"
+local active = "everforest"
 
 local schemes = {}
 
@@ -22,10 +22,16 @@ schemes.deus = function()
   vim.cmd.colorscheme("deus")
 end
 
+schemes.everforest = function()
+  vim.o.background = "dark"
+  vim.cmd.colorscheme("everforest")
+end
+
 return {
   packs = {
     GH("phha/zenburn.nvim"),
-    GH("ajmwagar/vim-deus")
+    GH("ajmwagar/vim-deus"),
+    GH("sainnhe/everforest"),
   },
   setup = function()
     schemes[active]()

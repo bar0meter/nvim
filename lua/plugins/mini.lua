@@ -11,7 +11,7 @@ return {
     require("mini.tabline").setup()
     require("mini.completion").setup()
     require("mini.comment").setup()
-    require("mini.statusline").setup()
+    require("mini.icons").mock_nvim_web_devicons()
     require("mini.files").setup({
       windows = {
         preview = true,
