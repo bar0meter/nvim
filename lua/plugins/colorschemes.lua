@@ -1,7 +1,7 @@
 -- One function per colorscheme, each owning its own tweaks.
 -- Switch by changing `active` below.
 
-local active = "everforest"
+local active = "gruvbox"
 
 local schemes = {}
 
@@ -27,11 +27,18 @@ schemes.everforest = function()
   vim.cmd.colorscheme("everforest")
 end
 
+schemes.gruvbox = function()
+  vim.o.background = "dark"
+  require("gruvbox").setup({ contrast = "hard" })
+  vim.cmd.colorscheme("gruvbox")
+end
+
 return {
   packs = {
     GH("phha/zenburn.nvim"),
     GH("ajmwagar/vim-deus"),
     GH("sainnhe/everforest"),
+    GH("ellisonleao/gruvbox.nvim"),
   },
   setup = function()
     schemes[active]()
