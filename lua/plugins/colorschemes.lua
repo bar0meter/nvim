@@ -31,6 +31,13 @@ schemes.gruvbox = function()
   vim.o.background = "dark"
   require("gruvbox").setup({ contrast = "hard" })
   vim.cmd.colorscheme("gruvbox")
+
+  for name, hl in pairs(vim.api.nvim_get_hl(0, {})) do
+    if hl.italic then
+      hl.italic = false
+      vim.api.nvim_set_hl(0, name, hl)
+    end
+  end
 end
 
 return {
