@@ -1,16 +1,33 @@
 -- Adapted from LazyVim's lua/lazyvim/plugins/{ui,util}.lua for vim.pack.
 return {
   packs = {
+    GH("folke/snacks.nvim"),
     GH("nvim-lualine/lualine.nvim"),
   },
   setup = function()
+    require("snacks").setup({
+      bigfile = { enabled = true },
+      quickfile = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      notifier = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = false },
+      words = { enabled = true },
+    })
+    vim.keymap.set("n", "<leader>n", function() Snacks.notifier.show_history() end, { desc = "Notification History" })
+    vim.keymap.set("n", "<leader>un", function() Snacks.notifier.hide() end, { desc = "Dismiss All Notifications" })
+    vim.keymap.set("n", "<leader>.", function() Snacks.scratch() end, { desc = "Toggle Scratch Buffer" })
+    vim.keymap.set("n", "<leader>S", function() Snacks.scratch.select() end, { desc = "Select Scratch Buffer" })
+
     require("lualine").setup({
       options = {
         theme = "auto",
         globalstatus = true,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
-        disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter" } },
+        disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
       },
       sections = {
         lualine_a = { "mode" },
@@ -27,6 +44,7 @@ return {
           { "filename", path = 1 },
         },
         lualine_x = {
+          Snacks.profiler.status(),
           {
             "diff",
             symbols = { added = " ", modified = " ", removed = " " },
